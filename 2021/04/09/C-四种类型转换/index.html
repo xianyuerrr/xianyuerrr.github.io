@@ -22,7 +22,7 @@
 
   
 
-  <title>C++ 输入输出 | xianyue の blog</title>
+  <title>C++ 四种类型转换 | xianyue の blog</title>
 
   
 
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">C++ 输入输出</h1>
+          <h1 class="title-wrap">C++ 四种类型转换</h1>
           <h2 class="title-sub-wrap">
             <strong>xianyue</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-11-06T15:33:51.000Z" itemprop="datePublished">2021-11-06</time>
+            <time  class="article-date" datetime="2021-04-09T15:31:15.000Z" itemprop="datePublished">2021-04-09</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -110,8 +110,6 @@
           <ul class="wrap-list dark">
   
     <li><a href="/tags/C/">🏷️ C++</a></li>
-  
-    <li><a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">🏷️ 输入输出</a></li>
   
 </ul>
         </div>
@@ -135,43 +133,27 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1>C++输入输出</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-comment">// 或者是</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure>
-<h2 id="scanf">scanf</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量地址);<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182136.png" alt="image-20210321182129026"></p>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182359.png" alt="image-20210321182359421"></p>
-<h2 id="printf">printf</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量名称);<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182608.png" alt="image-20210321182608018"></p>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182624.png" alt="image-20210321182624557"></p>
-<ol>
-<li>
-<p><strong>%md</strong></p>
-<p>可以使不足 <strong>m</strong> 位的 <strong>int</strong> 型变量以 <strong>m</strong> 位进行右对齐输出，高位用空格不起补齐。长度超过 <strong>m</strong> 位则不起作用</p>
-</li>
-<li>
-<p><strong>%0md</strong></p>
-<p>与 <strong>%md</strong> 类似，只不过补空格变成了补 <strong>0</strong></p>
-</li>
-<li>
-<p>%.mf</p>
-<p>让浮点数保留 <strong>m</strong> 位小数输出（使用四舍五入成双规则）</p>
-</li>
-</ol>
-<h2 id="getchar">getchar</h2>
-<p>输入单个字符</p>
-<h2 id="putchar">putchar</h2>
-<p>输出单个字符</p>
-<h2 id="gets">gets</h2>
-<p>输入一行字符串（识别 ‘\n’作为输入结束）</p>
-<p><strong>注意</strong>：scanf 完一个整数后，如果要使用 gets，需要先用 <strong>getchar</strong> 接收换行符</p>
-<h2 id="puts">puts</h2>
-<p>输出一行字符串，并紧跟一个换行</p>
-<h2 id="cin">cin</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br><span class="hljs-keyword">char</span> b[<span class="hljs-number">10</span>];<br>cin &gt;&gt; a;<br>cin.<span class="hljs-built_in">getline</span>(b, <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
-<h2 id="cout">cout</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br>cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>cout &lt;&lt; a &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+        <h1>C++四种类型转换</h1>
+<h2 id="static-cast">static_cast</h2>
+<p>是“静态转换”的意思，也就是在<strong>编译期间</strong>转换，转换失败的话会抛出一个编译错误。</p>
+<p>用于良性转换，一般不会导致意外发生，风险很低。</p>
+<p>需要注意的是，static_cast <strong>不能用于无关类型之间的转换</strong>，因为这些转换都是有风险的，例如：</p>
+<ul>
+<li>两个具体类型指针之间的转换，例如<code>int *</code>转<code>double *</code>、<code>Student *</code>转<code>int *</code>等。不同类型的数据存储格式不一样，长度也不一样，用 A 类型的指针指向 B 类型的数据后，会按照 A 类型的方式来处理数据：如果是读取操作，可能会得到一堆没有意义的值；如果是写入操作，可能会使 B 类型的数据遭到破坏，当再次以 B 类型的方式读取数据时会得到一堆没有意义的值。</li>
+<li>int 和指针之间的转换。将一个具体的地址赋值给指针变量是非常危险的，因为该地址上的内存可能没有分配，也可能没有读写权限，恰好是可用内存反而是小概率事件。</li>
+</ul>
+<p>也不能用来去掉表达式的 const 修饰和 volatile 修饰</p>
+<h2 id="const-cast">const_cast</h2>
+<p>用于 const 与非 const、volatile 与非 volatile 之间的转换。换句话说，const_cast 就是用来将 const/volatile 类型转换为非 const/volatile 类型。</p>
+<p>使用 const_cast 进行强制类型转换可以<strong>突破 C/C++ 的常数限制</strong>，修改常数的值，因此有一定的危险性；但是程序员如果这样做的话，基本上会意识到这个问题，因此也还有一定的安全性。</p>
+<h2 id="reinterpret-cast">reinterpret_cast</h2>
+<p>高度危险的转换，这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，但是可以实现最灵活的 C++ 类型转换。</p>
+<p>reinterpret 是“重新解释”的意思，顾名思义，reinterpret_cast 这种转换<strong>仅仅是对二进制位的重新解释</strong>，不会借助已有的转换规则对数据进行调整，非常简单粗暴，所以风险很高。</p>
+<p>reinterpret_cast 可以认为是 <strong>static_cast 的一种补充</strong>，一些 static_cast 不能完成的转换，就可以用 reinterpret_cast 来完成</p>
+<h2 id="dynamic-cast">dynamic_cast</h2>
+<p>dynamic_cast 与 static_cast 是相对的，dynamic_cast 是“动态转换”的意思，static_cast 是“静态转换”的意思。dynamic_cast 会在程序运行期间借助 RTTI 进行类型转换，这就要求基类必须包含虚函数；static_cast 在编译期间完成类型转换，能够更加及时地发现错误。</p>
+<p>dynamic_cast 用于在类的<strong>继承层次</strong>之间进行类型转换，它既允许向上转型（Upcasting），也允许向下转型（Downcasting）。向上转型是无条件的，不会进行任何检测，所以都能成功；向下转型的前提必须是安全的，要借助 RTTI 进行检测，所有只有一部分能成功。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++风格调用</span><br>xxx_cast&lt;new_type&gt;(data);<br><br><span class="hljs-comment">// 老式的C风格</span><br>(new_type)data;<br></code></pre></td></tr></table></figure>
 
       </section>
 
@@ -184,8 +166,8 @@
     
     <div class="card-text">
       
-        <a href="/2021/11/06/C-math-%E5%87%BD%E6%95%B0/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">C++ math 函数</h2>
+        <a href="/2021/06/20/C-%E6%A0%87%E5%87%86%E5%BA%93-STL/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">C++ 标准库 STL</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -199,8 +181,8 @@
     
     <div class="card-text">
       
-        <a href="/2021/11/06/%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">四种类型转换</h2>
+        <a href="/2021/04/08/C-math-%E5%87%BD%E6%95%B0/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">C++ math 函数</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -287,7 +269,7 @@
     <span>TOC</span>
   </div>
   <div class="widget-body">
-    <ol class="TOC"><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#scanf"><span class="TOC-number">1.</span> <span class="TOC-text">scanf</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#printf"><span class="TOC-number">2.</span> <span class="TOC-text">printf</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#getchar"><span class="TOC-number">3.</span> <span class="TOC-text">getchar</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#putchar"><span class="TOC-number">4.</span> <span class="TOC-text">putchar</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#gets"><span class="TOC-number">5.</span> <span class="TOC-text">gets</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#puts"><span class="TOC-number">6.</span> <span class="TOC-text">puts</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#cin"><span class="TOC-number">7.</span> <span class="TOC-text">cin</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#cout"><span class="TOC-number">8.</span> <span class="TOC-text">cout</span></a></li></ol>
+    <ol class="TOC"><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#static-cast"><span class="TOC-number">1.</span> <span class="TOC-text">static_cast</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#const-cast"><span class="TOC-number">2.</span> <span class="TOC-text">const_cast</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#reinterpret-cast"><span class="TOC-number">3.</span> <span class="TOC-text">reinterpret_cast</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#dynamic-cast"><span class="TOC-number">4.</span> <span class="TOC-text">dynamic_cast</span></a></li></ol>
   </div>
 </section>
 
@@ -317,14 +299,14 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Python/">
-            Python (8)
+          <a href="/categories/Markdown/">
+            Markdown (1)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Markdown/">
-            Markdown (1)
+          <a href="/categories/Python/">
+            Python (8)
           </a>
         </li>
       
