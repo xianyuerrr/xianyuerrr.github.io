@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>C++ math 函数</title>
+    <url>/2021/04/08/C-math-%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>C++常用 math 函数</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span><br></code></pre></td></tr></table></figure>
+<ol>
+<li><strong>abs(int i)</strong>：绝对值（整型）</li>
+<li><strong>fabs(double x)</strong>：绝对值（实型）</li>
+<li><strong>cabs(struct complex znum)</strong>：绝对值（复型）</li>
+<li><strong>floor(double x)</strong>：向下取整</li>
+<li><strong>ceil(double x)</strong>：向上取整</li>
+<li><strong>pow(double r, double p)</strong>：幂运算 <img src="https://math.now.sh?inline=r%5Ep" style="display:inline-block;margin: 0;"/></li>
+<li><strong>sqrt(double x)</strong>：算术平方根</li>
+<li><strong>log(double x)</strong>：对数（以自然对数为底）</li>
+<li><strong>log10(double num)</strong>：对数，以 10 为底</li>
+<li><strong>sin(double x)</strong>、<strong>cos(double x)</strong>、<strong>tan(double x)</strong>：正弦、余弦、正切（弧度制，几分之几 <img src="https://math.now.sh?inline=%5Cpi" style="display:inline-block;margin: 0;"/>）</li>
+<li><strong>asin(double x)</strong>、<strong>acos(double x)</strong>、<strong>atan(double x)</strong>：反正弦、反余弦、反正切（数值，比如 1）</li>
+<li><strong>round(double x)</strong>：四舍五入</li>
+<li><strong>double poly(double x,int degree,double coeffs [])</strong>：计算多项式</li>
+</ol>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 四种类型转换</title>
+    <url>/2021/04/09/C-%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<h1>C++四种类型转换</h1>
+<h2 id="static-cast">static_cast</h2>
+<p>是“静态转换”的意思，也就是在<strong>编译期间</strong>转换，转换失败的话会抛出一个编译错误。</p>
+<p>用于良性转换，一般不会导致意外发生，风险很低。</p>
+<p>需要注意的是，static_cast <strong>不能用于无关类型之间的转换</strong>，因为这些转换都是有风险的，例如：</p>
+<ul>
+<li>两个具体类型指针之间的转换，例如<code>int *</code>转<code>double *</code>、<code>Student *</code>转<code>int *</code>等。不同类型的数据存储格式不一样，长度也不一样，用 A 类型的指针指向 B 类型的数据后，会按照 A 类型的方式来处理数据：如果是读取操作，可能会得到一堆没有意义的值；如果是写入操作，可能会使 B 类型的数据遭到破坏，当再次以 B 类型的方式读取数据时会得到一堆没有意义的值。</li>
+<li>int 和指针之间的转换。将一个具体的地址赋值给指针变量是非常危险的，因为该地址上的内存可能没有分配，也可能没有读写权限，恰好是可用内存反而是小概率事件。</li>
+</ul>
+<p>也不能用来去掉表达式的 const 修饰和 volatile 修饰</p>
+<h2 id="const-cast">const_cast</h2>
+<p>用于 const 与非 const、volatile 与非 volatile 之间的转换。换句话说，const_cast 就是用来将 const/volatile 类型转换为非 const/volatile 类型。</p>
+<p>使用 const_cast 进行强制类型转换可以<strong>突破 C/C++ 的常数限制</strong>，修改常数的值，因此有一定的危险性；但是程序员如果这样做的话，基本上会意识到这个问题，因此也还有一定的安全性。</p>
+<h2 id="reinterpret-cast">reinterpret_cast</h2>
+<p>高度危险的转换，这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，但是可以实现最灵活的 C++ 类型转换。</p>
+<p>reinterpret 是“重新解释”的意思，顾名思义，reinterpret_cast 这种转换<strong>仅仅是对二进制位的重新解释</strong>，不会借助已有的转换规则对数据进行调整，非常简单粗暴，所以风险很高。</p>
+<p>reinterpret_cast 可以认为是 <strong>static_cast 的一种补充</strong>，一些 static_cast 不能完成的转换，就可以用 reinterpret_cast 来完成</p>
+<h2 id="dynamic-cast">dynamic_cast</h2>
+<p>dynamic_cast 与 static_cast 是相对的，dynamic_cast 是“动态转换”的意思，static_cast 是“静态转换”的意思。dynamic_cast 会在程序运行期间借助 RTTI 进行类型转换，这就要求基类必须包含虚函数；static_cast 在编译期间完成类型转换，能够更加及时地发现错误。</p>
+<p>dynamic_cast 用于在类的<strong>继承层次</strong>之间进行类型转换，它既允许向上转型（Upcasting），也允许向下转型（Downcasting）。向上转型是无条件的，不会进行任何检测，所以都能成功；向下转型的前提必须是安全的，要借助 RTTI 进行检测，所有只有一部分能成功。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++风格调用</span><br>xxx_cast&lt;new_type&gt;(data);<br><br><span class="hljs-comment">// 老式的C风格</span><br>(new_type)data;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 标准库 STL</title>
+    <url>/2021/06/20/C-%E6%A0%87%E5%87%86%E5%BA%93-STL/</url>
+    <content><![CDATA[<h1>C++标准库STL</h1>
+<h2 id="一、vector">一、vector</h2>
+<p>向量，变长数组</p>
+<p>可以以邻接表方式存储图（结点数太多的不行）</p>
+<h3 id="1、定义">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 定义</span><br>vector&lt;<span class="hljs-keyword">typename</span>&gt; name;<br>vector&lt;<span class="hljs-keyword">typename</span>&gt; arrayname[arraysize];<br><span class="hljs-comment">// 与vector&lt;vector&lt;int&gt; &gt;name;不同的是，这种写法的一维长度已经固定位arraysize，另一维才是变长的。</span><br><br><span class="hljs-comment">// typename可以是任何基本类型</span><br><span class="hljs-comment">// 也可以是STL标准容器，这种的要在定义时在 &gt;&gt; 符号之间加上空格（C++11之前的编译器会将其视为移位操作，导致编译错误）</span><br><br><span class="hljs-comment">// e.g.:</span><br>vector&lt;<span class="hljs-keyword">int</span>&gt; name;<br>vector&lt;node&gt; name; <span class="hljs-comment">// node为结构体</span><br>vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; name; <span class="hljs-comment">// &gt;&gt;之间要加空格</span><br>vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt; &gt; name;<br><br></code></pre></td></tr></table></figure>
+<h3 id="2、访问">2、访问</h3>
+<p>下标访问或通过迭代器访问</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">vector&lt;<span class="hljs-keyword">int</span>&gt; vi;<br>vector&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = vi.<span class="hljs-built_in">begin</span>();<br><span class="hljs-keyword">for</span>(vector&lt;<span class="hljs-keyword">int</span>&gt;::iterator it=vi.<span class="hljs-built_in">begin</span>();it!=vi.<span class="hljs-built_in">end</span>();it++)&#123;<br>4<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,*it);<br>&#125;<br><span class="hljs-comment">// vi[i] 和 *(vi.begin() + i) 是等价的</span><br><span class="hljs-comment">// 允许 i++， ++i</span><br></code></pre></td></tr></table></figure>
+<p>在STL容器中，只有<strong>vector</strong>和<strong>string</strong>允许使用vi.begin()+4这种<strong>迭代器+整数</strong>的写法。</p>
+<h3 id="3、常用函数">3、常用函数</h3>
+<p><strong>1、push_back()</strong></p>
+<p><code>push_back(x)</code>就是在vector后面添加一个元素x</p>
+<p><strong>2、pop_back()</strong></p>
+<p><code>pop_back(x)</code>用以删除vector的尾元素</p>
+<p><strong>3、insert()</strong></p>
+<p><code>insert(it, x)</code>用来向vector的任意迭代器it处插入一个元素x</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">vi.<span class="hljs-built_in">insert</span>(vi.<span class="hljs-built_in">begin</span>()+<span class="hljs-number">2</span>,<span class="hljs-number">-1</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="二、set">二、set</h2>
+<h3 id="1、定义-2">1、定义</h3>
+<p><strong>内部自动有序</strong>且<strong>不含重复元素</strong>的容器。</p>
+<p><strong>set</strong> 内的元素自动递增排序，且去除了重复元素</p>
+<p><strong>延申</strong>：如果需要处理<strong>不唯一</strong>的情况，则需要使用 <strong>multiset</strong>.</p>
+<p>C++11 标准还增加了 <strong>unordered_set</strong>，以散列代替set内部的红黑树(Red Black Tree，一种自平衡二叉查找树)实现，用来处理<strong>只去重但不排序</strong>的需求，<strong>速度</strong>比set快很多</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span><br>set&lt;<span class="hljs-keyword">typename</span>&gt; name;<br><span class="hljs-comment">// e.g.</span><br>set&lt;<span class="hljs-keyword">int</span>&gt; name;<br>set&lt;node&gt; name;<br>set&lt;<span class="hljs-keyword">typename</span>&gt; Arrayname[arraySize];<br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-2">2、访问</h3>
+<p>只能通过**迭代器(iterator)**访问</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">set&lt;<span class="hljs-keyword">typename</span>&gt;::iterator it;<br>set&lt;<span class="hljs-keyword">typename</span>&gt; st;<br><span class="hljs-keyword">for</span> (set&lt;<span class="hljs-keyword">typename</span>&gt;::iterator it = st.<span class="hljs-built_in">begin</span>(); it != st.<span class="hljs-built_in">end</span>(); it++)&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, *it)<br>&#125;<br><span class="hljs-comment">// 不能使用 it &lt; st.end() 的写法</span><br><span class="hljs-comment">// 除了vector 和 string 之外的STL容器都不支持 *(it+i) 的访问方式</span><br></code></pre></td></tr></table></figure>
+<h3 id="3、常用函数-2">3、常用函数</h3>
+<p><strong>1、insert()</strong></p>
+<p><code>insert(x)</code> 可将 x 插入 set 容器，并自动<strong>递增排序</strong>和<strong>去重</strong>，时间复杂度为 <strong>O(logN)</strong></p>
+<p><strong>2、find()</strong></p>
+<p><code>find(vlaue)</code> 返回 set 中对应值为 value 的迭代器，时间复杂度为 <strong>O(logN)</strong></p>
+<h2 id="三、string">三、string</h2>
+<p>字符串容器，对字符串常用的功能进行了封装</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span> 与 <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-comment">// 是不同的</span><br></code></pre></td></tr></table></figure>
+<h3 id="1、定义-3">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">string str;<br>string str = <span class="hljs-string">&quot;xianyue&quot;</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-3">2、访问</h3>
+<ul>
+<li>
+<p>下标访问</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">string str = <span class="hljs-string">&quot;xianyue&quot;</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">length</span>(); i++) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, str[i]);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果要读入或者输出整个字符串，只能使用<strong>cin</strong>和<strong>cout</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">string str;<br>cin &gt;&gt; str;<br>cout &lt;&lt; str;<br></code></pre></td></tr></table></figure>
+<p><strong>printf</strong>输出<strong>string</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">string str = <span class="hljs-string">&quot;xianyue&quot;</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str.<span class="hljs-built_in">c_str</span>());<br><span class="hljs-comment">// 将string转成字符数组</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>迭代器访问</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">string str = <span class="hljs-string">&quot;xianyue&quot;</span>;<br><span class="hljs-keyword">for</span> (string::iterator it = str.<span class="hljs-built_in">begin</span>(); it != str.<span class="hljs-built_in">end</span>(); it++) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, *t);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>string</strong>和<strong>vector</strong>一样，支持直接对迭代器进行加减某个数字</p>
+</li>
+</ul>
+<h3 id="3、常用函数-3">3、常用函数</h3>
+<p><strong>1、operator+=</strong></p>
+<p><strong>string</strong>的加法，拼接字符串</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">string str1 = <span class="hljs-string">&quot;xianyue&quot;</span>, str2 = <span class="hljs-string">&quot;rrr&quot;</span>, str3;<br>str3 = str1 + str2;<br>cout&lt;&lt;str3;<br></code></pre></td></tr></table></figure>
+<p><strong>2、compare operator</strong></p>
+<p>两个<strong>string</strong>可以直接使用 <strong>==, !=, &lt;, &lt;=, &gt;, &gt;=</strong> 比较大小，规则是字典序</p>
+<p><strong>3、length() / size()</strong></p>
+<p>**length()**返回string的长度，即存放的字符数，O(1)</p>
+<p>**size()<strong>和</strong>length()**基本相同</p>
+<p><strong>4、insert()</strong>，O(N)</p>
+<ul>
+<li><strong>insert(pos, string)</strong>，在pos位置插入字符串 string</li>
+<li><strong>insert(it, it2, it3)</strong>，<strong>it</strong>为原字符串的欲插入位置，<strong>it2</strong>和<strong>it3</strong>是待插入字符串的首尾迭代器</li>
+</ul>
+<p><strong>5、substr()</strong>，O(len)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">str.<span class="hljs-built_in">substr</span>(pos, len);<br><span class="hljs-comment">// 返回从 pos 号位开始，长度为 len 的子串</span><br></code></pre></td></tr></table></figure>
+<p><strong>6、string::npos</strong>，是一个<strong>常数</strong>，本身的值为 <strong>-1</strong>，由于是 <strong>unsigned_int</strong> 类型，所以也可以当作 <strong>unsigned_int</strong> 的最大值。可以作为 <strong>find</strong> 函数失配时的返回值。</p>
+<p><strong>7、find()</strong>，O(nm)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">str.<span class="hljs-built_in">find</span>(str2);<br><span class="hljs-comment">// 当 str2 是 str 的子串时，返回其在 str 中第一次出现的位置；</span><br><span class="hljs-comment">// 如果 str2 不是 str 的子串，返回 string::npos</span><br><br>str.<span class="hljs-built_in">find</span>(str2, pos);<br><span class="hljs-comment">// 从 pos 号位开始匹配 str2，返回值与上相同</span><br></code></pre></td></tr></table></figure>
+<p><strong>8、replace()</strong>，O(str.length)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">str.<span class="hljs-built_in">replace</span>(pos, len, str2);<br><span class="hljs-comment">// 把 str 从 pos 号位开始，长度为 len 的子串替换为 str2</span><br><br>str.<span class="hljs-built_in">replace</span>(it1, it2, str2);<br><span class="hljs-comment">// 把 [it1, it2) 范围内的子串替换为 str2</span><br></code></pre></td></tr></table></figure>
+<h2 id="四、map">四、map</h2>
+<p><strong>映射</strong>，可以将任何基本类型映射到任何基本类型。内部是<strong>红黑树</strong>实现的（set也是），会以<strong>键</strong> <strong>从小到大</strong>的顺序自动排序。</p>
+<p>如果一个键需要对应多个值，就只能用 <strong>multimap</strong>，C++11标准还增加了 <strong>unordered_map</strong>，以<strong>散列</strong>代替 map 内部的红黑树实现，<strong>只映射不排序</strong>，速度快得多</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br></code></pre></td></tr></table></figure>
+<h3 id="1、定义-4">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">map&lt;typename1, typename2&gt; mp;<br><br>map&lt;string, <span class="hljs-keyword">int</span>&gt; mp;<br><span class="hljs-comment">// 字符串到整型的映射，必须使用 string，而不能使用 char 数组</span><br><br>map&lt;set&lt;<span class="hljs-keyword">int</span>&gt;, string&gt; mp;<br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-4">2、访问</h3>
+<ul>
+<li>
+<p>通过下标访问 <code>mp[key]</code></p>
+</li>
+<li>
+<p>通过迭代器访问</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">map&lt;typename1, typename2&gt;::iterator it;<br>it-&gt;first; <span class="hljs-comment">// 访问 key</span><br>it-&gt;second; <span class="hljs-comment">// 访问 value</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3、常用函数-4">3、常用函数</h3>
+<p><strong>1、find()</strong></p>
+<p>find(key) 返回键为 key 的映射的迭代器，O(logN)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">map&lt;typename1, typename2&gt; mp;<br>map&lt;typename1, typename2&gt;::iterator it = mp.<span class="hljs-built_in">find</span>(key);<br></code></pre></td></tr></table></figure>
+<h2 id="五、queue">五、queue</h2>
+<p>队列，<strong>先进先出</strong>。</p>
+<p><strong>双端队列</strong>：deque</p>
+<p><strong>优先级队列</strong>：priority_queue</p>
+<h3 id="1、定义-5">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>queue&lt;<span class="hljs-keyword">typename</span>&gt; name;<br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-5">2、访问</h3>
+<p>由于队列<strong>先进先出</strong>，所以只能通过 <code>front()</code> 来访问队首元素，或者是通过 <code>back()</code> 来访问队尾元素</p>
+<h3 id="3、常用函数-5">3、常用函数</h3>
+<p><strong>1、push()</strong></p>
+<p><code>push(x)</code>，将 <code>x</code> 加入队列，O(1)</p>
+<p><strong>2、front()、back()</strong></p>
+<p><code>front() / back()</code> 获取 队首 / 队尾 元素，O(1)</p>
+<p><strong>3、pop()</strong></p>
+<p><code>pop()</code>，令队首元素出队，O(1)</p>
+<p><strong>4、empty()</strong></p>
+<p><code>empty()</code>，检测队列是否为空，O(1)</p>
+<p><strong>注意</strong>：使用 <code>front() / pop()</code> 前， 必须使用 <code>empty()</code> 判断队列是否为空</p>
+<h2 id="六、priority-queue">六、priority_queue</h2>
+<p>优先级队列，底层是使用<strong>堆</strong>来进行实现的，队首元素一定是当前队列中优先级最高的</p>
+<h3 id="1、定义-6">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>priority_queue&lt;<span class="hljs-keyword">typename</span>&gt; name;<br><span class="hljs-comment">//对于基础类型 默认是大顶堆</span><br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-6">2、访问</h3>
+<p>优先级队列没有 <code>front()</code> 函数 和 <code>back()</code> 函数，只能通过 <code>top()</code> 函数来访问队首元素（<strong>堆顶</strong>）</p>
+<h3 id="3、常用函数-6">3、常用函数</h3>
+<p><strong>1、push()</strong></p>
+<p><code>push(x)</code>，令 x 入队，O(logN)</p>
+<p><strong>2、top()</strong></p>
+<p><code>top()</code>，获取队首元素，O(1)</p>
+<p><strong>3、pop()</strong></p>
+<p>堆顶出队</p>
+<p><strong>4、empty()</strong></p>
+<p>检测队列是否为空</p>
+<h3 id="4、优先级设置">4、优先级设置</h3>
+<p><strong>基本数据类型</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">priority_queue&lt;<span class="hljs-keyword">int</span>&gt; q; <span class="hljs-comment">// 默认为大顶堆</span><br>priority_queue&lt;<span class="hljs-keyword">int</span>, vector&lt;<span class="hljs-keyword">int</span>&gt;, less&lt;<span class="hljs-keyword">int</span>&gt; &gt; q;<br><span class="hljs-comment">//     这里一定要有空格，不然成了右移运算符↓</span><br>priority_queue&lt;<span class="hljs-keyword">int</span>, vector&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt; &gt; c;<br><span class="hljs-comment">//这样就是小顶堆</span><br><span class="hljs-comment">// vector&lt;int&gt; 是承载底层数据结构堆（heap）的容器</span><br><span class="hljs-comment">// less&lt;int&gt; 是对第一个参数的比较类</span><br><span class="hljs-comment">// less&lt;int&gt; 表示数字越大优先级越高</span><br><span class="hljs-comment">// greater&lt;int&gt; 表示数字越小优先级越高</span><br></code></pre></td></tr></table></figure>
+<p><strong>结构体</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span> &#123;</span><br>    string name;<br>    <span class="hljs-keyword">int</span> price;<br>    <span class="hljs-comment">// 重载运算符</span><br>    <span class="hljs-comment">// 价格高的优先级高</span><br>    <span class="hljs-comment">// 默认是值越小优先级越高</span><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> fruit &amp;f1,<span class="hljs-keyword">const</span> fruit &amp;f2) &#123;<br>        <span class="hljs-keyword">return</span> f1.price &lt; f2.price;<br>    &#125;<br>&#125;;<br>priority_queue&lt;fruit&gt; q;<br><span class="hljs-comment">// or</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span> &#123;</span><br>    <span class="hljs-comment">// 价格高的优先级高</span><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> fruit &amp;f1, <span class="hljs-keyword">const</span> fruit &amp;f2)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> f1.price &gt; f2.price;<br>    &#125;<br>&#125;;<br>priority_queue&lt;fruit, vector&lt;fruit&gt;, cmp&gt; q;<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210402230553.png" alt="image-20210402230545841"></p>
+<p><strong>注意</strong>：使用 <code>top()</code> 函数前，必须使用 <code>empty()</code> 判断优先级队列是否为空</p>
+<h2 id="七、stack">七、stack</h2>
+<p>栈，<strong>后进先出</strong></p>
+<h3 id="1、定义-7">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stack&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>stack&lt;<span class="hljs-keyword">typename</span>&gt; name;<br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-7">2、访问</h3>
+<p>由于栈是一种后进先出的数据结构，所以只能通过<code>top()</code> 来访问<strong>栈顶</strong>元素</p>
+<h3 id="3、常用函数-7">3、常用函数</h3>
+<p><strong>1、push()</strong></p>
+<p><code>push(x)</code> 将<code>x</code>入栈，O(1)</p>
+<p><strong>2、top()</strong>，获取栈顶元素，O(1)</p>
+<p><strong>3、pop()</strong>，弹出栈顶元素，O(1)</p>
+<p><strong>4、empty()</strong>：检测是否为空，O(1)</p>
+<h2 id="八、pair">八、pair</h2>
+<p>把两个元素绑在一起，但又不想定义结构体时，<strong>pair</strong>是一个替代品，也就是说<strong>pair</strong>可以看作一个内部有两个元素的结构体。</p>
+<p><strong>map</strong>的内部实现涉及<strong>pair</strong>。可以作为<strong>map</strong> 的键值对来插入。</p>
+<h3 id="1、定义-8">1、定义</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utility&gt;</span> <span class="hljs-comment">// 可以使用 &lt;map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>pair&lt;typename1, typename2&gt; name;<br><span class="hljs-function">pair&lt;typename1, typename2&gt; <span class="hljs-title">name</span><span class="hljs-params">(value1, value2)</span></span>;<br><br><span class="hljs-comment">// 临时构建</span><br>pair&lt;type1, type2&gt;(value1, value2);<br><span class="hljs-comment">// or</span><br><span class="hljs-built_in">make_pair</span>(value1, value2);<br></code></pre></td></tr></table></figure>
+<h3 id="2、访问-8">2、访问</h3>
+<p>pair只有两个元素，分别是 <strong>first</strong> 和 <strong>second</strong>，按正常结构体去访问就好</p>
+<h3 id="3、常用函数-8">3、常用函数</h3>
+<p><strong>比较操作数</strong>，以&lt;first, second&gt; 元组方式比较</p>
+<h2 id="九、algorithm头文件下的常用函数">九、algorithm头文件下的常用函数</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br></code></pre></td></tr></table></figure>
+<p><strong>1、max()、min()、abs()</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">max</span>(x, y);<br><span class="hljs-built_in">min</span>(x, y);<br><br><span class="hljs-built_in">abs</span>(x);<br><span class="hljs-comment">// x 只能是整数，浮点数的绝对值要使用 math 头文件下的 fabs(x)</span><br></code></pre></td></tr></table></figure>
+<p><strong>2、swap()</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">swap</span>(x, y);<br><span class="hljs-comment">// 交换 x, y 的值</span><br></code></pre></td></tr></table></figure>
+<p><strong>3、reverse()</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">reverse</span>(it, it2);<br><span class="hljs-comment">// 将数组指针在 [it, it2) 之间的元素</span><br><span class="hljs-comment">// 或者容器的迭代器在 [it, it2) 范围内元素</span><br><span class="hljs-comment">// 进行反转</span><br></code></pre></td></tr></table></figure>
+<p><strong>4、next_permutation()</strong></p>
+<p>给出一个序列在<strong>全排列</strong>中的下一个序列。到达最后一个时返回<code>flase</code></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;<br><span class="hljs-keyword">do</span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d%d%d\n&quot;</span>, a[<span class="hljs-number">0</span>], a[<span class="hljs-number">1</span>], a[<span class="hljs-number">2</span>]);<br>&#125; <span class="hljs-keyword">while</span>(<span class="hljs-built_in">next_permutation</span>(a, a+<span class="hljs-number">3</span>));<br></code></pre></td></tr></table></figure>
+<p><strong>5、fill()</strong></p>
+<p>可以把<strong>数组</strong>或<strong>容器</strong>中的某一段区间赋为某个值。和<strong>memset</strong>不太一样，<strong>fill</strong>可以赋范围内的所有值</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">fill</span>(it, it2, value);<br><span class="hljs-comment">// it - (it2-1) 赋值为 vlaue</span><br></code></pre></td></tr></table></figure>
+<p><strong>6、sort()</strong></p>
+<p>排序函数，效率较高。一般不推荐<strong>C语言</strong>中的<code>qsort()</code>，因为其比较繁琐。</p>
+<p><strong>sort</strong>规避了<strong>经典快排</strong>中可能出现的复杂度退化到 <strong>O(<img src="https://math.now.sh?inline=n%5E2" style="display:inline-block;margin: 0;"/>)</strong> 的极端情况。</p>
+<p><strong>STL</strong>标准容器中，只有 <strong>vector</strong>、<strong>string</strong>、<strong>deque</strong>是可以使用 <strong>sort</strong>。因为像是 <strong>set</strong>、<strong>map</strong>这种内部是使用<strong>红黑树</strong>实现的，元素本身就有序</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">sort</span>(首元素地址, 尾元素的下一个地址, 比较函数(非必填));<br><span class="hljs-comment">// 默认进行递增排序</span><br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> a&gt;b;<br>    <span class="hljs-comment">// a&gt;b 时把 a 放在 b 前面</span><br>&#125;<br><br><span class="hljs-comment">// struct 数组的排序</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    <span class="hljs-keyword">int</span> x, y;<br>&#125;;<br><span class="hljs-comment">// 按 x 的值递减排序</span><br>node ssd[<span class="hljs-number">10</span>];<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(node a, node b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> a.x &gt; b.x;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>7、lower_bound() 和 upper_bound()</strong></p>
+<p>需要在一个<strong>有序</strong>数组或者容器中使用。O(log(last-first))</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">lower_bound</span>(first, last, val);<br><span class="hljs-comment">// 返回 [first, last) 内第一个值大于等于 val 的元素的位置</span><br><span class="hljs-comment">// 数组返回指针</span><br><span class="hljs-comment">// 容器返回迭代器</span><br><br><span class="hljs-comment">// 如果不存在这样的元素，返回可以插入该元素的 指针 或 迭代器</span><br></code></pre></td></tr></table></figure>
+<h2 id="公共函数">公共函数</h2>
+<p><strong>1、clear()</strong></p>
+<p><code>clear()</code>用来清空vector中的所有元素</p>
+<p><strong>2、erase()</strong></p>
+<p>erase()有两种用法：</p>
+<ul>
+<li>删除单个元素：erase(it)，删除迭代器处的元素</li>
+<li>删除一个区间内的所有元素：<code>erase(first,last)</code>，即删除(first,last )区间内的元素</li>
+</ul>
+<p><strong>3、size()</strong></p>
+<p><code>size()</code>用来获得vector中元素的个数</p>
+<h2 id="C-11">C++11</h2>
+<p><strong>emplace_front</strong>、<strong>emplace</strong> 和 <strong>emplace_back</strong></p>
+<p>这些操作构造而不是拷贝元素到容器中，这些操作分别对应<strong>push_front</strong>、<strong>insert</strong> 和<strong>push_back</strong>，允许我们将元素放在容器头部、一个指定的位置和容器尾部</p>
+<h3 id="两者的区别">两者的区别</h3>
+<p>当调用insert时，是将对象传递给insert，对象被拷贝到容器中，而当我们使用emplace时，是将参数传递给构造函，emplace使用这些参数在容器管理的内存空间中直接构造元素。</p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 输入输出</title>
+    <url>/2020/11/06/C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<h1>C++输入输出</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-comment">// 或者是</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="scanf">scanf</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量地址);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182136.png" alt="image-20210321182129026"></p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182359.png" alt="image-20210321182359421"></p>
+<h2 id="printf">printf</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量名称);<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182608.png" alt="image-20210321182608018"></p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182624.png" alt="image-20210321182624557"></p>
+<ol>
+<li>
+<p><strong>%md</strong></p>
+<p>可以使不足 <strong>m</strong> 位的 <strong>int</strong> 型变量以 <strong>m</strong> 位进行右对齐输出，高位用空格不起补齐。长度超过 <strong>m</strong> 位则不起作用</p>
+</li>
+<li>
+<p><strong>%0md</strong></p>
+<p>与 <strong>%md</strong> 类似，只不过补空格变成了补 <strong>0</strong></p>
+</li>
+<li>
+<p>%.mf</p>
+<p>让浮点数保留 <strong>m</strong> 位小数输出（使用四舍五入成双规则）</p>
+</li>
+</ol>
+<h2 id="getchar">getchar</h2>
+<p>输入单个字符</p>
+<h2 id="putchar">putchar</h2>
+<p>输出单个字符</p>
+<h2 id="gets">gets</h2>
+<p>输入一行字符串（识别 ‘\n’作为输入结束）</p>
+<p><strong>注意</strong>：scanf 完一个整数后，如果要使用 gets，需要先用 <strong>getchar</strong> 接收换行符</p>
+<h2 id="puts">puts</h2>
+<p>输出一行字符串，并紧跟一个换行</p>
+<h2 id="cin">cin</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br><span class="hljs-keyword">char</span> b[<span class="hljs-number">10</span>];<br>cin &gt;&gt; a;<br>cin.<span class="hljs-built_in">getline</span>(b, <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="cout">cout</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br>cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>cout &lt;&lt; a &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>输入输出</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java的线程创建</title>
+    <url>/2020/10/31/Java%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/</url>
+    <content><![CDATA[<h1>Java 的线程创建</h1>
+<h2 id="1-线程创建">1. 线程创建</h2>
+<p><strong>方法一：</strong> 实现<strong>Runnable</strong>接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            线程运行了16</span><br><span class="hljs-comment">//    线程运行了17</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程7</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
+<h2 id="方法二：-继承-Thread-类">方法二： 继承 Thread 类</h2>
+<p>Thread类实现了Runnable接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:35</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>&#123;<br>    <span class="hljs-comment">//    继承Thread类</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.run();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            我在学习多线程3</span><br><span class="hljs-comment">//    线程运行了12</span><br><span class="hljs-comment">//            我在学习多线程4</span><br><span class="hljs-comment">//    线程运行了13</span><br><span class="hljs-comment">//            我在学习多线程5</span><br><span class="hljs-comment">//    线程运行了14</span><br><span class="hljs-comment">//            我在学习多线程6</span><br><span class="hljs-comment">//    线程运行了15</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程9</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//进程已结束，退出代码 0</span><br><br><br></code></pre></td></tr></table></figure>
+<h2 id="方法三：实现-Callable-接口">方法三：实现 Callable 接口</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-keyword">import</span> java.util.concurrent.Callable;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span> </span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            线程运行了10</span><br><span class="hljs-comment">//    我在学习多线程1</span><br><span class="hljs-comment">//            线程运行了11</span><br><span class="hljs-comment">//    我在学习多线程2</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    线程运行了18</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
+<p>不论以什么方式实现多线程，都要重写**Run()**方法，编写线程所执行的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">*斜体文本*<br>_斜体文本_<br>**粗体文本**<br>__粗体文本__<br>***粗斜体文本***<br>___粗斜体文本___<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown基本语法</title>
+    <url>/2020/03/06/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h1>Markdown 基础</h1>
+<h2 id="1-准备">1 准备</h2>
+<h3 id="1-1-前言">1.1 前言</h3>
+<p>  最近在看书，突然了解到了一个比较有意思并且有用的语言：<strong>Markdown</strong>。这个语言是用在 <strong>.md</strong> 文件的编写上的。可以比较容易的使用纯文本格式编写出十分美观的文档。</p>
+<p>  之前，我准备在 <strong>CSDN</strong> 上写博客的时候，看到写一个博客竟然和写代码一样，还要学习一门新语言，我立马就被劝退了。不过在前两天了解了 <strong>Markdown</strong> 语言之后，才发现这还挺好用。不仅简单，而且对于图片、图表、数学式都有支持。回过头来，突然发现我们的<strong>CSDN</strong>也支持使用 <strong>Markdown</strong> 语言来写博客文章，当初我竟然被这么个语言给劝退了…<br>
+<img src="https://img-blog.csdnimg.cn/20201010230612761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center" width="80%" alt="截图" align=center /></p>
+<p>  网上已经有很多十分优秀的 <strong>Markdown</strong> 语言教程了，比如<a href="https://www.runoob.com">菜鸟教程</a>的 <strong>Markdown</strong> 教程。本篇只是记录自己的学习过程，如有错误，还望大家海涵。若能指出错误，在下将十分感激！</p>
+<hr>
+<h3 id="1-2-编辑器选择">1.2 编辑器选择</h3>
+<p>  作为新手，如果你使用纯文本编辑器，比如记事本，带来的问题可不仅仅是不方便这么简单。更致命的一点是在纯文本编辑器中使用 <strong>Markdown</strong> 语言没有即时预览功能，你无法直观的感受到你写出的文档最终会以什么样子呈现出来。所以我比较推荐大家使用具有即使预览功能的编辑器，比如我目前使用的<a href="https://typora.io/">Typora</a>，我觉得就是一款很棒的<strong>Markdown</strong>语言编辑器。由于我刚开始学习，用过的编辑器也不多，不能给出更多的推荐了。</p>
+<p>  如果你平常使用<strong>Sublime Text</strong>或者 <strong>VsCode</strong> ，他们虽然没有自带即时预览的功能，但是他们有着十分强大、丰富的社区，你可以通过一系列的折腾来武装你的编辑器，来使他们能够很好的支持你对于<strong>Markdown</strong>语言的使用，这些操作的教程以级实例在网络上可以轻松的找到。其他类似的编辑器也可以进行类似的操作。</p>
+<h2 id="2-语法">2 语法</h2>
+<h3 id="2-1标题">2.1标题</h3>
+<p>使用 <strong>#</strong> 号可表示标题，一级标题对应一个 <strong>#</strong> 号，二级标题对应两个 <strong>#</strong> 号，以此类推。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 一级标题</span><br><span class="hljs-section">## 二级标题</span><br><span class="hljs-section">### 三级标题</span><br><span class="hljs-section">#### 四级标题</span><br></code></pre></td></tr></table></figure>
+<p><em>效果如下：</em></p>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/Roaming/Typora/typora-user-images/image-20210127173350005.png" style="zoom:50%;" />
+<p>在编辑器Typora里可以使用**Ctrl+[0-6]**来快速设置格式，<strong>Ctrl+0</strong>是设置成段落，1到6是设置成各级标题。</p>
+<h3 id="2-2-段落样式">2.2 段落样式</h3>
+<h4 id="2-2-1-字体">2.2.1 字体</h4>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">Markdown可以使用以下几种字体：<br><span class="hljs-emphasis">*斜体文本*</span><br><span class="hljs-emphasis">_斜体文本_</span><br><span class="hljs-strong">**粗体文本**</span><br><span class="hljs-strong">__粗体文本__</span><br><span class="hljs-strong">**<span class="hljs-emphasis">*粗斜体文本<span class="hljs-strong">**<span class="hljs-emphasis">*</span></span></span></span><br><span class="hljs-emphasis"><span class="hljs-strong"><span class="hljs-emphasis"><span class="hljs-strong"><span class="hljs-strong">__<span class="hljs-emphasis">_粗斜体文本<span class="hljs-strong">__<span class="hljs-emphasis">_</span></span></span></span></span></span></span></span><br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><em>斜体文本</em></p>
+<p><em>斜体文本</em></p>
+<p><strong>粗体文本</strong></p>
+<p><strong>粗体文本</strong></p>
+<p><em><strong>粗斜体文本</strong></em></p>
+<p><em><strong>粗斜体文本</strong></em></p>
+<h4 id="2-2-2-修饰">2.2.2 修饰</h4>
+<p>(1) 分隔线</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">一行内三个以上的星号(<span class="hljs-emphasis">*)、减号(-)、底线(_)，行内不能有其他东西。</span><br><span class="hljs-emphasis">如：<span class="hljs-strong">**<span class="hljs-emphasis">*</span></span></span><br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<hr>
+<p>(2) 删除线</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">文字两端加上两个波浪线~<br>~~xianyue~~<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><s>xianyue</s></p>
+<p>(3) 下划线</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">使用HTML的<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">u</span>&gt;</span></span>标签实现<br>如：<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">u</span>&gt;</span></span>xianyue<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">u</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><u>xianyue</u></p>
+<p>(4) 脚注</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">使用[^文本]的格式实现脚注<br>如：脚注[^xinayue]: xianyue<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p>脚注[^xinayue]</p>
+<h3 id="2-3-元素">2.3 元素</h3>
+<h4 id="2-3-1-列表">2.3.1 列表</h4>
+<p>(1) 无序列表</p>
+<p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">如：<br><span class="hljs-bullet">*</span> 第一项<br><span class="hljs-bullet">*</span> 第二项<br><span class="hljs-bullet">*</span> 第三项<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+<p>(2) 有序列表</p>
+<p>有序列表使用数字并加上 <strong>.</strong> 号来表示。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">如：<br><span class="hljs-bullet">1.</span> 第一项<br><span class="hljs-bullet">2.</span> 第二项<br><span class="hljs-bullet">3.</span> 第三项<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ol>
+<h4 id="2-3-2-区块">2.3.2 区块</h4>
+<p>区块引用是在段落开头使用 <strong>&gt;</strong> 符号 ，然后后面紧跟一个<strong>空格</strong>。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-quote">&gt; 最外层</span><br><span class="hljs-quote">&gt; &gt; 第一层嵌套</span><br><span class="hljs-quote">&gt; &gt; &gt; 第二层嵌套</span><br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<blockquote>
+<p>最外层</p>
+<blockquote>
+<p>第一层嵌套</p>
+<blockquote>
+<p>第二层嵌套</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="2-3-3-代码">2.3.3 代码</h4>
+<p>(1) 段内短代码</p>
+<p>可以用反引号把它包起来（<strong>`</strong>）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">如：<br>`print(&quot;HelloWorld!&quot;)`Python代码<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><code>print(&quot;HelloWorld!&quot;)</code>Python代码</p>
+<p>(2) 代码区块</p>
+<p>用 <strong>```</strong> 包裹一段代码，并指定一种语言（也可以不指定）。本文多处都在此种方式创造的代码区块内进行说明（比如下面这个区块）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">如：<br>​```python<br>print(&quot;HelloWorld!&quot;)<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;HelloWorld!&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h4 id="2-3-4-链接">2.3.4 链接</h4>
+<p>(1) 通过网址来设置一个链接</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">链接名称</span>](<span class="hljs-link">链接地址</span>)<br>如：<br>[<span class="hljs-string">百度</span>](<span class="hljs-link">http://www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><a href="http://www.baidu.com">百度</a></p>
+<p>(2) 直接使用链接地址</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="xml">&lt;http://www.baidu.com&gt;</span><br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><a href="http://www.baidu.com">http://www.baidu.com</a></p>
+<p>PS：可以使用如下方式达到<code>&lt;http://www.baidu.com&gt;</code>的效果。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">http://www.baidu.com</span>](<span class="hljs-link">http://www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
+<p><a href="http://www.baidu.com">http://www.baidu.com</a></p>
+<p>(3) 通过变量来设置一个链接</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">百度</span>][<span class="hljs-symbol">1</span>]<br>[<span class="hljs-symbol">1</span>]:<span class="hljs-link">http://www.baidu.com</span><br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><a href="http://www.baidu.com">百度</a></p>
+<h4 id="2-3-5-图片">2.3.5 图片</h4>
+<p>(1) Markdown方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">![alt 属性文本](图片地址 &quot;可选标题&quot;)<br>这种方式无法指定图片的高度与宽度<br>如：<br>![alt 刻晴](https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png &quot;刻晴&quot;)<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom:50%;" />
+<p>(2) HTML方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;img src=&quot;https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png&quot; alt=&quot;alt 刻晴&quot; title=&quot;刻晴&quot; style=&quot;zoom: 25%;&quot; /&gt;<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom: 25%;" />
+<h4 id="2-3-6-表格">2.3.6 表格</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。<br>如：<br>|  ID   | Password  |<br>|  ----  | ----  |<br>| a  | 123 |<br>| b  | 456 |<br></code></pre></td></tr></table></figure>
+<p>效果如下（默认左对齐）：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>123</td>
+</tr>
+<tr>
+<td>b</td>
+<td>456</td>
+</tr>
+</tbody>
+</table>
+<p>可以设置表格的对齐方式：</p>
+<ol>
+<li>“-:”右对齐</li>
+<li>“:-”左对齐</li>
+<li>“:-:”居中</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">如：<br>|  ID   | Password  |<br>|  ----:  | ----:  |<br>| a  | 123 |<br>| b  | 456 |<br></code></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">ID</th>
+<th style="text-align:right">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">a</td>
+<td style="text-align:right">123</td>
+</tr>
+<tr>
+<td style="text-align:right">b</td>
+<td style="text-align:right">456</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-高级技巧">3 高级技巧</h2>
+<h3 id="3-1-HTML支持">3.1 HTML支持</h3>
+<p>前面我们已经在<strong>Markdown</strong>里使用了<strong>HTML</strong>标签，其实许多<strong>HTML</strong>标签在<strong>Markdown</strong>都能支持。其实，<strong>Markdown</strong>的表现格式是可以通过<strong>CSS</strong>来进行更改的，<strong>Typora</strong>里的众多主体就是通过使用不同的<strong>CSS</strong>文件来达成的。还有，你如果在<strong>Typora</strong>里打开了调试模式，右键点击<strong>检查元素</strong>，然后你会发现这和网页源代码有着惊人的相似度。这也就不难想象<strong>Markdown</strong>与<strong>HTML</strong>、<strong>CSS</strong>之间的密切联系了。</p>
+<h3 id="3-2-转义">3.2 转义</h3>
+<p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">\   反斜线<br>`   反引号<br>*   星号<br>_   下划线<br>&#123;&#125;  花括号<br>[]  方括号<br>()  小括号<br>#   井字号<br>+   加号<br>-   减号<br>.   英文句点<br>!   感叹号<br></code></pre></td></tr></table></figure>
+<h3 id="3-3-Tex支持">3.3 Tex支持</h3>
+<p>当你需要在编辑器中插入数学公式时，可以使用美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。</p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">$$<br>\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 =  \begin&#123;vmatrix&#125; <br>\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\<br>\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\<br>\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\<br>\end&#123;vmatrix&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p style=""><img src="https://math.now.sh?from=%5Cmathbf%7BV%7D_1%20%5Ctimes%20%5Cmathbf%7BV%7D_2%20%3D%20%20%5Cbegin%7Bvmatrix%7D%20%0A%5Cmathbf%7Bi%7D%20%26%20%5Cmathbf%7Bj%7D%20%26%20%5Cmathbf%7Bk%7D%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20X%7D%7B%5Cpartial%20u%7D%20%26%20%20%5Cfrac%7B%5Cpartial%20Y%7D%7B%5Cpartial%20u%7D%20%26%200%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20X%7D%7B%5Cpartial%20v%7D%20%26%20%20%5Cfrac%7B%5Cpartial%20Y%7D%7B%5Cpartial%20v%7D%20%26%200%20%5C%5C%0A%5Cend%7Bvmatrix%7D%0A" /></p><h2 id="附录-：">附录 ：</h2>
+<h3 id="1、横向流程图：">1、横向流程图：</h3>
+<pre class="mermaid">graph LR
+A[方形] -->B(圆角)
+    B --> C{条件a}
+    C -->|a=1| D[结果1]
+    C -->|a=2| E[结果2]
+    F[横向流程图]</pre>
+<h3 id="2、竖向流程图">2、竖向流程图</h3>
+<pre class="mermaid">graph TD
+A[方形] --> B(圆角)
+    B --> C{条件a}
+    C --> |a=1| D[结果1]
+    C --> |a=2| E[结果2]
+    F[竖向流程图]</pre>
+<h3 id="3、标准流程图">3、标准流程图</h3>
+<div id="flowchart-0" class="flow-chart"></div>
+<div id="flowchart-1" class="flow-chart"></div>
+<h3 id="4、-UML时序图">4、 UML时序图</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs sequence">对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B--&gt;对象A: 我很好(响应)<br>对象A-&gt;对象B: 你真的好吗？<br></code></pre></td></tr></table></figure>
+<h3 id="5、标准UML时序图">5、标准UML时序图</h3>
+<pre class="mermaid">%% 时序图例子,-> 直线，-->虚线，->>实线箭头
+  sequenceDiagram
+    participant 张三
+    participant 李四
+    张三->王五: 王五你好吗？
+    loop 健康检查
+        王五->王五: 与疾病战斗
+    end
+    Note right of 王五: 合理 食物 <br/>看医生...
+    李四-->>张三: 很好!
+    王五->李四: 你怎么样?
+    李四-->王五: 很好!</pre>
+<h3 id="6、甘特图">6、甘特图</h3>
+<pre class="mermaid">%% 语法示例
+        gantt
+        dateFormat  YYYY-MM-DD
+        title 软件开发甘特图
+        section 设计
+        需求                      :done,    des1, 2014-01-06,2014-01-08
+        原型                      :active,  des2, 2014-01-09, 3d
+        UI设计                     :         des3, after des2, 5d
+    未来任务                     :         des4, after des3, 5d
+        section 开发
+        学习准备理解需求                      :crit, done, 2014-01-06,24h
+        设计框架                             :crit, done, after des2, 2d
+        开发                                 :crit, active, 3d
+        未来任务                              :crit, 5d
+        耍                                   :2d
+        section 测试
+        功能测试                              :active, a1, after des3, 3d
+        压力测试                               :after a1  , 20h
+        测试报告                               : 48h</pre>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框(是或否?)
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+st->op->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script><textarea id="flowchart-1-code" style="display: none">st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框(是或否?)
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+st(right)->op(right)->cond
+cond(yes)->io(bottom)->e
+cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-1-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-1", options);</script>]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python math库常用函数</title>
+    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>Python-math库 常用函数</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
+<h2 id="常量">常量</h2>
+<ol>
+<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
+<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
+<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
+<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
+<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
+</ol>
+<h2 id="数论与表示函数">数论与表示函数</h2>
+<ol>
+<li><code>ceil(x)</code>：上取整</li>
+<li><code>floor(x)</code>：下取整</li>
+<li><code>factorial(x)</code>：阶乘</li>
+<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>gcd(a, b)</code>：最大公约数</li>
+<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
+<li><code>fabs(x)</code>：绝对值</li>
+<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
+<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
+<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
+<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
+<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
+</ol>
+<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
+<ol>
+<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
+<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
+<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
+<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
+<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
+<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+</ol>
+<h2 id="三角函数">三角函数</h2>
+<ol>
+<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
+<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
+<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
+<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
+<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
+<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
+<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
+<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
+<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
+</ol>
+<h2 id="角度转换">角度转换</h2>
+<ol>
+<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
+<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python之禅</title>
+    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
+    <content><![CDATA[<p>begin :</p>
+<h1>Python之禅</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>优美胜于丑陋（以优美为目标）</p>
+</li>
+<li>
+<p>明了胜于晦涩</p>
+</li>
+<li>
+<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
+</li>
+<li>
+<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
+</li>
+<li>
+<p>扁平胜于嵌套（不要有太多嵌套）</p>
+</li>
+<li>
+<p>间隔胜于紧凑（不要写的太挤）</p>
+</li>
+<li>
+<p>可读性很重要</p>
+</li>
+<li>
+<p>这些规则不可违背</p>
+</li>
+<li>
+<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
+</li>
+<li>
+<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
+</li>
+<li>
+<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
+</li>
+<li>
+<p>命名空间大法好，同志们要多多搞。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>biset 二分查找</title>
+    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
+<h2 id="查找">查找</h2>
+<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
+<p>数组名，值，区间 [lo, hi)</p>
+<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
+<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
+<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
+<h2 id="插入">插入</h2>
+<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
+<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bit与Byte</title>
+    <url>/2020/11/03/bit%E4%B8%8EByte/</url>
+    <content><![CDATA[<h1>计算机网络—bit与Byte</h1>
+<h2 id="bit">bit</h2>
+<p>  <strong>速率</strong>是衡量计算机网络性能的一个重要指标。速率指的是数据的传送速率，也称为<strong>数据率</strong>或<strong>比特率</strong>。</p>
+<p>速率的单位是<strong>bit/s</strong>(比特每秒)(或者b/s，有时也写为bps，即bit per second)。当数据率较高时，常常在bit/s前面加上一个字母。比如 :</p>
+<ul>
+<li>
+<p><img src="https://math.now.sh?inline=k%28kilo%29%20%3D%2010%5E%7B3%7D%20%3D%20%E5%8D%83" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=M%28Mega%29%20%3D%2010%5E%7B6%7D%20%3D%20%E5%85%86" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=G%28Giga%29%20%3D%2010%5E%7B9%7D%20%3D%20%E5%90%89" style="display:inline-block;margin: 0;"/> (我宿舍光猫上就是吉比特光猫)</p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=T%28Tera%29%20%3D%2010%5E%7B12%7D%20%3D%20%E5%A4%AA" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=P%28Peta%29%20%3D%2010%5E%7B15%7D%20%3D%20%E6%8B%8D" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=E%28Exa%29%20%3D%2010%5E%7B18%7D%20%3D%20%E8%89%BE" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=Z%28Zetta%29%20%3D%2010%5E%7B21%7D%20%3D%20%E6%B3%BD" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=Y%28Yotta%29%20%3D%2010%5E%7B24%7D%20%3D%20%E5%B0%A7" style="display:inline-block;margin: 0;"/></p>
+</li>
+</ul>
+<p>现在人们谈到网络速率时，经常省略了速率单位中的<strong>bit/s</strong>，直接叫<strong>100M</strong>之类的，这就容易与字节<strong>Byte</strong>产生混淆。</p>
+<h2 id="Byte">Byte</h2>
+<p><strong>字节</strong>(Byte)，通常用作<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>信息计量单位，是通信和数据存储的概念。</p>
+<center>1 byte  =  8 bit</center>
+<p>字节(Byte)可缩写成B，例如MB表示<a href="https://zh.wikipedia.org/wiki/%E7%99%BE%E4%B8%87%E5%AD%97%E8%8A%82">Megabyte</a>；<a href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83">比特</a>（Bit）可缩写成b，例如Mb表示<a href="https://zh.wikipedia.org/w/index.php?title=Megabit&amp;action=edit&amp;redlink=1">Megabit</a>。</p>
+<ul>
+<li><img src="https://math.now.sh?inline=1MB%20%3D%202%5E%7B20%7DByte%20%3D%208%2C388%2C608bit" style="display:inline-block;margin: 0;"/></li>
+<li><img src="https://math.now.sh?inline=1Mb%20%3D%2010%5E%7B6%7Dbit" style="display:inline-block;margin: 0;"/></li>
+</ul>
+<p>在日常生活中，安装100M的宽带，100M指的是100Mbit/s，而我们手机上通常最高只能达到约 11.9MByte/s​ 的下载速度，四舍五入也就是12MByte/s。我们手机上显示的下载速度也是使用<strong>MB</strong>作为单位的。所以，不是运营商虚假描述，限制了带宽。是人们容易把这两个单位弄混。</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>bit</tag>
+        <tag>Byte</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>heapq 堆队列</title>
+    <url>/2020/04/14/heapq-%E5%A0%86%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<h1>Python 堆队列 – heapq</h1>
+<h2 id="介绍">介绍</h2>
+<p>这个模块提供了堆队列算法的实现，也称为<strong>优先队列算法</strong>。</p>
+<p>附上<a href="https://docs.python.org/zh-cn/3/library/heapq.html">Python3文档</a>。</p>
+<p><strong>heapq</strong>是一个二叉树，它的每个父节点的值都只会小于或等于所有孩子节点（的值）。 它使用了数组来实现：从零开始计数，对于所有的 <em>k</em> ，都有 <code>heap[k] &lt;= heap[2*k+1]</code> 和 <code>heap[k] &lt;= heap[2*k+2]</code>。 为了便于比较，不存在的元素被认为是无限大。 堆最有趣的特性在于最小的元素总是在根结点：<code>heap[0]</code>。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>使用了<strong>从零开始</strong>的索引</li>
+<li>堆为<strong>最小堆</strong></li>
+</ul>
+<h2 id="常用函数">常用函数</h2>
+<ul>
+<li><code>heappush(heap, item)</code>：保持堆的不变性。</li>
+<li><code>heappop(heap)</code>：弹出并返回 <strong>heap</strong> 中最小的元素，保持堆的不变性。</li>
+<li><code>heappushpop(heap, item)</code>：将 <strong>item</strong> 放入堆中，然后弹出并返回 <strong>heap</strong> 的最小元素，虽然先调用 <a href="https://docs.python.org/zh-cn/3/library/heapq.html#heapq.heappush"><code>heappush()</code></a> 再调用 <a href="https://docs.python.org/zh-cn/3/library/heapq.html#heapq.heappop"><code>heappop()</code></a> 也可以，但是这个更快。</li>
+<li><code>heapify(x)</code>：将 <strong>list</strong> x 转换成堆，原地，线性时间</li>
+<li><code>heapreplace(heap, item)</code>：弹出并返回 <strong>heap</strong> 中最小的一项，同时推入新的 <strong>item</strong>。比 <a href="https://docs.python.org/zh-cn/3/library/heapq.html#heapq.heappop"><code>heappop()</code></a> 加 <a href="https://docs.python.org/zh-cn/3/library/heapq.html#heapq.heappush"><code>heappush()</code></a> 更高效。</li>
+</ul>
+<h2 id="三个基于堆的通用功能函数">三个基于堆的通用功能函数</h2>
+<ul>
+<li>
+<p><code>merge(*iterables, key=None, reverse=False)</code>：将多个已排序的输入合并为一个已排序的输出。类似于 <code>sorted(itertools.chain(*iterables))</code> 但返回一个可迭代对象，不会一次性地将数据全部放入内存，并假定每个输入流都是已排序的（从小到大）。</p>
+<p>具有两个可选参数，它们都必须指定为关键字参数。</p>
+<p><em>key</em> 指定带有单个参数的 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-key-function">key function</a>，用于从每个输入元素中提取比较键。 默认值为 <code>None</code> (直接比较元素)。</p>
+<p><em>reverse</em> 为一个布尔值。 如果设为 <code>True</code>，则输入元素将按比较结果逆序进行合并。</p>
+</li>
+<li>
+<p><code>nlargest</code>(<em>n</em>, <em>iterable</em>, <em>key=None</em>)<a href="https://docs.python.org/zh-cn/3/library/heapq.html#heapq.nlargest">¶</a></p>
+<p>从 <em>iterable</em> 所定义的数据集中返回前 <em>n</em> 个最大元素组成的列表。 如果提供了 <em>key</em> 则其应指定一个单参数的函数，用于从 <em>iterable</em> 的每个元素中提取比较键 (例如 <code>key=str.lower</code>)。 等价于: <code>sorted(iterable, key=key, reverse=True)[:n]</code>。</p>
+</li>
+<li>
+<p><code>nsmallest</code>(<em>n</em>, <em>iterable</em>, <em>key=None</em>)</p>
+<p>从 <em>iterable</em> 所定义的数据集中返回前 <em>n</em> 个最小元素组成的列表。 如果提供了 <em>key</em> 则其应指定一个单参数的函数，用于从 <em>iterable</em> 的每个元素中提取比较键 (例如 <code>key=str.lower</code>)。 等价于: <code>sorted(iterable, key=key)[:n]</code>。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/11/06/hello-world/</url>
+    <content><![CDATA[<h1>Hello World</h1>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>cate1</category>
+        <category>cate2</category>
+      </categories>
+      <tags>
+        <tag>Default</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo配置latex支持</title>
+    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
+]]></content>
+      <categories>
+        <category>hexo配置</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>刚开始接触Python时的一些问题</title>
+    <url>/2019/10/06/%E5%88%9A%E5%BC%80%E5%A7%8B%E6%8E%A5%E8%A7%A6Python%E6%97%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1>刚开始接触Python时的一些问题</h1>
+<h2 id="新版本不是最好的">新版本不是最好的</h2>
+<p>  查看你的Python版本，最好不要安装太老的版本，同时，也不要以为最新版就是最好的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">python --version<br><span class="hljs-comment"># 或者</span><br>python -V<br></code></pre></td></tr></table></figure>
+<p>  尽量不要使用最新版的Python，在使用的过程中可能会遇到一些奇怪的问题，毕竟第三方库的数量极其庞大，短时间内不能保证所有库都适配。由于版本较新，遇到问题了在网上也不太容易找到解决办法。</p>
+<h2 id="运行项目">运行项目</h2>
+<p>  按住Shift点击右键会出现如下界面，点击**“在此处打开PowerShell窗口”**可以直接在当前目录打开PowerShell窗口。</p>
+<img src="https://img-blog.csdnimg.cn/20201109214244759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="30%" width="30%" alt="截图" align=center/>
+<p>  可以使用以下命令运行项目</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">python -m Project_name<br><span class="hljs-comment"># Project_name是想要运行的项目名 </span><br></code></pre></td></tr></table></figure>
+<p>  截图：</p>
+<img src="https://img-blog.csdnimg.cn/20201109214709987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="80%" width="80%" alt="截图" align=center />
+<p>  但是对于很多项目，如果是新装的Python，在运行使用了第三方库的项目时大多都会出现以下错误:</p>
+<ol>
+<li>找不到第三方库</li>
+</ol>
+<img src="https://img-blog.csdnimg.cn/20201109214948851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="80%" width="80%" alt="截图" align=center />
+<p>  这种情况一般安装全部此项目所使用的第三方库之后就会消失，可以使用以下命令安装：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">pip install package<br><span class="hljs-comment"># package是你当前需要安装的第三方库的名字</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>numpy出错（这代表着一类问题，有些类库出问题时可以使用类似方法解决）</li>
+</ol>
+<img src="https://img-blog.csdnimg.cn/20201109215440534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
+<p>  上图显示是numpy出问题了，使用以下命令查看numpy版本，是1.19.4版本，尝试降低版本再次尝试。(新版本不一定最好)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">pip show numpy<br></code></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/20201109215440453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
+<p>  卸载numpy1.19.4版本，安装numpy1.19.3版本</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">pip uninstall numpy<br>pip install numpy==<span class="hljs-number">1.19</span><span class="hljs-number">.3</span> <span class="hljs-comment"># 这种方式可以指定安装库的版本</span><br></code></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/20201109215440461.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
+<h2 id="第三方库下载慢">第三方库下载慢</h2>
+<p>  Python安装库默认是从官网下载的，对于部分人来说，从官网下载实在是过于缓慢。这个时候，切换一个源就可以使下载速度提升一个档次。可以使用清华大学的开源镜像站。</p>
+<p>  （1）想要临时使用镜像站</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package<br>// 注意：some-package指的是想要安装的库，使用时需要进行更改<br></code></pre></td></tr></table></figure>
+<p>  （2）设为默认</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U<br>pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple<br></code></pre></td></tr></table></figure>
+<p>  之后再进行第三方库的下载安装时就默认从镜像站进行下载了。</p>
+<p>  换源命令执行成功的截图：</p>
+<img src="https://img-blog.csdnimg.cn/20201109220010780.png#pic_center"  height="100%" width="100%" alt="截图" align=center />
+<h2 id="路径问题（找不到文件）">路径问题（找不到文件）</h2>
+<p>  项目路径问题：</p>
+<img src="https://img-blog.csdnimg.cn/20201109215440533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
+<p>  上图的错误是一个<strong>FileNotFoundError</strong>，说明无法找到那个<strong>txt</strong>文本，但是这个文件确实是在目录下的，如下：</p>
+<img src="https://img-blog.csdnimg.cn/20201109215440505.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
+<p>  根据报错信息，我们可以知道是<strong>Logistic_classify.py</strong>的<strong>line 27</strong>出错了，我们可以在Logistic_classify.py头部添加以下代码来修正运行时的目录，使其能够找到<strong>horseColicTraining.txt</strong>文件（不止这一种方式可以解决此问题）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.chdir(os.path.dirname(__file__))<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/11/06/test/</url>
+    <content><![CDATA[<h1></h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>das1</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>cate1</category>
+        <category>cate2</category>
+      </categories>
+      <tags>
+        <tag>Default</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对象相等的判断，== 和 equal</title>
+    <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
+    <content><![CDATA[<h1>值相等与对象相同</h1>
+<h2 id="Python">Python</h2>
+<p>在<em><strong>python</strong></em>中，我们使用 <strong>==</strong> 来进行判断两个对象的值是否相等，使用<strong>is</strong>来判断两个对象是否是同一个对象。is 是种很特殊的语法，在其它的语言一般不会见到这样的用法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># int型比较</span><br>a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(a == b)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> b)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># str型比较</span><br>str1 = <span class="hljs-string">&#x27;abc&#x27;</span><br>str2 = <span class="hljs-string">&#x27;abc&#x27;</span><br><br><span class="hljs-built_in">print</span>(str1 == str2)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(str1 <span class="hljs-keyword">is</span> str2)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自定类型比较</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">my_obj</span>:</span><br>4atr1 = <span class="hljs-number">0</span><br>4atr2 = <span class="hljs-number">1</span><br>4<br>obj1 = my_obj()<br>obj2 = my_obj()<br> <br><span class="hljs-built_in">print</span>(obj1 == obj2)<br><span class="hljs-comment"># 结果为False</span><br><span class="hljs-built_in">print</span>(obj1 <span class="hljs-keyword">is</span> obj2)<br><span class="hljs-comment"># 结果为False</span><br></code></pre></td></tr></table></figure>
+<h2 id="Java">Java</h2>
+<p>在<em><strong>java</strong></em>中，我们使用 <strong>==</strong> 来判断两个对象是否是同一个对象，而使用<strong>equals</strong>方法来判断两个对象的值是否相等。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;:&quot;</span> + (a == b));<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(a));<br>        System.out.println(<span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(b));<br><br>        String str1 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        String str2 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        <span class="hljs-comment">// str1 和 str2 在常量池中，只有一份，是同一个对象</span><br>        String str3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;csdn&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str3));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str3));<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 输出结果如下：</span><br><span class="hljs-comment">// a = b:true</span><br><span class="hljs-comment">// a的地址：664223387</span><br><span class="hljs-comment">// b的地址：664223387</span><br><span class="hljs-comment">// str1和str2是同一个对象：true</span><br><span class="hljs-comment">// str1 = str2:true</span><br><span class="hljs-comment">// str1和str3是同一个对象：false</span><br><span class="hljs-comment">// str1 = str3:true</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>找回.py文件右键的Edit with IDLE选项</title>
+    <url>/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/</url>
+    <content><![CDATA[<h1>找回.py文件右键的Edit with IDLE选项</h1>
+<p>  通常我们安装Python之后会在**.py<strong>文件的右键菜单中找到</strong>Edit with IDLE<strong>这个选项。今天突然发现右键的</strong>Edit with IDLE<strong>先是点击之后不能打开</strong>.py**文件了，后来干脆就直接没了。虽然平时用的比较少，但是这个IDLE还是很方便的，必须给弄回来。</p>
+<p>  在一通搜索和尝试之后，只发现了修改注册表的方法有用，但是显得有些麻烦，后来发现可以编写一个**.reg**文件来完成这件事情。</p>
+<p>  将下面内容保存到一个**.reg**文件中，注意修改最后一行中Python的安装路径。（注意：注册表中的路径用的是\\来表示\，别写错了）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
+<p>  注释版：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br># 在“HKEY_CLASSES_ROOT\SystemFileAssociations”项下创建了一个名为“.py”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br># 在“.py”项下创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br># 在“shell”项下创建了一个名为“editwithidle”的项。<br># 在“editwithidle”项中创建了：一个名为&quot;MUIVerb&quot;的字符串值，值为&quot;&amp;Edit with IDLE&quot;；一个名为&quot;Subcommands&quot;的空字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br># 在“editwithidle”项中创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br># 在“shell”项下创建一个名为“edit37”的项<br># 在“edit37”项下创建一个名为&quot;MUIVerb&quot;，值为&quot;Edit with IDLE 3.7&quot; 的字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br># 在“edit37”项创建一个名为“command”的项<br># 将“command”项中的默认值修改为“python安装路径\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
+<p>其中<strong>MUIVerb</strong>的值是用来控制显示内容的，可以按照自己的想法去改。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 Maven 在 IDEA 总是自动使用 1.5 版本</title>
+    <url>/2021/01/06/%E8%A7%A3%E5%86%B3-Maven-%E5%9C%A8-IDEA-%E6%80%BB%E6%98%AF%E8%87%AA%E5%8A%A8%E4%BD%BF%E7%94%A8-1-5-%E7%89%88%E6%9C%AC/</url>
+    <content><![CDATA[<h1>解决IDEA maven 老是自动使用JDK1.5的问题</h1>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011611542.png" alt="image-20211001161153403" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011613048.png" alt="image-20211001161332973" style="zoom: 50%;" />
+<p>如上图，一使用Maven这些module就自动使用 JDK1.5，</p>
+<p>项目结构里 Language Level 也都自动变成了 5。很烦，一运行就会出现以下 Messages：</p>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011615495.png" alt="image-20211001161512457" style="zoom: 67%;" />
+<p>被这个东西烦到不行，于是乎进行了各种尝试，最终解决了问题。</p>
+<p>我们对 Maven 的配置文件进行更改就可以了。</p>
+<p>我们找到 Maven 的用户配置文件（就是下图标出的路径下的文件）并打开。</p>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011617970.png" alt="image-20211001161717900" style="zoom: 50%;" />
+<p>然后在 <code>&lt;settings&gt; &lt;/settings&gt;</code> 标签内添加如下内容，即可将对应版本都更改为 JDK1.8：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 pip 更新失败的问题</title>
+    <url>/2020/12/26/%E8%A7%A3%E5%86%B3-pip-%E6%9B%B4%E6%96%B0%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1>pip更新失败找不到</h1>
+<h2 id="问题描述">问题描述</h2>
+<p>当我们的pip版本不够新的时候，安装完库会出现下图的情况：</p>
+<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226104158100.png" alt="image-20201226104158100"></p>
+<p>我们可以执行下面的命令去更新pip：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">pip install --upgrade pip<br></code></pre></td></tr></table></figure>
+<p>但是烦人的是，有时更新会出错，比如下图的错误：</p>
+<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226104458073.png" alt="image-20201226104458073"></p>
+<p>在卸载旧版本的pip之后，出现了拒绝访问的错误，然后新版本的pip没安装成功。当我们再想使用pip的时候，就会出现下图的情况：</p>
+<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226104653406.png" alt="image-20201226104653406"></p>
+<p>显示“No module named ‘pip’”，由于旧的卸载了，新的还没装上去，所以pip已经没了。</p>
+<h2 id="解决方法">解决方法</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">python -m ensurepip<br>python -m pip install --upgrade pip<br></code></pre></td></tr></table></figure>
+<p>执行第一句之后：</p>
+<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226105041459.png" alt="image-20201226105041459"></p>
+<p>执行第二句之后：</p>
+<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226105110442.png" alt="image-20201226105110442"></p>
+<p>完成！</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>pip</tag>
+      </tags>
+  </entry>
+</search>
