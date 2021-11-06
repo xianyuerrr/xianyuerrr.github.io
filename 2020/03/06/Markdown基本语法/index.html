@@ -163,26 +163,26 @@
 <p><em><strong>粗斜体文本</strong></em></p>
 <h4 id="2-2-2-修饰">2.2.2 修饰</h4>
 <p>(1) 分隔线</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">一行内三个以上的星号(*)、减号(-)、底线(_)，行内不能有其他东西。<br>如：***<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">一行内三个以上的星号(<span class="hljs-emphasis">*)、减号(-)、底线(_)，行内不能有其他东西。</span><br><span class="hljs-emphasis">如：<span class="hljs-strong">**<span class="hljs-emphasis">*</span></span></span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <hr>
 <p>(2) 删除线</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">文字两端加上两个波浪线~<br>~~xianyue~~<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">文字两端加上两个波浪线~<br>~~xianyue~~<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><s>xianyue</s></p>
 <p>(3) 下划线</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">使用HTML的&lt;u&gt;标签实现<br>如：&lt;u&gt;xianyue&lt;/u&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">使用HTML的<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">u</span>&gt;</span></span>标签实现<br>如：<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">u</span>&gt;</span></span>xianyue<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">u</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><u>xianyue</u></p>
 <p>(4) 脚注</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">使用[^文本]的格式实现脚注<br>如：脚注[^xinayue]: xianyue<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">使用[^文本]的格式实现脚注<br>如：脚注[^xinayue]: xianyue<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p>脚注[^xinayue]</p>
 <h3 id="2-3-元素">2.3 元素</h3>
 <h4 id="2-3-1-列表">2.3.1 列表</h4>
 <p>(1) 无序列表</p>
 <p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>* 第一项<br>* 第二项<br>* 第三项<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">如：<br><span class="hljs-bullet">*</span> 第一项<br><span class="hljs-bullet">*</span> 第二项<br><span class="hljs-bullet">*</span> 第三项<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <ul>
 <li>第一项</li>
@@ -191,7 +191,7 @@
 </ul>
 <p>(2) 有序列表</p>
 <p>有序列表使用数字并加上 <strong>.</strong> 号来表示。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>1. 第一项<br>2. 第二项<br>3. 第三项<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">如：<br><span class="hljs-bullet">1.</span> 第一项<br><span class="hljs-bullet">2.</span> 第二项<br><span class="hljs-bullet">3.</span> 第三项<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <ol>
 <li>第一项</li>
@@ -200,7 +200,7 @@
 </ol>
 <h4 id="2-3-2-区块">2.3.2 区块</h4>
 <p>区块引用是在段落开头使用 <strong>&gt;</strong> 符号 ，然后后面紧跟一个<strong>空格</strong>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&gt; 最外层<br>&gt; &gt; 第一层嵌套<br>&gt; &gt; &gt; 第二层嵌套<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-quote">&gt; 最外层</span><br><span class="hljs-quote">&gt; &gt; 第一层嵌套</span><br><span class="hljs-quote">&gt; &gt; &gt; 第二层嵌套</span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <blockquote>
 <p>最外层</p>
@@ -224,18 +224,18 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;HelloWorld!&quot;</span>)<br></code></pre></td></tr></table></figure>
 <h4 id="2-3-4-链接">2.3.4 链接</h4>
 <p>(1) 通过网址来设置一个链接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[链接名称](链接地址)<br>如：<br>[百度](www.baidu.com)<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">链接名称</span>](<span class="hljs-link">链接地址</span>)<br>如：<br>[<span class="hljs-string">百度</span>](<span class="hljs-link">www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><a href="www.baidu.com">百度</a></p>
 <p>(2) 直接使用链接地址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;www.baidu.com&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">www.baidu.com</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p>&lt;<a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a>&gt;</p>
 <p>PS：可以使用如下方式达到<code>&lt;www.baidu.com&gt;</code>的效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[www.baidu.com](www.baidu.com)<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">www.baidu.com</span>](<span class="hljs-link">www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
 <p><a href="www.baidu.com">www.baidu.com</a></p>
 <p>(3) 通过变量来设置一个链接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[百度][1]<br>[1]:www.baidu.com<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">百度</span>][<span class="hljs-symbol">1</span>]<br>[<span class="hljs-symbol">1</span>]:<span class="hljs-link">www.baidu.com</span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><a href="www.baidu.com">百度</a></p>
 <h4 id="2-3-5-图片">2.3.5 图片</h4>
@@ -688,7 +688,7 @@ A[方形] --> B(圆角)
 
 
   
-  <!-- 尾部用户自定义相关内容 -->
+  <!-- 尾部用户自定义相关内容 --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
@@ -718,6 +718,6 @@ A[方形] --> B(圆角)
 </script>
 
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 </body>
 </html>
