@@ -22,7 +22,7 @@
 
   
 
-  <title>math库常用函数 | xianyue の blog</title>
+  <title>Java的线程创建 | xianyue の blog</title>
 
   
 
@@ -96,22 +96,22 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">math库常用函数</h1>
+          <h1 class="title-wrap">Java的线程创建</h1>
           <h2 class="title-sub-wrap">
             <strong>xianyue</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2020-04-06T08:48:08.000Z" itemprop="datePublished">2020-04-06</time>
+            <time  class="article-date" datetime="2020-10-31T15:14:28.000Z" itemprop="datePublished">2020-10-31</time>
           </h2>
           <ul class="wrap-list dark">
   
-    <li><a href="/categories/Python/">📒 Python</a></li>
+    <li><a href="/categories/Java/">📒 Java</a></li>
   
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/Python/">🏷️ Python</a></li>
+    <li><a href="/tags/Java/">🏷️ Java</a></li>
   
-    <li><a href="/tags/math/">🏷️ math</a></li>
+    <li><a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">🏷️ 多线程</a></li>
   
 </ul>
         </div>
@@ -135,59 +135,17 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1>Python-math库 常用函数</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
-<h2 id="常量">常量</h2>
-<ol>
-<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
-<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
-<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
-<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
-<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
-</ol>
-<h2 id="数论与表示函数">数论与表示函数</h2>
-<ol>
-<li><code>ceil(x)</code>：上取整</li>
-<li><code>floor(x)</code>：下取整</li>
-<li><code>factorial(x)</code>：阶乘</li>
-<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>gcd(a, b)</code>：最大公约数</li>
-<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
-<li><code>fabs(x)</code>：绝对值</li>
-<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
-<li><code>fmod(x, y)</code>：取余。 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
-<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
-<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
-<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
-</ol>
-<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
-<ol>
-<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
-<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
-<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
-<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
-<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
-<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-</ol>
-<h2 id="三角函数">三角函数</h2>
-<ol>
-<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
-<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
-<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
-<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
-<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
-<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
-<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
-<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
-<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
-</ol>
-<h2 id="角度转换">角度转换</h2>
-<ol>
-<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
-<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
-</ol>
+        <h1>Java 的线程创建</h1>
+<h2 id="1-线程创建">1. 线程创建</h2>
+<p><strong>方法一：</strong> 实现<strong>Runnable</strong>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            线程运行了16</span><br><span class="hljs-comment">//    线程运行了17</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程7</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
+<h2 id="方法二：-继承-Thread-类">方法二： 继承 Thread 类</h2>
+<p>Thread类实现了Runnable接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:35</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>&#123;<br>    <span class="hljs-comment">//    继承Thread类</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.run();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            我在学习多线程3</span><br><span class="hljs-comment">//    线程运行了12</span><br><span class="hljs-comment">//            我在学习多线程4</span><br><span class="hljs-comment">//    线程运行了13</span><br><span class="hljs-comment">//            我在学习多线程5</span><br><span class="hljs-comment">//    线程运行了14</span><br><span class="hljs-comment">//            我在学习多线程6</span><br><span class="hljs-comment">//    线程运行了15</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程9</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//进程已结束，退出代码 0</span><br><br><br></code></pre></td></tr></table></figure>
+<h2 id="方法三：实现-Callable-接口">方法三：实现 Callable 接口</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-keyword">import</span> java.util.concurrent.Callable;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span> </span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            线程运行了10</span><br><span class="hljs-comment">//    我在学习多线程1</span><br><span class="hljs-comment">//            线程运行了11</span><br><span class="hljs-comment">//    我在学习多线程2</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    线程运行了18</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
+<p>不论以什么方式实现多线程，都要重写**Run()**方法，编写线程所执行的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">*斜体文本*<br>_斜体文本_<br>**粗体文本**<br>__粗体文本__<br>***粗斜体文本***<br>___粗斜体文本___<br></code></pre></td></tr></table></figure>
 
       </section>
 
@@ -198,10 +156,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
+      <div class="card-cover" background-image-lazy data-img="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/OneDrive/%E5%9B%BE%E7%89%87/%E5%8A%A8%E6%BC%AB/%E7%BD%91%E6%98%93%E4%BA%9101.jpg"></div>
+    
     <div class="card-text">
       
-        <a href="/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">biset 二分查找</h2>
+        <a href="/2020/11/03/bit%E4%B8%8EByte/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">bit与Byte</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -215,8 +175,8 @@
     
     <div class="card-text">
       
-        <a href="/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">找回.py文件右键的Edit with IDLE选项</h2>
+        <a href="/2020/04/14/heapq-%E5%A0%86%E9%98%9F%E5%88%97/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">heapq 堆队列</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -276,19 +236,19 @@
         <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
 </svg>
-        <span>11</span>
+        <span>19</span>
       </div>
       <div class="count-box--item">
         <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
 </svg>
-        7
+        10
       </div>
       <div class="count-box--item">
         <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
 </svg>
-        9
+        16
       </div>
     </div>
   </div>
@@ -303,7 +263,7 @@
     <span>TOC</span>
   </div>
   <div class="widget-body">
-    <ol class="TOC"><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E5%B8%B8%E9%87%8F"><span class="TOC-number">1.</span> <span class="TOC-text">常量</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E6%95%B0%E8%AE%BA%E4%B8%8E%E8%A1%A8%E7%A4%BA%E5%87%BD%E6%95%B0"><span class="TOC-number">2.</span> <span class="TOC-text">数论与表示函数</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E5%B9%82%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0"><span class="TOC-number">3.</span> <span class="TOC-text">幂函数与对数函数</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="TOC-number">4.</span> <span class="TOC-text">三角函数</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E8%A7%92%E5%BA%A6%E8%BD%AC%E6%8D%A2"><span class="TOC-number">5.</span> <span class="TOC-text">角度转换</span></a></li></ol>
+    <ol class="TOC"><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#1-%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="TOC-number">1.</span> <span class="TOC-text">1. 线程创建</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A-%E7%BB%A7%E6%89%BF-Thread-%E7%B1%BB"><span class="TOC-number">2.</span> <span class="TOC-text">方法二： 继承 Thread 类</span></a></li><li class="TOC-item TOC-level-2"><a class="TOC-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E5%AE%9E%E7%8E%B0-Callable-%E6%8E%A5%E5%8F%A3"><span class="TOC-number">3.</span> <span class="TOC-text">方法三：实现 Callable 接口</span></a></li></ol>
   </div>
 </section>
 
@@ -321,14 +281,26 @@
     <ul class="categorys-list">
       
         <li class="categorys-list-item">
-          <a href="/categories/Markdown/">
-            Markdown (1)
+          <a href="/categories/C/">
+            C++ (4)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Java/">
+            Java (2)
           </a>
         </li>
       
         <li class="categorys-list-item">
           <a href="/categories/Python/">
-            Python (6)
+            Python (8)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Markdown/">
+            Markdown (1)
           </a>
         </li>
       
@@ -345,14 +317,20 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Python/%E7%AE%97%E6%B3%95/">
-            算法 (2)
+          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
+            hexo配置 (1)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
-            hexo配置 (1)
+          <a href="/categories/Python/Java/">
+            Java (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Python/%E7%AE%97%E6%B3%95/">
+            算法 (2)
           </a>
         </li>
       
@@ -375,7 +353,7 @@
   </div>
   <div class="widget-body">
     <div class="tags-cloud">
-      <a href="/tags/Byte/" style="font-size: 10px;" class="tags-cloud-0">Byte</a> <a href="/tags/Default/" style="font-size: 15px;" class="tags-cloud-5">Default</a> <a href="/tags/Markdown/" style="font-size: 10px;" class="tags-cloud-0">Markdown</a> <a href="/tags/Python/" style="font-size: 20px;" class="tags-cloud-10">Python</a> <a href="/tags/bit/" style="font-size: 10px;" class="tags-cloud-0">bit</a> <a href="/tags/hexo/" style="font-size: 10px;" class="tags-cloud-0">hexo</a> <a href="/tags/math/" style="font-size: 10px;" class="tags-cloud-0">math</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10px;" class="tags-cloud-0">二分</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;" class="tags-cloud-0">堆</a>
+      <a href="/tags/Byte/" style="font-size: 10px;" class="tags-cloud-0">Byte</a> <a href="/tags/C/" style="font-size: 17.5px;" class="tags-cloud-8">C++</a> <a href="/tags/Default/" style="font-size: 12.5px;" class="tags-cloud-3">Default</a> <a href="/tags/Java/" style="font-size: 15px;" class="tags-cloud-5">Java</a> <a href="/tags/Markdown/" style="font-size: 10px;" class="tags-cloud-0">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;" class="tags-cloud-0">Maven</a> <a href="/tags/Python/" style="font-size: 20px;" class="tags-cloud-10">Python</a> <a href="/tags/STL/" style="font-size: 10px;" class="tags-cloud-0">STL</a> <a href="/tags/bit/" style="font-size: 10px;" class="tags-cloud-0">bit</a> <a href="/tags/hexo/" style="font-size: 10px;" class="tags-cloud-0">hexo</a> <a href="/tags/math/" style="font-size: 12.5px;" class="tags-cloud-3">math</a> <a href="/tags/pip/" style="font-size: 10px;" class="tags-cloud-0">pip</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10px;" class="tags-cloud-0">二分</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;" class="tags-cloud-0">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;" class="tags-cloud-0">多线程</a> <a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" style="font-size: 10px;" class="tags-cloud-0">输入输出</a>
     </div>
   </div>
 </section>
