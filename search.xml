@@ -591,89 +591,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>biset 二分查找</title>
-    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
-<h2 id="查找">查找</h2>
-<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
-<p>数组名，值，区间 [lo, hi)</p>
-<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
-<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
-<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
-<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
-<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
-<h2 id="插入">插入</h2>
-<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
-<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>二分</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python之禅</title>
-    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
-    <content><![CDATA[<p>begin :</p>
-<h1>Python之禅</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
-<ol>
-<li>
-<p>优美胜于丑陋（以优美为目标）</p>
-</li>
-<li>
-<p>明了胜于晦涩</p>
-</li>
-<li>
-<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
-</li>
-<li>
-<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
-</li>
-<li>
-<p>扁平胜于嵌套（不要有太多嵌套）</p>
-</li>
-<li>
-<p>间隔胜于紧凑（不要写的太挤）</p>
-</li>
-<li>
-<p>可读性很重要</p>
-</li>
-<li>
-<p>这些规则不可违背</p>
-</li>
-<li>
-<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
-</li>
-<li>
-<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
-</li>
-<li>
-<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
-</li>
-<li>
-<p>命名空间大法好，同志们要多多搞。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python math库常用函数</title>
     <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1>Python-math库 常用函数</h1>
@@ -739,6 +656,89 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>Python之禅</title>
+    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
+    <content><![CDATA[<p>begin :</p>
+<h1>Python之禅</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>优美胜于丑陋（以优美为目标）</p>
+</li>
+<li>
+<p>明了胜于晦涩</p>
+</li>
+<li>
+<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
+</li>
+<li>
+<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
+</li>
+<li>
+<p>扁平胜于嵌套（不要有太多嵌套）</p>
+</li>
+<li>
+<p>间隔胜于紧凑（不要写的太挤）</p>
+</li>
+<li>
+<p>可读性很重要</p>
+</li>
+<li>
+<p>这些规则不可违背</p>
+</li>
+<li>
+<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
+</li>
+<li>
+<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
+</li>
+<li>
+<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
+</li>
+<li>
+<p>命名空间大法好，同志们要多多搞。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>biset 二分查找</title>
+    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
+<h2 id="查找">查找</h2>
+<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
+<p>数组名，值，区间 [lo, hi)</p>
+<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
+<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
+<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
+<h2 id="插入">插入</h2>
+<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
+<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>bit与Byte</title>
     <url>/2020/11/03/bit%E4%B8%8EByte/</url>
     <content><![CDATA[<h1>计算机网络—bit与Byte</h1>
@@ -791,45 +791,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/11/06/hello-world/</url>
-    <content><![CDATA[<h1>Hello World</h1>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>cate1</category>
-        <category>cate2</category>
-      </categories>
-      <tags>
-        <tag>Default</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo配置latex支持</title>
-    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
-]]></content>
-      <categories>
-        <category>hexo配置</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>heapq 堆队列</title>
     <url>/2020/04/14/heapq-%E5%A0%86%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h1>Python 堆队列 – heapq</h1>
@@ -878,6 +839,45 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/11/06/hello-world/</url>
+    <content><![CDATA[<h1>Hello World</h1>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>cate1</category>
+        <category>cate2</category>
+      </categories>
+      <tags>
+        <tag>Default</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo配置latex支持</title>
+    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
+]]></content>
+      <categories>
+        <category>hexo配置</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>test</title>
     <url>/2021/11/06/test/</url>
     <content><![CDATA[<h1></h1>
@@ -890,28 +890,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>Default</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>对象相等的判断，== 和 equal</title>
-    <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
-    <content><![CDATA[<h1>值相等与对象相同</h1>
-<h2 id="Python">Python</h2>
-<p>在<em><strong>python</strong></em>中，我们使用 <strong>==</strong> 来进行判断两个对象的值是否相等，使用<strong>is</strong>来判断两个对象是否是同一个对象。is 是种很特殊的语法，在其它的语言一般不会见到这样的用法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># int型比较</span><br>a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(a == b)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> b)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># str型比较</span><br>str1 = <span class="hljs-string">&#x27;abc&#x27;</span><br>str2 = <span class="hljs-string">&#x27;abc&#x27;</span><br><br><span class="hljs-built_in">print</span>(str1 == str2)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(str1 <span class="hljs-keyword">is</span> str2)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自定类型比较</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">my_obj</span>:</span><br>4atr1 = <span class="hljs-number">0</span><br>4atr2 = <span class="hljs-number">1</span><br>4<br>obj1 = my_obj()<br>obj2 = my_obj()<br> <br><span class="hljs-built_in">print</span>(obj1 == obj2)<br><span class="hljs-comment"># 结果为False</span><br><span class="hljs-built_in">print</span>(obj1 <span class="hljs-keyword">is</span> obj2)<br><span class="hljs-comment"># 结果为False</span><br></code></pre></td></tr></table></figure>
-<h2 id="Java">Java</h2>
-<p>在<em><strong>java</strong></em>中，我们使用 <strong>==</strong> 来判断两个对象是否是同一个对象，而使用<strong>equals</strong>方法来判断两个对象的值是否相等。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;:&quot;</span> + (a == b));<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(a));<br>        System.out.println(<span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(b));<br><br>        String str1 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        String str2 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        <span class="hljs-comment">// str1 和 str2 在常量池中，只有一份，是同一个对象</span><br>        String str3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;csdn&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str3));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str3));<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 输出结果如下：</span><br><span class="hljs-comment">// a = b:true</span><br><span class="hljs-comment">// a的地址：664223387</span><br><span class="hljs-comment">// b的地址：664223387</span><br><span class="hljs-comment">// str1和str2是同一个对象：true</span><br><span class="hljs-comment">// str1 = str2:true</span><br><span class="hljs-comment">// str1和str3是同一个对象：false</span><br><span class="hljs-comment">// str1 = str3:true</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -967,6 +945,38 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
         <category>Python</category>
       </categories>
       <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我们是冠军！</title>
+    <url>/2021/11/07/%E6%88%91%E4%BB%AC%E6%98%AF%E5%86%A0%E5%86%9B%EF%BC%81/</url>
+    <content><![CDATA[<h1></h1>
+]]></content>
+      <tags>
+        <tag>日常</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对象相等的判断，== 和 equal</title>
+    <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
+    <content><![CDATA[<h1>值相等与对象相同</h1>
+<h2 id="Python">Python</h2>
+<p>在<em><strong>python</strong></em>中，我们使用 <strong>==</strong> 来进行判断两个对象的值是否相等，使用<strong>is</strong>来判断两个对象是否是同一个对象。is 是种很特殊的语法，在其它的语言一般不会见到这样的用法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># int型比较</span><br>a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(a == b)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> b)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># str型比较</span><br>str1 = <span class="hljs-string">&#x27;abc&#x27;</span><br>str2 = <span class="hljs-string">&#x27;abc&#x27;</span><br><br><span class="hljs-built_in">print</span>(str1 == str2)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(str1 <span class="hljs-keyword">is</span> str2)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自定类型比较</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">my_obj</span>:</span><br>4atr1 = <span class="hljs-number">0</span><br>4atr2 = <span class="hljs-number">1</span><br>4<br>obj1 = my_obj()<br>obj2 = my_obj()<br> <br><span class="hljs-built_in">print</span>(obj1 == obj2)<br><span class="hljs-comment"># 结果为False</span><br><span class="hljs-built_in">print</span>(obj1 <span class="hljs-keyword">is</span> obj2)<br><span class="hljs-comment"># 结果为False</span><br></code></pre></td></tr></table></figure>
+<h2 id="Java">Java</h2>
+<p>在<em><strong>java</strong></em>中，我们使用 <strong>==</strong> 来判断两个对象是否是同一个对象，而使用<strong>equals</strong>方法来判断两个对象的值是否相等。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;:&quot;</span> + (a == b));<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(a));<br>        System.out.println(<span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(b));<br><br>        String str1 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        String str2 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        <span class="hljs-comment">// str1 和 str2 在常量池中，只有一份，是同一个对象</span><br>        String str3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;csdn&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str3));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str3));<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 输出结果如下：</span><br><span class="hljs-comment">// a = b:true</span><br><span class="hljs-comment">// a的地址：664223387</span><br><span class="hljs-comment">// b的地址：664223387</span><br><span class="hljs-comment">// str1和str2是同一个对象：true</span><br><span class="hljs-comment">// str1 = str2:true</span><br><span class="hljs-comment">// str1和str3是同一个对象：false</span><br><span class="hljs-comment">// str1 = str3:true</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
         <tag>Python</tag>
       </tags>
   </entry>
