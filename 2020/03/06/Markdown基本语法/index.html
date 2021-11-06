@@ -147,13 +147,13 @@
 <h2 id="2-语法">2 语法</h2>
 <h3 id="2-1标题">2.1标题</h3>
 <p>使用 <strong>#</strong> 号可表示标题，一级标题对应一个 <strong>#</strong> 号，二级标题对应两个 <strong>#</strong> 号，以此类推。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 一级标题</span><br><span class="hljs-section">## 二级标题</span><br><span class="hljs-section">### 三级标题</span><br><span class="hljs-section">#### 四级标题</span><br></code></pre></td></tr></table></figure>
 <p><em>效果如下：</em></p>
 <img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/Roaming/Typora/typora-user-images/image-20210127173350005.png" style="zoom:50%;" />
 <p>在编辑器Typora里可以使用**Ctrl+[0-6]**来快速设置格式，<strong>Ctrl+0</strong>是设置成段落，1到6是设置成各级标题。</p>
 <h3 id="2-2-段落样式">2.2 段落样式</h3>
 <h4 id="2-2-1-字体">2.2.1 字体</h4>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Markdown可以使用以下几种字体：</span><br><span class="line"><span class="emphasis">*斜体文本*</span></span><br><span class="line"><span class="emphasis">_斜体文本_</span></span><br><span class="line"><span class="strong">**粗体文本**</span></span><br><span class="line"><span class="strong">__粗体文本__</span></span><br><span class="line"><span class="strong">**<span class="emphasis">*粗斜体文本<span class="strong">**<span class="emphasis">*</span></span></span></span></span><br><span class="line"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong"><span class="strong">__<span class="emphasis">_粗斜体文本<span class="strong">__<span class="emphasis">_</span></span></span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown">Markdown可以使用以下几种字体：<br><span class="hljs-emphasis">*斜体文本*</span><br><span class="hljs-emphasis">_斜体文本_</span><br><span class="hljs-strong">**粗体文本**</span><br><span class="hljs-strong">__粗体文本__</span><br><span class="hljs-strong">**<span class="hljs-emphasis">*粗斜体文本<span class="hljs-strong">**<span class="hljs-emphasis">*</span></span></span></span><br><span class="hljs-emphasis"><span class="hljs-strong"><span class="hljs-emphasis"><span class="hljs-strong"><span class="hljs-strong">__<span class="hljs-emphasis">_粗斜体文本<span class="hljs-strong">__<span class="hljs-emphasis">_</span></span></span></span></span></span></span></span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><em>斜体文本</em></p>
 <p><em>斜体文本</em></p>
@@ -163,26 +163,26 @@
 <p><em><strong>粗斜体文本</strong></em></p>
 <h4 id="2-2-2-修饰">2.2.2 修饰</h4>
 <p>(1) 分隔线</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一行内三个以上的星号<span class="comment">(*)</span>、减号<span class="comment">(-)</span>、底线<span class="comment">(_)</span>，行内不能有其他东西。</span><br><span class="line">如：***</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">一行内三个以上的星号(*)、减号(-)、底线(_)，行内不能有其他东西。<br>如：***<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <hr>
 <p>(2) 删除线</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">文字两端加上两个波浪线~</span><br><span class="line">~~xianyue~~</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">文字两端加上两个波浪线~<br>~~xianyue~~<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><s>xianyue</s></p>
 <p>(3) 下划线</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用HTML的<span class="tag">&lt;<span class="name">u</span>&gt;</span>标签实现</span><br><span class="line">如：<span class="tag">&lt;<span class="name">u</span>&gt;</span>xianyue<span class="tag">&lt;/<span class="name">u</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">使用HTML的&lt;u&gt;标签实现<br>如：&lt;u&gt;xianyue&lt;/u&gt;<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><u>xianyue</u></p>
 <p>(4) 脚注</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用<span class="selector-attr">[^文本]</span>的格式实现脚注</span><br><span class="line">如：脚注<span class="selector-attr">[^xinayue]</span>: xianyue</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">使用[^文本]的格式实现脚注<br>如：脚注[^xinayue]: xianyue<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p>脚注[^xinayue]</p>
 <h3 id="2-3-元素">2.3 元素</h3>
 <h4 id="2-3-1-列表">2.3.1 列表</h4>
 <p>(1) 无序列表</p>
 <p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容。</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如：</span><br><span class="line"><span class="bullet">* </span>第一项</span><br><span class="line"><span class="bullet">* </span>第二项</span><br><span class="line"><span class="bullet">* </span>第三项</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>* 第一项<br>* 第二项<br>* 第三项<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <ul>
 <li>第一项</li>
@@ -191,7 +191,7 @@
 </ul>
 <p>(2) 有序列表</p>
 <p>有序列表使用数字并加上 <strong>.</strong> 号来表示。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如：</span><br><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="bullet">2.</span> 第二项</span><br><span class="line"><span class="bullet">3.</span> 第三项</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>1. 第一项<br>2. 第二项<br>3. 第三项<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <ol>
 <li>第一项</li>
@@ -200,7 +200,7 @@
 </ol>
 <h4 id="2-3-2-区块">2.3.2 区块</h4>
 <p>区块引用是在段落开头使用 <strong>&gt;</strong> 符号 ，然后后面紧跟一个<strong>空格</strong>。</p>
-<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">最外层</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">&gt; 第一层嵌套</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">&gt; &gt; 第二层嵌套</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&gt; 最外层<br>&gt; &gt; 第一层嵌套<br>&gt; &gt; &gt; 第二层嵌套<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <blockquote>
 <p>最外层</p>
@@ -214,41 +214,41 @@
 <h4 id="2-3-3-代码">2.3.3 代码</h4>
 <p>(1) 段内短代码</p>
 <p>可以用反引号把它包起来（<strong>`</strong>）。</p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如：</span><br><span class="line">`print(<span class="string">&quot;HelloWorld!&quot;</span>)`Python代码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>`print(&quot;HelloWorld!&quot;)`Python代码<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><code>print(&quot;HelloWorld!&quot;)</code>Python代码</p>
 <p>(2) 代码区块</p>
 <p>用 <strong>```</strong> 包裹一段代码，并指定一种语言（也可以不指定）。本文多处都在此种方式创造的代码区块内进行说明（比如下面这个区块）。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如：</span><br><span class="line">​```python</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">&quot;HelloWorld!&quot;</span>)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>​```python<br>print(&quot;HelloWorld!&quot;)<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;HelloWorld!&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;HelloWorld!&quot;</span>)<br></code></pre></td></tr></table></figure>
 <h4 id="2-3-4-链接">2.3.4 链接</h4>
 <p>(1) 通过网址来设置一个链接</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[链接名称]</span>(链接地址)</span><br><span class="line">如：</span><br><span class="line"><span class="selector-attr">[百度]</span>(www.baidu.com)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[链接名称](链接地址)<br>如：<br>[百度](www.baidu.com)<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><a href="www.baidu.com">百度</a></p>
 <p>(2) 直接使用链接地址</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;www.baidu.com&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;www.baidu.com&gt;<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p>&lt;<a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a>&gt;</p>
 <p>PS：可以使用如下方式达到<code>&lt;www.baidu.com&gt;</code>的效果。</p>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[www.baidu.com](<span class="name">www.baidu.com</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[www.baidu.com](www.baidu.com)<br></code></pre></td></tr></table></figure>
 <p><a href="www.baidu.com">www.baidu.com</a></p>
 <p>(3) 通过变量来设置一个链接</p>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[百度][<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>]<span class="symbol">:www.baidu.com</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[百度][1]<br>[1]:www.baidu.com<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><a href="www.baidu.com">百度</a></p>
 <h4 id="2-3-5-图片">2.3.5 图片</h4>
 <p>(1) Markdown方法</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![alt 属性文本](图片地址 <span class="string">&quot;可选标题&quot;</span>)</span><br><span class="line">这种方式无法指定图片的高度与宽度</span><br><span class="line">如：</span><br><span class="line">![alt 刻晴](https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/xianyuerrr/</span>PicGo<span class="regexp">/main/img</span><span class="regexp">/AppData/</span>Roaming<span class="regexp">/picgo/</span><span class="number">20210127182153</span>.png <span class="string">&quot;刻晴&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">![alt 属性文本](图片地址 &quot;可选标题&quot;)<br>这种方式无法指定图片的高度与宽度<br>如：<br>![alt 刻晴](https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png &quot;刻晴&quot;)<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom:50%;" />
 <p>(2) HTML方法</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png&quot;</span> <span class="attribute">alt</span>=<span class="string">&quot;alt 刻晴&quot;</span> <span class="attribute">title</span>=<span class="string">&quot;刻晴&quot;</span> <span class="attribute">style</span>=<span class="string">&quot;zoom: 25%;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;img src=&quot;https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png&quot; alt=&quot;alt 刻晴&quot; title=&quot;刻晴&quot; style=&quot;zoom: 25%;&quot; /&gt;<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom: 25%;" />
 <h4 id="2-3-6-表格">2.3.6 表格</h4>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用 |<span class="string"> 来分隔不同的单元格，使用 - 来分隔表头和其他行。</span></span><br><span class="line"><span class="string">如：</span></span><br><span class="line"><span class="string"></span>|<span class="string">  ID   </span>|<span class="string"> Password  </span>|</span><br><span class="line">|<span class="string">  ----  </span>|<span class="string"> ----  </span>|</span><br><span class="line">|<span class="string"> a  </span>|<span class="string"> 123 </span>|</span><br><span class="line">|<span class="string"> b  </span>|<span class="string"> 456 </span>|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。<br>如：<br>|  ID   | Password  |<br>|  ----  | ----  |<br>| a  | 123 |<br>| b  | 456 |<br></code></pre></td></tr></table></figure>
 <p>效果如下（默认左对齐）：</p>
 <table>
 <thead>
@@ -274,7 +274,7 @@
 <li>“:-”左对齐</li>
 <li>“:-:”居中</li>
 </ol>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如：</span><br><span class="line">|<span class="string">  ID   </span>|<span class="string"> Password  </span>|</span><br><span class="line">|<span class="string">  ----:  </span>|<span class="string"> ----:  </span>|</span><br><span class="line">|<span class="string"> a  </span>|<span class="string"> 123 </span>|</span><br><span class="line">|<span class="string"> b  </span>|<span class="string"> 456 </span>|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">如：<br>|  ID   | Password  |<br>|  ----:  | ----:  |<br>| a  | 123 |<br>| b  | 456 |<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <table>
 <thead>
@@ -299,11 +299,11 @@
 <p>前面我们已经在<strong>Markdown</strong>里使用了<strong>HTML</strong>标签，其实许多<strong>HTML</strong>标签在<strong>Markdown</strong>都能支持。其实，<strong>Markdown</strong>的表现格式是可以通过<strong>CSS</strong>来进行更改的，<strong>Typora</strong>里的众多主体就是通过使用不同的<strong>CSS</strong>文件来达成的。还有，你如果在<strong>Typora</strong>里打开了调试模式，右键点击<strong>检查元素</strong>，然后你会发现这和网页源代码有着惊人的相似度。这也就不难想象<strong>Markdown</strong>与<strong>HTML</strong>、<strong>CSS</strong>之间的密切联系了。</p>
 <h3 id="3-2-转义">3.2 转义</h3>
 <p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符。</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   反斜线</span><br><span class="line">`   反引号</span><br><span class="line"><span class="bullet">*   </span>星号</span><br><span class="line">_   下划线</span><br><span class="line">&#123;&#125;  花括号</span><br><span class="line">[]  方括号</span><br><span class="line">()  小括号</span><br><span class="line">#   井字号</span><br><span class="line">+   加号</span><br><span class="line"><span class="bullet">-   </span>减号</span><br><span class="line"><span class="bullet">.   </span>英文句点</span><br><span class="line">!   感叹号</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\   反斜线<br>`   反引号<br>*   星号<br>_   下划线<br>&#123;&#125;  花括号<br>[]  方括号<br>()  小括号<br>#   井字号<br>+   加号<br>-   减号<br>.   英文句点<br>!   感叹号<br></code></pre></td></tr></table></figure>
 <h3 id="3-3-Tex支持">3.3 Tex支持</h3>
 <p>当你需要在编辑器中插入数学公式时，可以使用美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。</p>
 <p>比如：</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line"><span class="symbol">\m</span>athbf&#123;V&#125;_1 <span class="symbol">\t</span>imes <span class="symbol">\m</span>athbf&#123;V&#125;_2 =  <span class="symbol">\b</span>egin&#123;vmatrix&#125; </span><br><span class="line"><span class="symbol">\m</span>athbf&#123;i&#125; &amp; <span class="symbol">\m</span>athbf&#123;j&#125; &amp; <span class="symbol">\m</span>athbf&#123;k&#125; <span class="symbol">\\</span></span><br><span class="line"><span class="symbol">\f</span>rac&#123;<span class="symbol">\p</span>artial X&#125;&#123;<span class="symbol">\p</span>artial u&#125; &amp;  <span class="symbol">\f</span>rac&#123;<span class="symbol">\p</span>artial Y&#125;&#123;<span class="symbol">\p</span>artial u&#125; &amp; 0 <span class="symbol">\\</span></span><br><span class="line"><span class="symbol">\f</span>rac&#123;<span class="symbol">\p</span>artial X&#125;&#123;<span class="symbol">\p</span>artial v&#125; &amp;  <span class="symbol">\f</span>rac&#123;<span class="symbol">\p</span>artial Y&#125;&#123;<span class="symbol">\p</span>artial v&#125; &amp; 0 <span class="symbol">\\</span></span><br><span class="line"><span class="symbol">\e</span>nd&#123;vmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 =  \begin&#123;vmatrix&#125; <br>\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\<br>\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\<br>\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\<br>\end&#123;vmatrix&#125;<br>$$<br></code></pre></td></tr></table></figure>
 <p style=""><img src="https://math.now.sh?from=%5Cmathbf%7BV%7D_1%20%5Ctimes%20%5Cmathbf%7BV%7D_2%20%3D%20%20%5Cbegin%7Bvmatrix%7D%20%0A%5Cmathbf%7Bi%7D%20%26%20%5Cmathbf%7Bj%7D%20%26%20%5Cmathbf%7Bk%7D%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20X%7D%7B%5Cpartial%20u%7D%20%26%20%20%5Cfrac%7B%5Cpartial%20Y%7D%7B%5Cpartial%20u%7D%20%26%200%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20X%7D%7B%5Cpartial%20v%7D%20%26%20%20%5Cfrac%7B%5Cpartial%20Y%7D%7B%5Cpartial%20v%7D%20%26%200%20%5C%5C%0A%5Cend%7Bvmatrix%7D%0A" /></p><h2 id="附录-：">附录 ：</h2>
 <h3 id="1、横向流程图：">1、横向流程图：</h3>
 <pre class="mermaid">graph LR
@@ -320,10 +320,10 @@ A[方形] --> B(圆角)
     C --> |a=2| E[结果2]
     F[竖向流程图]</pre>
 <h3 id="3、标准流程图">3、标准流程图</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs flow">st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st-&gt;op-&gt;cond<br>cond(yes)-&gt;io-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs flow">st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st(right)-&gt;op(right)-&gt;cond<br>cond(yes)-&gt;io(bottom)-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br></code></pre></td></tr></table></figure>
 <h3 id="4、-UML时序图">4、 UML时序图</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sequence">对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B--&gt;对象A: 我很好(响应)<br>对象A-&gt;对象B: 你真的好吗？<br></code></pre></td></tr></table></figure>
 <h3 id="5、标准UML时序图">5、标准UML时序图</h3>
 <pre class="mermaid">%% 时序图例子,-> 直线，-->虚线，->>实线箭头
   sequenceDiagram
@@ -490,14 +490,14 @@ A[方形] --> B(圆角)
     <ul class="categorys-list">
       
         <li class="categorys-list-item">
-          <a href="/categories/cate1/">
-            cate1 (2)
+          <a href="/categories/Python/">
+            Python (6)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/cate1/cate2/">
-            cate2 (2)
+          <a href="/categories/Markdown/">
+            Markdown (1)
           </a>
         </li>
       
@@ -508,26 +508,26 @@ A[方形] --> B(圆角)
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
-            hexo配置 (1)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
-          <a href="/categories/Python/">
-            Python (6)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
           <a href="/categories/Python/%E7%AE%97%E6%B3%95/">
             算法 (2)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Markdown/">
-            Markdown (1)
+          <a href="/categories/cate1/">
+            cate1 (2)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
+            hexo配置 (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/cate1/cate2/">
+            cate2 (2)
           </a>
         </li>
       

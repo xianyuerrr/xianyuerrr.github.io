@@ -136,13 +136,13 @@
         <h1>刚开始接触Python时的一些问题</h1>
 <h2 id="新版本不是最好的">新版本不是最好的</h2>
 <p>  查看你的Python版本，最好不要安装太老的版本，同时，也不要以为最新版就是最好的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">python -V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">python --version<br><span class="hljs-comment"># 或者</span><br>python -V<br></code></pre></td></tr></table></figure>
 <p>  尽量不要使用最新版的Python，在使用的过程中可能会遇到一些奇怪的问题，毕竟第三方库的数量极其庞大，短时间内不能保证所有库都适配。由于版本较新，遇到问题了在网上也不太容易找到解决办法。</p>
 <h2 id="运行项目">运行项目</h2>
 <p>  按住Shift点击右键会出现如下界面，点击**“在此处打开PowerShell窗口”**可以直接在当前目录打开PowerShell窗口。</p>
 <img src="https://img-blog.csdnimg.cn/20201109214244759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="30%" width="30%" alt="截图" align=center/>
 <p>  可以使用以下命令运行项目</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m Project_name</span><br><span class="line"><span class="comment"># Project_name是想要运行的项目名 </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">python -m Project_name<br><span class="hljs-comment"># Project_name是想要运行的项目名 </span><br></code></pre></td></tr></table></figure>
 <p>  截图：</p>
 <img src="https://img-blog.csdnimg.cn/20201109214709987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="80%" width="80%" alt="截图" align=center />
 <p>  但是对于很多项目，如果是新装的Python，在运行使用了第三方库的项目时大多都会出现以下错误:</p>
@@ -151,23 +151,23 @@
 </ol>
 <img src="https://img-blog.csdnimg.cn/20201109214948851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="80%" width="80%" alt="截图" align=center />
 <p>  这种情况一般安装全部此项目所使用的第三方库之后就会消失，可以使用以下命令安装：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install package</span><br><span class="line"><span class="comment"># package是你当前需要安装的第三方库的名字</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">pip install package<br><span class="hljs-comment"># package是你当前需要安装的第三方库的名字</span><br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>numpy出错（这代表着一类问题，有些类库出问题时可以使用类似方法解决）</li>
 </ol>
 <img src="https://img-blog.csdnimg.cn/20201109215440534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
 <p>  上图显示是numpy出问题了，使用以下命令查看numpy版本，是1.19.4版本，尝试降低版本再次尝试。(新版本不一定最好)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip show numpy</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pip show numpy<br></code></pre></td></tr></table></figure>
 <img src="https://img-blog.csdnimg.cn/20201109215440453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
 <p>  卸载numpy1.19.4版本，安装numpy1.19.3版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall numpy</span><br><span class="line">pip install numpy==<span class="number">1.19</span><span class="number">.3</span> <span class="comment"># 这种方式可以指定安装库的版本</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">pip uninstall numpy<br>pip install numpy==<span class="hljs-number">1.19</span><span class="hljs-number">.3</span> <span class="hljs-comment"># 这种方式可以指定安装库的版本</span><br></code></pre></td></tr></table></figure>
 <img src="https://img-blog.csdnimg.cn/20201109215440461.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
 <h2 id="第三方库下载慢">第三方库下载慢</h2>
 <p>  Python安装库默认是从官网下载的，对于部分人来说，从官网下载实在是过于缓慢。这个时候，切换一个源就可以使下载速度提升一个档次。可以使用清华大学的开源镜像站。</p>
 <p>  （1）想要临时使用镜像站</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <span class="keyword">some</span>-<span class="keyword">package</span></span><br><span class="line"><span class="title">// 注意：some-<span class="keyword">package</span>指的是想要安装的库，使用时需要进行更改</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package<br>// 注意：some-package指的是想要安装的库，使用时需要进行更改<br></code></pre></td></tr></table></figure>
 <p>  （2）设为默认</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -i http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple pip -U</span><br><span class="line">pip config <span class="keyword">set</span> <span class="keyword">global</span>.<span class="built_in">index</span>-url http<span class="variable">s:</span>//pypi.tuna.tsinghua.edu.<span class="keyword">cn</span>/simple</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U<br>pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple<br></code></pre></td></tr></table></figure>
 <p>  之后再进行第三方库的下载安装时就默认从镜像站进行下载了。</p>
 <p>  换源命令执行成功的截图：</p>
 <img src="https://img-blog.csdnimg.cn/20201109220010780.png#pic_center"  height="100%" width="100%" alt="截图" align=center />
@@ -177,7 +177,7 @@
 <p>  上图的错误是一个<strong>FileNotFoundError</strong>，说明无法找到那个<strong>txt</strong>文本，但是这个文件确实是在目录下的，如下：</p>
 <img src="https://img-blog.csdnimg.cn/20201109215440505.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70#pic_center"  height="100%" width="100%" alt="截图" align=center />
 <p>  根据报错信息，我们可以知道是<strong>Logistic_classify.py</strong>的<strong>line 27</strong>出错了，我们可以在Logistic_classify.py头部添加以下代码来修正运行时的目录，使其能够找到<strong>horseColicTraining.txt</strong>文件（不止这一种方式可以解决此问题）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(os.path.dirname(__file__))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.chdir(os.path.dirname(__file__))<br></code></pre></td></tr></table></figure>
 
       </section>
 
@@ -297,14 +297,14 @@
     <ul class="categorys-list">
       
         <li class="categorys-list-item">
-          <a href="/categories/cate1/">
-            cate1 (2)
+          <a href="/categories/Python/">
+            Python (6)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/cate1/cate2/">
-            cate2 (2)
+          <a href="/categories/Markdown/">
+            Markdown (1)
           </a>
         </li>
       
@@ -315,26 +315,26 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
-            hexo配置 (1)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
-          <a href="/categories/Python/">
-            Python (6)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
           <a href="/categories/Python/%E7%AE%97%E6%B3%95/">
             算法 (2)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Markdown/">
-            Markdown (1)
+          <a href="/categories/cate1/">
+            cate1 (2)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
+            hexo配置 (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/cate1/cate2/">
+            cate2 (2)
           </a>
         </li>
       
