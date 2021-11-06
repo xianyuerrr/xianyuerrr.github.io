@@ -224,20 +224,20 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;HelloWorld!&quot;</span>)<br></code></pre></td></tr></table></figure>
 <h4 id="2-3-4-链接">2.3.4 链接</h4>
 <p>(1) 通过网址来设置一个链接</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">链接名称</span>](<span class="hljs-link">链接地址</span>)<br>如：<br>[<span class="hljs-string">百度</span>](<span class="hljs-link">www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">链接名称</span>](<span class="hljs-link">链接地址</span>)<br>如：<br>[<span class="hljs-string">百度</span>](<span class="hljs-link">http://www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<p><a href="www.baidu.com">百度</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com">百度</a></p>
 <p>(2) 直接使用链接地址</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">www.baidu.com</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="xml">&lt;http://www.baidu.com&gt;</span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<p>&lt;<a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a>&gt;</p>
-<p>PS：可以使用如下方式达到<code>&lt;www.baidu.com&gt;</code>的效果。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">www.baidu.com</span>](<span class="hljs-link">www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
-<p><a href="www.baidu.com">www.baidu.com</a></p>
+<p>&lt;<a target="_blank" rel="noopener" href="http://www.baidu.com">http://www.baidu.com</a></p>
+<p>PS：可以使用如下方式达到<code>&lt;http://www.baidu.com&gt;</code>的效果。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">http://www.baidu.com</span>](<span class="hljs-link">http://www.baidu.com</span>)<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com">http://www.baidu.com</a></p>
 <p>(3) 通过变量来设置一个链接</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">百度</span>][<span class="hljs-symbol">1</span>]<br>[<span class="hljs-symbol">1</span>]:<span class="hljs-link">www.baidu.com</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">百度</span>][<span class="hljs-symbol">1</span>]<br>[<span class="hljs-symbol">1</span>]:<span class="hljs-link">http://www.baidu.com</span><br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<p><a href="www.baidu.com">百度</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com">百度</a></p>
 <h4 id="2-3-5-图片">2.3.5 图片</h4>
 <p>(1) Markdown方法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">![alt 属性文本](图片地址 &quot;可选标题&quot;)<br>这种方式无法指定图片的高度与宽度<br>如：<br>![alt 刻晴](https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png &quot;刻晴&quot;)<br></code></pre></td></tr></table></figure>
@@ -514,14 +514,14 @@ A[方形] --> B(圆角)
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/cate1/">
-            cate1 (2)
+          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
+            hexo配置 (1)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
-            hexo配置 (1)
+          <a href="/categories/cate1/">
+            cate1 (2)
           </a>
         </li>
       
