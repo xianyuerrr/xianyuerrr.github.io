@@ -121,7 +121,16 @@
 
   
   
-  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PFDSJSXYDN"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PFDSJSXYDN');
+  </script>
 </header>
 
     <!-- 文章 -->
@@ -138,20 +147,20 @@
         <h1>pip更新失败找不到</h1>
 <h2 id="问题描述">问题描述</h2>
 <p>当我们的pip版本不够新的时候，安装完库会出现下图的情况：</p>
-<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226104158100.png" alt="image-20201226104158100"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201226110404933.png" alt="image-20201226104158100"></p>
 <p>我们可以执行下面的命令去更新pip：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">pip install --upgrade pip<br></code></pre></td></tr></table></figure>
 <p>但是烦人的是，有时更新会出错，比如下图的错误：</p>
-<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226104458073.png" alt="image-20201226104458073"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020122611042436.png" alt="image-20201226104458073"></p>
 <p>在卸载旧版本的pip之后，出现了拒绝访问的错误，然后新版本的pip没安装成功。当我们再想使用pip的时候，就会出现下图的情况：</p>
-<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226104653406.png" alt="image-20201226104653406"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201226110436897.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzODc0ODM0,size_16,color_FFFFFF,t_70" alt="image-20201226104653406"></p>
 <p>显示“No module named ‘pip’”，由于旧的卸载了，新的还没装上去，所以pip已经没了。</p>
 <h2 id="解决方法">解决方法</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">python -m ensurepip<br>python -m pip install --upgrade pip<br></code></pre></td></tr></table></figure>
 <p>执行第一句之后：</p>
-<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226105041459.png" alt="image-20201226105041459"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201226110447479.png" alt="image-20201226105041459"></p>
 <p>执行第二句之后：</p>
-<p><img src="%E8%A7%A3%E5%86%B3pip%E6%9B%B4%E6%96%B0%E5%90%8E%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98.assets/image-20201226105110442.png" alt="image-20201226105110442"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201226110456416.png" alt="image-20201226105110442"></p>
 <p>完成！</p>
 
       </section>
@@ -316,20 +325,14 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Python/%E7%AE%97%E6%B3%95/">
-            算法 (2)
+          <a href="/categories/cate1/">
+            cate1 (2)
           </a>
         </li>
       
         <li class="categorys-list-item">
           <a href="/categories/hexo%E9%85%8D%E7%BD%AE/">
             hexo配置 (1)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
-          <a href="/categories/cate1/">
-            cate1 (2)
           </a>
         </li>
       
@@ -342,6 +345,12 @@
         <li class="categorys-list-item">
           <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">
             未分类 (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Python/%E7%AE%97%E6%B3%95/">
+            算法 (2)
           </a>
         </li>
       
