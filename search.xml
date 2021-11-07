@@ -197,7 +197,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++">priority_queue&lt;<span class="hljs-keyword">int</span>&gt; q; <span class="hljs-comment">// 默认为大顶堆</span><br>priority_queue&lt;<span class="hljs-keyword">int</span>, vector&lt;<span class="hljs-keyword">int</span>&gt;, less&lt;<span class="hljs-keyword">int</span>&gt; &gt; q;<br><span class="hljs-comment">//     这里一定要有空格，不然成了右移运算符↓</span><br>priority_queue&lt;<span class="hljs-keyword">int</span>, vector&lt;<span class="hljs-keyword">int</span>&gt;, greater&lt;<span class="hljs-keyword">int</span>&gt; &gt; c;<br><span class="hljs-comment">//这样就是小顶堆</span><br><span class="hljs-comment">// vector&lt;int&gt; 是承载底层数据结构堆（heap）的容器</span><br><span class="hljs-comment">// less&lt;int&gt; 是对第一个参数的比较类</span><br><span class="hljs-comment">// less&lt;int&gt; 表示数字越大优先级越高</span><br><span class="hljs-comment">// greater&lt;int&gt; 表示数字越小优先级越高</span><br></code></pre></td></tr></table></figure>
 <p><strong>结构体</strong></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fruit</span> &#123;</span><br>    string name;<br>    <span class="hljs-keyword">int</span> price;<br>    <span class="hljs-comment">// 重载运算符</span><br>    <span class="hljs-comment">// 价格高的优先级高</span><br>    <span class="hljs-comment">// 默认是值越小优先级越高</span><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> fruit &amp;f1,<span class="hljs-keyword">const</span> fruit &amp;f2) &#123;<br>        <span class="hljs-keyword">return</span> f1.price &lt; f2.price;<br>    &#125;<br>&#125;;<br>priority_queue&lt;fruit&gt; q;<br><span class="hljs-comment">// or</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span> &#123;</span><br>    <span class="hljs-comment">// 价格高的优先级高</span><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> fruit &amp;f1, <span class="hljs-keyword">const</span> fruit &amp;f2)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> f1.price &gt; f2.price;<br>    &#125;<br>&#125;;<br>priority_queue&lt;fruit, vector&lt;fruit&gt;, cmp&gt; q;<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210402230553.png" alt="image-20210402230545841"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210402230553.png" alt="image-20210402230545841"></p>
 <p><strong>注意</strong>：使用 <code>top()</code> 函数前，必须使用 <code>empty()</code> 判断优先级队列是否为空</p>
 <h2 id="七、stack">七、stack</h2>
 <p>栈，<strong>后进先出</strong></p>
@@ -274,12 +274,12 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-comment">// 或者是</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure>
 <h2 id="scanf">scanf</h2>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量地址);<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182136.png" alt="image-20210321182129026"></p>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182359.png" alt="image-20210321182359421"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182136.png" alt="image-20210321182129026"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182359.png" alt="image-20210321182359421"></p>
 <h2 id="printf">printf</h2>
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量名称);<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182608.png" alt="image-20210321182608018"></p>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321182624.png" alt="image-20210321182624557"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182608.png" alt="image-20210321182608018"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182624.png" alt="image-20210321182624557"></p>
 <ol>
 <li>
 <p><strong>%md</strong></p>
@@ -340,123 +340,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python math库常用函数</title>
-    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1>Python-math库 常用函数</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
-<h2 id="常量">常量</h2>
-<ol>
-<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
-<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
-<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
-<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
-<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
-</ol>
-<h2 id="数论与表示函数">数论与表示函数</h2>
-<ol>
-<li><code>ceil(x)</code>：上取整</li>
-<li><code>floor(x)</code>：下取整</li>
-<li><code>factorial(x)</code>：阶乘</li>
-<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>gcd(a, b)</code>：最大公约数</li>
-<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
-<li><code>fabs(x)</code>：绝对值</li>
-<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
-<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
-<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
-<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
-<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
-</ol>
-<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
-<ol>
-<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
-<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
-<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
-<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
-<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
-<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-</ol>
-<h2 id="三角函数">三角函数</h2>
-<ol>
-<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
-<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
-<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
-<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
-<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
-<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
-<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
-<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
-<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
-</ol>
-<h2 id="角度转换">角度转换</h2>
-<ol>
-<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
-<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python之禅</title>
-    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
-    <content><![CDATA[<p>begin :</p>
-<h1>Python之禅</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
-<ol>
-<li>
-<p>优美胜于丑陋（以优美为目标）</p>
-</li>
-<li>
-<p>明了胜于晦涩</p>
-</li>
-<li>
-<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
-</li>
-<li>
-<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
-</li>
-<li>
-<p>扁平胜于嵌套（不要有太多嵌套）</p>
-</li>
-<li>
-<p>间隔胜于紧凑（不要写的太挤）</p>
-</li>
-<li>
-<p>可读性很重要</p>
-</li>
-<li>
-<p>这些规则不可违背</p>
-</li>
-<li>
-<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
-</li>
-<li>
-<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
-</li>
-<li>
-<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
-</li>
-<li>
-<p>命名空间大法好，同志们要多多搞。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown基本语法</title>
     <url>/2020/03/06/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1>Markdown 基础</h1>
@@ -475,7 +358,7 @@
 <p>使用 <strong>#</strong> 号可表示标题，一级标题对应一个 <strong>#</strong> 号，二级标题对应两个 <strong>#</strong> 号，以此类推。</p>
 <figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 一级标题</span><br><span class="hljs-section">## 二级标题</span><br><span class="hljs-section">### 三级标题</span><br><span class="hljs-section">#### 四级标题</span><br></code></pre></td></tr></table></figure>
 <p><em>效果如下：</em></p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/Roaming/Typora/typora-user-images/image-20210127173350005.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/Roaming/Typora/typora-user-images/image-20210127173350005.png" style="zoom:50%;" />
 <p>在编辑器Typora里可以使用**Ctrl+[0-6]**来快速设置格式，<strong>Ctrl+0</strong>是设置成段落，1到6是设置成各级标题。</p>
 <h3 id="2-2-段落样式">2.2 段落样式</h3>
 <h4 id="2-2-1-字体">2.2.1 字体</h4>
@@ -566,13 +449,13 @@
 <p><a href="http://www.baidu.com">百度</a></p>
 <h4 id="2-3-5-图片">2.3.5 图片</h4>
 <p>(1) Markdown方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">![alt 属性文本](图片地址 &quot;可选标题&quot;)<br>这种方式无法指定图片的高度与宽度<br>如：<br>![alt 刻晴](https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png &quot;刻晴&quot;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">![alt 属性文本](图片地址 &quot;可选标题&quot;)<br>这种方式无法指定图片的高度与宽度<br>如：<br>![alt 刻晴](https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/AppData/Roaming/picgo/20210127182153.png &quot;刻晴&quot;)<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom:50%;" />
 <p>(2) HTML方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;img src=&quot;https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png&quot; alt=&quot;alt 刻晴&quot; title=&quot;刻晴&quot; style=&quot;zoom: 25%;&quot; /&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;img src=&quot;https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/AppData/Roaming/picgo/20210127182153.png&quot; alt=&quot;alt 刻晴&quot; title=&quot;刻晴&quot; style=&quot;zoom: 25%;&quot; /&gt;<br></code></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom: 25%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/AppData/Roaming/picgo/20210127182153.png" alt="alt 刻晴" title="刻晴" style="zoom: 25%;" />
 <h4 id="2-3-6-表格">2.3.6 表格</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。<br>如：<br>|  ID   | Password  |<br>|  ----  | ----  |<br>| a  | 123 |<br>| b  | 456 |<br></code></pre></td></tr></table></figure>
 <p>效果如下（默认左对齐）：</p>
@@ -708,55 +591,120 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>bit与Byte</title>
-    <url>/2020/11/03/bit%E4%B8%8EByte/</url>
-    <content><![CDATA[<h1>计算机网络—bit与Byte</h1>
-<h2 id="bit">bit</h2>
-<p>  <strong>速率</strong>是衡量计算机网络性能的一个重要指标。速率指的是数据的传送速率，也称为<strong>数据率</strong>或<strong>比特率</strong>。</p>
-<p>速率的单位是<strong>bit/s</strong>(比特每秒)(或者b/s，有时也写为bps，即bit per second)。当数据率较高时，常常在bit/s前面加上一个字母。比如 :</p>
-<ul>
-<li>
-<p><img src="https://math.now.sh?inline=k%28kilo%29%20%3D%2010%5E%7B3%7D%20%3D%20%E5%8D%83" style="display:inline-block;margin: 0;"/></p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=M%28Mega%29%20%3D%2010%5E%7B6%7D%20%3D%20%E5%85%86" style="display:inline-block;margin: 0;"/></p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=G%28Giga%29%20%3D%2010%5E%7B9%7D%20%3D%20%E5%90%89" style="display:inline-block;margin: 0;"/> (我宿舍光猫上就是吉比特光猫)</p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=T%28Tera%29%20%3D%2010%5E%7B12%7D%20%3D%20%E5%A4%AA" style="display:inline-block;margin: 0;"/></p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=P%28Peta%29%20%3D%2010%5E%7B15%7D%20%3D%20%E6%8B%8D" style="display:inline-block;margin: 0;"/></p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=E%28Exa%29%20%3D%2010%5E%7B18%7D%20%3D%20%E8%89%BE" style="display:inline-block;margin: 0;"/></p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=Z%28Zetta%29%20%3D%2010%5E%7B21%7D%20%3D%20%E6%B3%BD" style="display:inline-block;margin: 0;"/></p>
-</li>
-<li>
-<p><img src="https://math.now.sh?inline=Y%28Yotta%29%20%3D%2010%5E%7B24%7D%20%3D%20%E5%B0%A7" style="display:inline-block;margin: 0;"/></p>
-</li>
-</ul>
-<p>现在人们谈到网络速率时，经常省略了速率单位中的<strong>bit/s</strong>，直接叫<strong>100M</strong>之类的，这就容易与字节<strong>Byte</strong>产生混淆。</p>
-<h2 id="Byte">Byte</h2>
-<p><strong>字节</strong>(Byte)，通常用作<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>信息计量单位，是通信和数据存储的概念。</p>
-<center>1 byte  =  8 bit</center>
-<p>字节(Byte)可缩写成B，例如MB表示<a href="https://zh.wikipedia.org/wiki/%E7%99%BE%E4%B8%87%E5%AD%97%E8%8A%82">Megabyte</a>；<a href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83">比特</a>（Bit）可缩写成b，例如Mb表示<a href="https://zh.wikipedia.org/w/index.php?title=Megabit&amp;action=edit&amp;redlink=1">Megabit</a>。</p>
-<ul>
-<li><img src="https://math.now.sh?inline=1MB%20%3D%202%5E%7B20%7DByte%20%3D%208%2C388%2C608bit" style="display:inline-block;margin: 0;"/></li>
-<li><img src="https://math.now.sh?inline=1Mb%20%3D%2010%5E%7B6%7Dbit" style="display:inline-block;margin: 0;"/></li>
-</ul>
-<p>在日常生活中，安装100M的宽带，100M指的是100Mbit/s，而我们手机上通常最高只能达到约 11.9MByte/s​ 的下载速度，四舍五入也就是12MByte/s。我们手机上显示的下载速度也是使用<strong>MB</strong>作为单位的。所以，不是运营商虚假描述，限制了带宽。是人们容易把这两个单位弄混。</p>
+    <title>Python math库常用函数</title>
+    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>Python-math库 常用函数</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
+<h2 id="常量">常量</h2>
+<ol>
+<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
+<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
+<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
+<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
+<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
+</ol>
+<h2 id="数论与表示函数">数论与表示函数</h2>
+<ol>
+<li><code>ceil(x)</code>：上取整</li>
+<li><code>floor(x)</code>：下取整</li>
+<li><code>factorial(x)</code>：阶乘</li>
+<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>gcd(a, b)</code>：最大公约数</li>
+<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
+<li><code>fabs(x)</code>：绝对值</li>
+<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
+<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
+<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
+<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
+<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
+</ol>
+<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
+<ol>
+<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
+<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
+<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
+<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
+<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
+<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+</ol>
+<h2 id="三角函数">三角函数</h2>
+<ol>
+<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
+<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
+<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
+<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
+<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
+<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
+<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
+<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
+<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
+</ol>
+<h2 id="角度转换">角度转换</h2>
+<ol>
+<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
+<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
+</ol>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>bit</tag>
-        <tag>Byte</tag>
+        <tag>math</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python之禅</title>
+    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
+    <content><![CDATA[<p>begin :</p>
+<h1>Python之禅</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>优美胜于丑陋（以优美为目标）</p>
+</li>
+<li>
+<p>明了胜于晦涩</p>
+</li>
+<li>
+<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
+</li>
+<li>
+<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
+</li>
+<li>
+<p>扁平胜于嵌套（不要有太多嵌套）</p>
+</li>
+<li>
+<p>间隔胜于紧凑（不要写的太挤）</p>
+</li>
+<li>
+<p>可读性很重要</p>
+</li>
+<li>
+<p>这些规则不可违背</p>
+</li>
+<li>
+<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
+</li>
+<li>
+<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
+</li>
+<li>
+<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
+</li>
+<li>
+<p>命名空间大法好，同志们要多多搞。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -840,7 +788,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2021/11/06/hello-world/</url>
+    <url>/2021/11/08/hello-world/</url>
     <content><![CDATA[<h1>Hello World</h1>
 <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start">Quick Start</h2>
@@ -866,18 +814,55 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2021/11/06/test/</url>
-    <content><![CDATA[<h1></h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
-<p>das1</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+    <title>bit与Byte</title>
+    <url>/2020/11/03/bit%E4%B8%8EByte/</url>
+    <content><![CDATA[<h1>计算机网络—bit与Byte</h1>
+<h2 id="bit">bit</h2>
+<p>  <strong>速率</strong>是衡量计算机网络性能的一个重要指标。速率指的是数据的传送速率，也称为<strong>数据率</strong>或<strong>比特率</strong>。</p>
+<p>速率的单位是<strong>bit/s</strong>(比特每秒)(或者b/s，有时也写为bps，即bit per second)。当数据率较高时，常常在bit/s前面加上一个字母。比如 :</p>
+<ul>
+<li>
+<p><img src="https://math.now.sh?inline=k%28kilo%29%20%3D%2010%5E%7B3%7D%20%3D%20%E5%8D%83" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=M%28Mega%29%20%3D%2010%5E%7B6%7D%20%3D%20%E5%85%86" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=G%28Giga%29%20%3D%2010%5E%7B9%7D%20%3D%20%E5%90%89" style="display:inline-block;margin: 0;"/> (我宿舍光猫上就是吉比特光猫)</p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=T%28Tera%29%20%3D%2010%5E%7B12%7D%20%3D%20%E5%A4%AA" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=P%28Peta%29%20%3D%2010%5E%7B15%7D%20%3D%20%E6%8B%8D" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=E%28Exa%29%20%3D%2010%5E%7B18%7D%20%3D%20%E8%89%BE" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=Z%28Zetta%29%20%3D%2010%5E%7B21%7D%20%3D%20%E6%B3%BD" style="display:inline-block;margin: 0;"/></p>
+</li>
+<li>
+<p><img src="https://math.now.sh?inline=Y%28Yotta%29%20%3D%2010%5E%7B24%7D%20%3D%20%E5%B0%A7" style="display:inline-block;margin: 0;"/></p>
+</li>
+</ul>
+<p>现在人们谈到网络速率时，经常省略了速率单位中的<strong>bit/s</strong>，直接叫<strong>100M</strong>之类的，这就容易与字节<strong>Byte</strong>产生混淆。</p>
+<h2 id="Byte">Byte</h2>
+<p><strong>字节</strong>(Byte)，通常用作<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>信息计量单位，是通信和数据存储的概念。</p>
+<center>1 byte  =  8 bit</center>
+<p>字节(Byte)可缩写成B，例如MB表示<a href="https://zh.wikipedia.org/wiki/%E7%99%BE%E4%B8%87%E5%AD%97%E8%8A%82">Megabyte</a>；<a href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83">比特</a>（Bit）可缩写成b，例如Mb表示<a href="https://zh.wikipedia.org/w/index.php?title=Megabit&amp;action=edit&amp;redlink=1">Megabit</a>。</p>
+<ul>
+<li><img src="https://math.now.sh?inline=1MB%20%3D%202%5E%7B20%7DByte%20%3D%208%2C388%2C608bit" style="display:inline-block;margin: 0;"/></li>
+<li><img src="https://math.now.sh?inline=1Mb%20%3D%2010%5E%7B6%7Dbit" style="display:inline-block;margin: 0;"/></li>
+</ul>
+<p>在日常生活中，安装100M的宽带，100M指的是100Mbit/s，而我们手机上通常最高只能达到约 11.9MByte/s​ 的下载速度，四舍五入也就是12MByte/s。我们手机上显示的下载速度也是使用<strong>MB</strong>作为单位的。所以，不是运营商虚假描述，限制了带宽。是人们容易把这两个单位弄混。</p>
+]]></content>
       <categories>
-        <category>cate1</category>
-        <category>cate2</category>
+        <category>计算机网络</category>
       </categories>
       <tags>
-        <tag>Default</tag>
+        <tag>bit</tag>
+        <tag>Byte</tag>
       </tags>
   </entry>
   <entry>
@@ -893,57 +878,18 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>找回.py文件右键的Edit with IDLE选项</title>
-    <url>/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/</url>
-    <content><![CDATA[<h1>找回.py文件右键的Edit with IDLE选项</h1>
-<p>  通常我们安装Python之后会在**.py<strong>文件的右键菜单中找到</strong>Edit with IDLE<strong>这个选项。今天突然发现右键的</strong>Edit with IDLE<strong>先是点击之后不能打开</strong>.py**文件了，后来干脆就直接没了。虽然平时用的比较少，但是这个IDLE还是很方便的，必须给弄回来。</p>
-<p>  在一通搜索和尝试之后，只发现了修改注册表的方法有用，但是显得有些麻烦，后来发现可以编写一个**.reg**文件来完成这件事情。</p>
-<p>  将下面内容保存到一个**.reg**文件中，注意修改最后一行中Python的安装路径。（注意：注册表中的路径用的是\\来表示\，别写错了）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
-<p>  注释版：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br># 在“HKEY_CLASSES_ROOT\SystemFileAssociations”项下创建了一个名为“.py”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br># 在“.py”项下创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br># 在“shell”项下创建了一个名为“editwithidle”的项。<br># 在“editwithidle”项中创建了：一个名为&quot;MUIVerb&quot;的字符串值，值为&quot;&amp;Edit with IDLE&quot;；一个名为&quot;Subcommands&quot;的空字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br># 在“editwithidle”项中创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br># 在“shell”项下创建一个名为“edit37”的项<br># 在“edit37”项下创建一个名为&quot;MUIVerb&quot;，值为&quot;Edit with IDLE 3.7&quot; 的字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br># 在“edit37”项创建一个名为“command”的项<br># 将“command”项中的默认值修改为“python安装路径\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
-<p>其中<strong>MUIVerb</strong>的值是用来控制显示内容的，可以按照自己的想法去改。</p>
-]]></content>
+    <title>test</title>
+    <url>/2021/11/06/test/</url>
+    <content><![CDATA[<h1></h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>das1</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Python</category>
+        <category>cate1</category>
+        <category>cate2</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>对象相等的判断，== 和 equal</title>
-    <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
-    <content><![CDATA[<h1>值相等与对象相同</h1>
-<h2 id="Python">Python</h2>
-<p>在<em><strong>python</strong></em>中，我们使用 <strong>==</strong> 来进行判断两个对象的值是否相等，使用<strong>is</strong>来判断两个对象是否是同一个对象。is 是种很特殊的语法，在其它的语言一般不会见到这样的用法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># int型比较</span><br>a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(a == b)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> b)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># str型比较</span><br>str1 = <span class="hljs-string">&#x27;abc&#x27;</span><br>str2 = <span class="hljs-string">&#x27;abc&#x27;</span><br><br><span class="hljs-built_in">print</span>(str1 == str2)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(str1 <span class="hljs-keyword">is</span> str2)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自定类型比较</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">my_obj</span>:</span><br>4atr1 = <span class="hljs-number">0</span><br>4atr2 = <span class="hljs-number">1</span><br>4<br>obj1 = my_obj()<br>obj2 = my_obj()<br> <br><span class="hljs-built_in">print</span>(obj1 == obj2)<br><span class="hljs-comment"># 结果为False</span><br><span class="hljs-built_in">print</span>(obj1 <span class="hljs-keyword">is</span> obj2)<br><span class="hljs-comment"># 结果为False</span><br></code></pre></td></tr></table></figure>
-<h2 id="Java">Java</h2>
-<p>在<em><strong>java</strong></em>中，我们使用 <strong>==</strong> 来判断两个对象是否是同一个对象，而使用<strong>equals</strong>方法来判断两个对象的值是否相等。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;:&quot;</span> + (a == b));<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(a));<br>        System.out.println(<span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(b));<br><br>        String str1 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        String str2 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        <span class="hljs-comment">// str1 和 str2 在常量池中，只有一份，是同一个对象</span><br>        String str3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;csdn&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str3));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str3));<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 输出结果如下：</span><br><span class="hljs-comment">// a = b:true</span><br><span class="hljs-comment">// a的地址：664223387</span><br><span class="hljs-comment">// b的地址：664223387</span><br><span class="hljs-comment">// str1和str2是同一个对象：true</span><br><span class="hljs-comment">// str1 = str2:true</span><br><span class="hljs-comment">// str1和str3是同一个对象：false</span><br><span class="hljs-comment">// str1 = str3:true</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我们是冠军！</title>
-    <url>/2021/11/07/%E6%88%91%E4%BB%AC%E6%98%AF%E5%86%A0%E5%86%9B/</url>
-    <content><![CDATA[<h1>我们又是冠军</h1>
-]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
-      <tags>
-        <tag>日常</tag>
-        <tag>游戏</tag>
+        <tag>Default</tag>
       </tags>
   </entry>
   <entry>
@@ -1003,6 +949,84 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>对象相等的判断，== 和 equal</title>
+    <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
+    <content><![CDATA[<h1>值相等与对象相同</h1>
+<h2 id="Python">Python</h2>
+<p>在<em><strong>python</strong></em>中，我们使用 <strong>==</strong> 来进行判断两个对象的值是否相等，使用<strong>is</strong>来判断两个对象是否是同一个对象。is 是种很特殊的语法，在其它的语言一般不会见到这样的用法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># int型比较</span><br>a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(a == b)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> b)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># str型比较</span><br>str1 = <span class="hljs-string">&#x27;abc&#x27;</span><br>str2 = <span class="hljs-string">&#x27;abc&#x27;</span><br><br><span class="hljs-built_in">print</span>(str1 == str2)<br><span class="hljs-comment"># 结果为True</span><br><span class="hljs-built_in">print</span>(str1 <span class="hljs-keyword">is</span> str2)<br><span class="hljs-comment"># 结果为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 自定类型比较</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">my_obj</span>:</span><br>4atr1 = <span class="hljs-number">0</span><br>4atr2 = <span class="hljs-number">1</span><br>4<br>obj1 = my_obj()<br>obj2 = my_obj()<br> <br><span class="hljs-built_in">print</span>(obj1 == obj2)<br><span class="hljs-comment"># 结果为False</span><br><span class="hljs-built_in">print</span>(obj1 <span class="hljs-keyword">is</span> obj2)<br><span class="hljs-comment"># 结果为False</span><br></code></pre></td></tr></table></figure>
+<h2 id="Java">Java</h2>
+<p>在<em><strong>java</strong></em>中，我们使用 <strong>==</strong> 来判断两个对象是否是同一个对象，而使用<strong>equals</strong>方法来判断两个对象的值是否相等。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;:&quot;</span> + (a == b));<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(a));<br>        System.out.println(<span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(b));<br><br>        String str1 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        String str2 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        <span class="hljs-comment">// str1 和 str2 在常量池中，只有一份，是同一个对象</span><br>        String str3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;csdn&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str3));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str3));<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 输出结果如下：</span><br><span class="hljs-comment">// a = b:true</span><br><span class="hljs-comment">// a的地址：664223387</span><br><span class="hljs-comment">// b的地址：664223387</span><br><span class="hljs-comment">// str1和str2是同一个对象：true</span><br><span class="hljs-comment">// str1 = str2:true</span><br><span class="hljs-comment">// str1和str3是同一个对象：false</span><br><span class="hljs-comment">// str1 = str3:true</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我们是冠军！</title>
+    <url>/2021/11/07/%E6%88%91%E4%BB%AC%E6%98%AF%E5%86%A0%E5%86%9B/</url>
+    <content><![CDATA[<h1>我们又是冠军</h1>
+]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+      <tags>
+        <tag>日常</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>找回.py文件右键的Edit with IDLE选项</title>
+    <url>/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/</url>
+    <content><![CDATA[<h1>找回.py文件右键的Edit with IDLE选项</h1>
+<p>  通常我们安装Python之后会在**.py<strong>文件的右键菜单中找到</strong>Edit with IDLE<strong>这个选项。今天突然发现右键的</strong>Edit with IDLE<strong>先是点击之后不能打开</strong>.py**文件了，后来干脆就直接没了。虽然平时用的比较少，但是这个IDLE还是很方便的，必须给弄回来。</p>
+<p>  在一通搜索和尝试之后，只发现了修改注册表的方法有用，但是显得有些麻烦，后来发现可以编写一个**.reg**文件来完成这件事情。</p>
+<p>  将下面内容保存到一个**.reg**文件中，注意修改最后一行中Python的安装路径。（注意：注册表中的路径用的是\\来表示\，别写错了）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
+<p>  注释版：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br># 在“HKEY_CLASSES_ROOT\SystemFileAssociations”项下创建了一个名为“.py”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br># 在“.py”项下创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br># 在“shell”项下创建了一个名为“editwithidle”的项。<br># 在“editwithidle”项中创建了：一个名为&quot;MUIVerb&quot;的字符串值，值为&quot;&amp;Edit with IDLE&quot;；一个名为&quot;Subcommands&quot;的空字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br># 在“editwithidle”项中创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br># 在“shell”项下创建一个名为“edit37”的项<br># 在“edit37”项下创建一个名为&quot;MUIVerb&quot;，值为&quot;Edit with IDLE 3.7&quot; 的字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br># 在“edit37”项创建一个名为“command”的项<br># 将“command”项中的默认值修改为“python安装路径\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
+<p>其中<strong>MUIVerb</strong>的值是用来控制显示内容的，可以按照自己的想法去改。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 Maven 在 IDEA 总是自动使用 1.5 版本</title>
+    <url>/2021/01/06/%E8%A7%A3%E5%86%B3-Maven-%E5%9C%A8-IDEA-%E6%80%BB%E6%98%AF%E8%87%AA%E5%8A%A8%E4%BD%BF%E7%94%A8-1-5-%E7%89%88%E6%9C%AC/</url>
+    <content><![CDATA[<h1>解决IDEA maven 老是自动使用JDK1.5的问题</h1>
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011611542.png" alt="image-20211001161153403" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011613048.png" alt="image-20211001161332973" style="zoom: 50%;" />
+<p>如上图，一使用Maven这些module就自动使用 JDK1.5，</p>
+<p>项目结构里 Language Level 也都自动变成了 5。很烦，一运行就会出现以下 Messages：</p>
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011615495.png" alt="image-20211001161512457" style="zoom: 67%;" />
+<p>被这个东西烦到不行，于是乎进行了各种尝试，最终解决了问题。</p>
+<p>我们对 Maven 的配置文件进行更改就可以了。</p>
+<p>我们找到 Maven 的用户配置文件（就是下图标出的路径下的文件）并打开。</p>
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011617970.png" alt="image-20211001161717900" style="zoom: 50%;" />
+<p>然后在 <code>&lt;settings&gt; &lt;/settings&gt;</code> 标签内添加如下内容，即可将对应版本都更改为 JDK1.8：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决 pip 更新失败的问题</title>
     <url>/2020/12/26/%E8%A7%A3%E5%86%B3-pip-%E6%9B%B4%E6%96%B0%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h1>pip更新失败找不到</h1>
@@ -1030,30 +1054,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>Python</tag>
         <tag>pip</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 Maven 在 IDEA 总是自动使用 1.5 版本</title>
-    <url>/2021/01/06/%E8%A7%A3%E5%86%B3-Maven-%E5%9C%A8-IDEA-%E6%80%BB%E6%98%AF%E8%87%AA%E5%8A%A8%E4%BD%BF%E7%94%A8-1-5-%E7%89%88%E6%9C%AC/</url>
-    <content><![CDATA[<h1>解决IDEA maven 老是自动使用JDK1.5的问题</h1>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011611542.png" alt="image-20211001161153403" style="zoom:50%;" />
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011613048.png" alt="image-20211001161332973" style="zoom: 50%;" />
-<p>如上图，一使用Maven这些module就自动使用 JDK1.5，</p>
-<p>项目结构里 Language Level 也都自动变成了 5。很烦，一运行就会出现以下 Messages：</p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011615495.png" alt="image-20211001161512457" style="zoom: 67%;" />
-<p>被这个东西烦到不行，于是乎进行了各种尝试，最终解决了问题。</p>
-<p>我们对 Maven 的配置文件进行更改就可以了。</p>
-<p>我们找到 Maven 的用户配置文件（就是下图标出的路径下的文件）并打开。</p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011617970.png" alt="image-20211001161717900" style="zoom: 50%;" />
-<p>然后在 <code>&lt;settings&gt; &lt;/settings&gt;</code> 标签内添加如下内容，即可将对应版本都更改为 JDK1.8：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Maven</tag>
       </tags>
   </entry>
 </search>

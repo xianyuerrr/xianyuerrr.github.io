@@ -136,15 +136,15 @@
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
         <h1>解决IDEA maven 老是自动使用JDK1.5的问题</h1>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011611542.png" alt="image-20211001161153403" style="zoom:50%;" />
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011613048.png" alt="image-20211001161332973" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011611542.png" alt="image-20211001161153403" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011613048.png" alt="image-20211001161332973" style="zoom: 50%;" />
 <p>如上图，一使用Maven这些module就自动使用 JDK1.5，</p>
 <p>项目结构里 Language Level 也都自动变成了 5。很烦，一运行就会出现以下 Messages：</p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011615495.png" alt="image-20211001161512457" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011615495.png" alt="image-20211001161512457" style="zoom: 67%;" />
 <p>被这个东西烦到不行，于是乎进行了各种尝试，最终解决了问题。</p>
 <p>我们对 Maven 的配置文件进行更改就可以了。</p>
 <p>我们找到 Maven 的用户配置文件（就是下图标出的路径下的文件）并打开。</p>
-<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110011617970.png" alt="image-20211001161717900" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/202110011617970.png" alt="image-20211001161717900" style="zoom: 50%;" />
 <p>然后在 <code>&lt;settings&gt; &lt;/settings&gt;</code> 标签内添加如下内容，即可将对应版本都更改为 JDK1.8：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -304,26 +304,26 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/Python/">
-            Python (8)
-          </a>
-        </li>
-      
-        <li class="categorys-list-item">
           <a href="/categories/Markdown/">
             Markdown (1)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-            计算机网络 (1)
+          <a href="/categories/Python/">
+            Python (8)
           </a>
         </li>
       
         <li class="categorys-list-item">
           <a href="/categories/cate1/">
             cate1 (2)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+            计算机网络 (1)
           </a>
         </li>
       
