@@ -317,29 +317,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java的线程创建</title>
-    <url>/2020/10/31/Java%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/</url>
-    <content><![CDATA[<h1>Java 的线程创建</h1>
-<h2 id="1-线程创建">1. 线程创建</h2>
-<p><strong>方法一：</strong> 实现<strong>Runnable</strong>接口</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            线程运行了16</span><br><span class="hljs-comment">//    线程运行了17</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程7</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
-<h2 id="方法二：-继承-Thread-类">方法二： 继承 Thread 类</h2>
-<p>Thread类实现了Runnable接口</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:35</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>&#123;<br>    <span class="hljs-comment">//    继承Thread类</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.run();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            我在学习多线程3</span><br><span class="hljs-comment">//    线程运行了12</span><br><span class="hljs-comment">//            我在学习多线程4</span><br><span class="hljs-comment">//    线程运行了13</span><br><span class="hljs-comment">//            我在学习多线程5</span><br><span class="hljs-comment">//    线程运行了14</span><br><span class="hljs-comment">//            我在学习多线程6</span><br><span class="hljs-comment">//    线程运行了15</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程9</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//进程已结束，退出代码 0</span><br><br><br></code></pre></td></tr></table></figure>
-<h2 id="方法三：实现-Callable-接口">方法三：实现 Callable 接口</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-keyword">import</span> java.util.concurrent.Callable;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span> </span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            线程运行了10</span><br><span class="hljs-comment">//    我在学习多线程1</span><br><span class="hljs-comment">//            线程运行了11</span><br><span class="hljs-comment">//    我在学习多线程2</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    线程运行了18</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
-<p>不论以什么方式实现多线程，都要重写**Run()**方法，编写线程所执行的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">*斜体文本*<br>_斜体文本_<br>**粗体文本**<br>__粗体文本__<br>***粗斜体文本***<br>___粗斜体文本___<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown基本语法</title>
     <url>/2020/03/06/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1>Markdown 基础</h1>
@@ -591,6 +568,29 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>Java的线程创建</title>
+    <url>/2020/10/31/Java%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/</url>
+    <content><![CDATA[<h1>Java 的线程创建</h1>
+<h2 id="1-线程创建">1. 线程创建</h2>
+<p><strong>方法一：</strong> 实现<strong>Runnable</strong>接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            线程运行了16</span><br><span class="hljs-comment">//    线程运行了17</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程7</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
+<h2 id="方法二：-继承-Thread-类">方法二： 继承 Thread 类</h2>
+<p>Thread类实现了Runnable接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:35</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>&#123;<br>    <span class="hljs-comment">//    继承Thread类</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.run();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;线程运行了&quot;</span>+ (i+<span class="hljs-number">10</span>));<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            我在学习多线程1</span><br><span class="hljs-comment">//    线程运行了10</span><br><span class="hljs-comment">//            我在学习多线程2</span><br><span class="hljs-comment">//    线程运行了11</span><br><span class="hljs-comment">//            我在学习多线程3</span><br><span class="hljs-comment">//    线程运行了12</span><br><span class="hljs-comment">//            我在学习多线程4</span><br><span class="hljs-comment">//    线程运行了13</span><br><span class="hljs-comment">//            我在学习多线程5</span><br><span class="hljs-comment">//    线程运行了14</span><br><span class="hljs-comment">//            我在学习多线程6</span><br><span class="hljs-comment">//    线程运行了15</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            线程运行了18</span><br><span class="hljs-comment">//    我在学习多线程9</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//进程已结束，退出代码 0</span><br><br><br></code></pre></td></tr></table></figure>
+<h2 id="方法三：实现-Callable-接口">方法三：实现 Callable 接口</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-keyword">import</span> java.util.concurrent.Callable;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> xianyue</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2020/10/30 - 星期五 - 23:43</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span> </span>&#123;<br><span class="hljs-comment">//    实现**Runnable**接口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Demo01 th1 = <span class="hljs-keyword">new</span> Demo01();<br>        th1.start();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;我在学习多线程&quot;</span>+i);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//    运行结果如下：</span><br><span class="hljs-comment">//    我在学习多线程0</span><br><span class="hljs-comment">//            线程运行了10</span><br><span class="hljs-comment">//    我在学习多线程1</span><br><span class="hljs-comment">//            线程运行了11</span><br><span class="hljs-comment">//    我在学习多线程2</span><br><span class="hljs-comment">//            线程运行了12</span><br><span class="hljs-comment">//    我在学习多线程3</span><br><span class="hljs-comment">//            线程运行了13</span><br><span class="hljs-comment">//    我在学习多线程4</span><br><span class="hljs-comment">//            线程运行了14</span><br><span class="hljs-comment">//    我在学习多线程5</span><br><span class="hljs-comment">//            线程运行了15</span><br><span class="hljs-comment">//    线程运行了16</span><br><span class="hljs-comment">//            线程运行了17</span><br><span class="hljs-comment">//    线程运行了18</span><br><span class="hljs-comment">//            线程运行了19</span><br><span class="hljs-comment">//    我在学习多线程6</span><br><span class="hljs-comment">//            我在学习多线程7</span><br><span class="hljs-comment">//    我在学习多线程8</span><br><span class="hljs-comment">//            我在学习多线程9</span><br></code></pre></td></tr></table></figure>
+<p>不论以什么方式实现多线程，都要重写**Run()**方法，编写线程所执行的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">*斜体文本*<br>_斜体文本_<br>**粗体文本**<br>__粗体文本__<br>***粗斜体文本***<br>___粗斜体文本___<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python math库常用函数</title>
     <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1>Python-math库 常用函数</h1>
@@ -652,58 +652,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>math</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python之禅</title>
-    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
-    <content><![CDATA[<p>begin :</p>
-<h1>Python之禅</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
-<ol>
-<li>
-<p>优美胜于丑陋（以优美为目标）</p>
-</li>
-<li>
-<p>明了胜于晦涩</p>
-</li>
-<li>
-<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
-</li>
-<li>
-<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
-</li>
-<li>
-<p>扁平胜于嵌套（不要有太多嵌套）</p>
-</li>
-<li>
-<p>间隔胜于紧凑（不要写的太挤）</p>
-</li>
-<li>
-<p>可读性很重要</p>
-</li>
-<li>
-<p>这些规则不可违背</p>
-</li>
-<li>
-<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
-</li>
-<li>
-<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
-</li>
-<li>
-<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
-</li>
-<li>
-<p>命名空间大法好，同志们要多多搞。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -787,33 +735,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/11/08/hello-world/</url>
-    <content><![CDATA[<h1>Hello World</h1>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>cate1</category>
-        <category>cate2</category>
-      </categories>
-      <tags>
-        <tag>Default</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>bit与Byte</title>
     <url>/2020/11/03/bit%E4%B8%8EByte/</url>
     <content><![CDATA[<h1>计算机网络—bit与Byte</h1>
@@ -866,30 +787,55 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>hexo配置latex支持</title>
-    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
+    <title>Python之禅</title>
+    <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
+    <content><![CDATA[<p>begin :</p>
+<h1>Python之禅</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> this<br>The Zen of Python, by Tim Peters<br><br>Beautiful <span class="hljs-keyword">is</span> better than ugly.<br>Explicit <span class="hljs-keyword">is</span> better than implicit.<br>Simple <span class="hljs-keyword">is</span> better than <span class="hljs-built_in">complex</span>.<br>Complex <span class="hljs-keyword">is</span> better than complicated.<br>Flat <span class="hljs-keyword">is</span> better than nested.<br>Sparse <span class="hljs-keyword">is</span> better than dense.<br>Readability counts.<br>Special cases aren<span class="hljs-string">&#x27;t special enough to break the rules.</span><br><span class="hljs-string">Although practicality beats purity.</span><br><span class="hljs-string">Errors should never pass silently.</span><br><span class="hljs-string">Unless explicitly silenced.</span><br><span class="hljs-string">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="hljs-string">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="hljs-string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.<br>Now <span class="hljs-keyword">is</span> better than never.<br>Although never <span class="hljs-keyword">is</span> often better than *right* now.<br>If the implementation <span class="hljs-keyword">is</span> hard to explain, it<span class="hljs-string">&#x27;s a bad idea.</span><br><span class="hljs-string">If the implementation is easy to explain, it may be a good idea.</span><br><span class="hljs-string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!<br></code></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>优美胜于丑陋（以优美为目标）</p>
+</li>
+<li>
+<p>明了胜于晦涩</p>
+</li>
+<li>
+<p>简洁胜于复杂（尽量不要有复杂的内部实现）</p>
+</li>
+<li>
+<p>复杂胜于凌乱（就算复杂是不可避免的，也要保证代码之间没有难懂的关系）</p>
+</li>
+<li>
+<p>扁平胜于嵌套（不要有太多嵌套）</p>
+</li>
+<li>
+<p>间隔胜于紧凑（不要写的太挤）</p>
+</li>
+<li>
+<p>可读性很重要</p>
+</li>
+<li>
+<p>这些规则不可违背</p>
+</li>
+<li>
+<p>不要无故忽视异常（不写 expect: pass 风格的代码，除非你确定要这样）</p>
+</li>
+<li>
+<p>做之前要先思考，立刻着手好过永远不做。然而，永远不做也好过闷头蛮干</p>
+</li>
+<li>
+<p>方案思路要清晰，倘若你的实现很难解释，它<strong>一定不是</strong>个好主意。倘若你的实现一目了然，它<strong>可能是</strong>个好主意。</p>
+</li>
+<li>
+<p>命名空间大法好，同志们要多多搞。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>hexo配置</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2021/11/06/test/</url>
-    <content><![CDATA[<h1></h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
-<p>das1</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>cate1</category>
-        <category>cate2</category>
-      </categories>
-      <tags>
-        <tag>Default</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -949,6 +895,45 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/11/08/hello-world/</url>
+    <content><![CDATA[<h1>Hello World</h1>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>cate1</category>
+        <category>cate2</category>
+      </categories>
+      <tags>
+        <tag>Default</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo配置latex支持</title>
+    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
+]]></content>
+      <categories>
+        <category>hexo配置</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对象相等的判断，== 和 equal</title>
     <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
     <content><![CDATA[<h1>值相等与对象相同</h1>
@@ -968,6 +953,21 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>Java</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/11/06/test/</url>
+    <content><![CDATA[<h1></h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>das1</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>cate1</category>
+        <category>cate2</category>
+      </categories>
+      <tags>
+        <tag>Default</tag>
       </tags>
   </entry>
   <entry>
