@@ -340,6 +340,71 @@
       </tags>
   </entry>
   <entry>
+    <title>Python math库常用函数</title>
+    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>Python-math库 常用函数</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
+<h2 id="常量">常量</h2>
+<ol>
+<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
+<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
+<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
+<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
+<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
+</ol>
+<h2 id="数论与表示函数">数论与表示函数</h2>
+<ol>
+<li><code>ceil(x)</code>：上取整</li>
+<li><code>floor(x)</code>：下取整</li>
+<li><code>factorial(x)</code>：阶乘</li>
+<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>gcd(a, b)</code>：最大公约数</li>
+<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
+<li><code>fabs(x)</code>：绝对值</li>
+<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
+<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
+<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
+<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
+<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
+</ol>
+<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
+<ol>
+<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
+<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
+<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
+<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
+<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
+<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+</ol>
+<h2 id="三角函数">三角函数</h2>
+<ol>
+<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
+<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
+<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
+<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
+<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
+<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
+<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
+<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
+<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
+</ol>
+<h2 id="角度转换">角度转换</h2>
+<ol>
+<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
+<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown基本语法</title>
     <url>/2020/03/06/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1>Markdown 基础</h1>
@@ -591,6 +656,37 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>biset 二分查找</title>
+    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
+<h2 id="查找">查找</h2>
+<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
+<p>数组名，值，区间 [lo, hi)</p>
+<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
+<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
+<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
+<h2 id="插入">插入</h2>
+<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
+<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python之禅</title>
     <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
     <content><![CDATA[<p>begin :</p>
@@ -640,102 +736,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python math库常用函数</title>
-    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1>Python-math库 常用函数</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
-<h2 id="常量">常量</h2>
-<ol>
-<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
-<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
-<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
-<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
-<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
-</ol>
-<h2 id="数论与表示函数">数论与表示函数</h2>
-<ol>
-<li><code>ceil(x)</code>：上取整</li>
-<li><code>floor(x)</code>：下取整</li>
-<li><code>factorial(x)</code>：阶乘</li>
-<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>gcd(a, b)</code>：最大公约数</li>
-<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
-<li><code>fabs(x)</code>：绝对值</li>
-<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
-<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
-<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
-<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
-<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
-</ol>
-<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
-<ol>
-<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
-<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
-<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
-<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
-<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
-<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-</ol>
-<h2 id="三角函数">三角函数</h2>
-<ol>
-<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
-<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
-<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
-<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
-<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
-<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
-<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
-<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
-<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
-</ol>
-<h2 id="角度转换">角度转换</h2>
-<ol>
-<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
-<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>biset 二分查找</title>
-    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
-<h2 id="查找">查找</h2>
-<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
-<p>数组名，值，区间 [lo, hi)</p>
-<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
-<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
-<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
-<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
-<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
-<h2 id="插入">插入</h2>
-<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
-<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -866,6 +866,18 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>hexo配置latex支持</title>
+    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
+]]></content>
+      <categories>
+        <category>hexo配置</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>test</title>
     <url>/2021/11/06/test/</url>
     <content><![CDATA[<h1></h1>
@@ -878,18 +890,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>Default</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo配置latex支持</title>
-    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
-]]></content>
-      <categories>
-        <category>hexo配置</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -949,6 +949,19 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>我们是冠军！</title>
+    <url>/2021/11/07/%E6%88%91%E4%BB%AC%E6%98%AF%E5%86%A0%E5%86%9B/</url>
+    <content><![CDATA[<h1>我们又是冠军</h1>
+]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+      <tags>
+        <tag>日常</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对象相等的判断，== 和 equal</title>
     <url>/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/</url>
     <content><![CDATA[<h1>值相等与对象相同</h1>
@@ -967,38 +980,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我们是冠军！</title>
-    <url>/2021/11/07/%E6%88%91%E4%BB%AC%E6%98%AF%E5%86%A0%E5%86%9B/</url>
-    <content><![CDATA[<h1>我们又是冠军</h1>
-]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
-      <tags>
-        <tag>日常</tag>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>找回.py文件右键的Edit with IDLE选项</title>
-    <url>/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/</url>
-    <content><![CDATA[<h1>找回.py文件右键的Edit with IDLE选项</h1>
-<p>  通常我们安装Python之后会在**.py<strong>文件的右键菜单中找到</strong>Edit with IDLE<strong>这个选项。今天突然发现右键的</strong>Edit with IDLE<strong>先是点击之后不能打开</strong>.py**文件了，后来干脆就直接没了。虽然平时用的比较少，但是这个IDLE还是很方便的，必须给弄回来。</p>
-<p>  在一通搜索和尝试之后，只发现了修改注册表的方法有用，但是显得有些麻烦，后来发现可以编写一个**.reg**文件来完成这件事情。</p>
-<p>  将下面内容保存到一个**.reg**文件中，注意修改最后一行中Python的安装路径。（注意：注册表中的路径用的是\\来表示\，别写错了）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
-<p>  注释版：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br># 在“HKEY_CLASSES_ROOT\SystemFileAssociations”项下创建了一个名为“.py”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br># 在“.py”项下创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br># 在“shell”项下创建了一个名为“editwithidle”的项。<br># 在“editwithidle”项中创建了：一个名为&quot;MUIVerb&quot;的字符串值，值为&quot;&amp;Edit with IDLE&quot;；一个名为&quot;Subcommands&quot;的空字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br># 在“editwithidle”项中创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br># 在“shell”项下创建一个名为“edit37”的项<br># 在“edit37”项下创建一个名为&quot;MUIVerb&quot;，值为&quot;Edit with IDLE 3.7&quot; 的字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br># 在“edit37”项创建一个名为“command”的项<br># 将“command”项中的默认值修改为“python安装路径\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
-<p>其中<strong>MUIVerb</strong>的值是用来控制显示内容的，可以按照自己的想法去改。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -1024,6 +1005,25 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>Java</tag>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>找回.py文件右键的Edit with IDLE选项</title>
+    <url>/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/</url>
+    <content><![CDATA[<h1>找回.py文件右键的Edit with IDLE选项</h1>
+<p>  通常我们安装Python之后会在**.py<strong>文件的右键菜单中找到</strong>Edit with IDLE<strong>这个选项。今天突然发现右键的</strong>Edit with IDLE<strong>先是点击之后不能打开</strong>.py**文件了，后来干脆就直接没了。虽然平时用的比较少，但是这个IDLE还是很方便的，必须给弄回来。</p>
+<p>  在一通搜索和尝试之后，只发现了修改注册表的方法有用，但是显得有些麻烦，后来发现可以编写一个**.reg**文件来完成这件事情。</p>
+<p>  将下面内容保存到一个**.reg**文件中，注意修改最后一行中Python的安装路径。（注意：注册表中的路径用的是\\来表示\，别写错了）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
+<p>  注释版：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">Windows Registry Editor Version 5.00<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py]<br># 在“HKEY_CLASSES_ROOT\SystemFileAssociations”项下创建了一个名为“.py”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell]<br># 在“.py”项下创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle]<br>&quot;MUIVerb&quot;=&quot;&amp;Edit with IDLE&quot;<br>&quot;Subcommands&quot;=&quot;&quot;<br># 在“shell”项下创建了一个名为“editwithidle”的项。<br># 在“editwithidle”项中创建了：一个名为&quot;MUIVerb&quot;的字符串值，值为&quot;&amp;Edit with IDLE&quot;；一个名为&quot;Subcommands&quot;的空字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell]<br># 在“editwithidle”项中创建了一个名为“shell”的项<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37]<br>&quot;MUIVerb&quot;=&quot;Edit with IDLE 3.7&quot;<br># 在“shell”项下创建一个名为“edit37”的项<br># 在“edit37”项下创建一个名为&quot;MUIVerb&quot;，值为&quot;Edit with IDLE 3.7&quot; 的字符串值<br><br>[HKEY_CLASSES_ROOT\SystemFileAssociations\.py\shell\editwithidle\shell\edit37\command]<br>@=&quot;\&quot;D:\\python\\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br># 在“edit37”项创建一个名为“command”的项<br># 将“command”项中的默认值修改为“python安装路径\pythonw.exe\&quot; -m idlelib \&quot;%L\&quot; %*&quot;<br></code></pre></td></tr></table></figure>
+<p>其中<strong>MUIVerb</strong>的值是用来控制显示内容的，可以按照自己的想法去改。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
