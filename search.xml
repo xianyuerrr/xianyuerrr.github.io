@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++ 四种类型转换</title>
-    <url>/2021/04/09/C-%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<h1>C++四种类型转换</h1>
-<h2 id="static-cast">static_cast</h2>
-<p>是“静态转换”的意思，也就是在<strong>编译期间</strong>转换，转换失败的话会抛出一个编译错误。</p>
-<p>用于良性转换，一般不会导致意外发生，风险很低。</p>
-<p>需要注意的是，static_cast <strong>不能用于无关类型之间的转换</strong>，因为这些转换都是有风险的，例如：</p>
-<ul>
-<li>两个具体类型指针之间的转换，例如<code>int *</code>转<code>double *</code>、<code>Student *</code>转<code>int *</code>等。不同类型的数据存储格式不一样，长度也不一样，用 A 类型的指针指向 B 类型的数据后，会按照 A 类型的方式来处理数据：如果是读取操作，可能会得到一堆没有意义的值；如果是写入操作，可能会使 B 类型的数据遭到破坏，当再次以 B 类型的方式读取数据时会得到一堆没有意义的值。</li>
-<li>int 和指针之间的转换。将一个具体的地址赋值给指针变量是非常危险的，因为该地址上的内存可能没有分配，也可能没有读写权限，恰好是可用内存反而是小概率事件。</li>
-</ul>
-<p>也不能用来去掉表达式的 const 修饰和 volatile 修饰</p>
-<h2 id="const-cast">const_cast</h2>
-<p>用于 const 与非 const、volatile 与非 volatile 之间的转换。换句话说，const_cast 就是用来将 const/volatile 类型转换为非 const/volatile 类型。</p>
-<p>使用 const_cast 进行强制类型转换可以<strong>突破 C/C++ 的常数限制</strong>，修改常数的值，因此有一定的危险性；但是程序员如果这样做的话，基本上会意识到这个问题，因此也还有一定的安全性。</p>
-<h2 id="reinterpret-cast">reinterpret_cast</h2>
-<p>高度危险的转换，这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，但是可以实现最灵活的 C++ 类型转换。</p>
-<p>reinterpret 是“重新解释”的意思，顾名思义，reinterpret_cast 这种转换<strong>仅仅是对二进制位的重新解释</strong>，不会借助已有的转换规则对数据进行调整，非常简单粗暴，所以风险很高。</p>
-<p>reinterpret_cast 可以认为是 <strong>static_cast 的一种补充</strong>，一些 static_cast 不能完成的转换，就可以用 reinterpret_cast 来完成</p>
-<h2 id="dynamic-cast">dynamic_cast</h2>
-<p>dynamic_cast 与 static_cast 是相对的，dynamic_cast 是“动态转换”的意思，static_cast 是“静态转换”的意思。dynamic_cast 会在程序运行期间借助 RTTI 进行类型转换，这就要求基类必须包含虚函数；static_cast 在编译期间完成类型转换，能够更加及时地发现错误。</p>
-<p>dynamic_cast 用于在类的<strong>继承层次</strong>之间进行类型转换，它既允许向上转型（Upcasting），也允许向下转型（Downcasting）。向上转型是无条件的，不会进行任何检测，所以都能成功；向下转型的前提必须是安全的，要借助 RTTI 进行检测，所有只有一部分能成功。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++风格调用</span><br>xxx_cast&lt;new_type&gt;(data);<br><br><span class="hljs-comment">// 老式的C风格</span><br>(new_type)data;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++ math 函数</title>
     <url>/2021/04/08/C-math-%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1>C++常用 math 函数</h1>
@@ -268,6 +236,38 @@
       </tags>
   </entry>
   <entry>
+    <title>C++ 四种类型转换</title>
+    <url>/2021/04/09/C-%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<h1>C++四种类型转换</h1>
+<h2 id="static-cast">static_cast</h2>
+<p>是“静态转换”的意思，也就是在<strong>编译期间</strong>转换，转换失败的话会抛出一个编译错误。</p>
+<p>用于良性转换，一般不会导致意外发生，风险很低。</p>
+<p>需要注意的是，static_cast <strong>不能用于无关类型之间的转换</strong>，因为这些转换都是有风险的，例如：</p>
+<ul>
+<li>两个具体类型指针之间的转换，例如<code>int *</code>转<code>double *</code>、<code>Student *</code>转<code>int *</code>等。不同类型的数据存储格式不一样，长度也不一样，用 A 类型的指针指向 B 类型的数据后，会按照 A 类型的方式来处理数据：如果是读取操作，可能会得到一堆没有意义的值；如果是写入操作，可能会使 B 类型的数据遭到破坏，当再次以 B 类型的方式读取数据时会得到一堆没有意义的值。</li>
+<li>int 和指针之间的转换。将一个具体的地址赋值给指针变量是非常危险的，因为该地址上的内存可能没有分配，也可能没有读写权限，恰好是可用内存反而是小概率事件。</li>
+</ul>
+<p>也不能用来去掉表达式的 const 修饰和 volatile 修饰</p>
+<h2 id="const-cast">const_cast</h2>
+<p>用于 const 与非 const、volatile 与非 volatile 之间的转换。换句话说，const_cast 就是用来将 const/volatile 类型转换为非 const/volatile 类型。</p>
+<p>使用 const_cast 进行强制类型转换可以<strong>突破 C/C++ 的常数限制</strong>，修改常数的值，因此有一定的危险性；但是程序员如果这样做的话，基本上会意识到这个问题，因此也还有一定的安全性。</p>
+<h2 id="reinterpret-cast">reinterpret_cast</h2>
+<p>高度危险的转换，这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，但是可以实现最灵活的 C++ 类型转换。</p>
+<p>reinterpret 是“重新解释”的意思，顾名思义，reinterpret_cast 这种转换<strong>仅仅是对二进制位的重新解释</strong>，不会借助已有的转换规则对数据进行调整，非常简单粗暴，所以风险很高。</p>
+<p>reinterpret_cast 可以认为是 <strong>static_cast 的一种补充</strong>，一些 static_cast 不能完成的转换，就可以用 reinterpret_cast 来完成</p>
+<h2 id="dynamic-cast">dynamic_cast</h2>
+<p>dynamic_cast 与 static_cast 是相对的，dynamic_cast 是“动态转换”的意思，static_cast 是“静态转换”的意思。dynamic_cast 会在程序运行期间借助 RTTI 进行类型转换，这就要求基类必须包含虚函数；static_cast 在编译期间完成类型转换，能够更加及时地发现错误。</p>
+<p>dynamic_cast 用于在类的<strong>继承层次</strong>之间进行类型转换，它既允许向上转型（Upcasting），也允许向下转型（Downcasting）。向上转型是无条件的，不会进行任何检测，所以都能成功；向下转型的前提必须是安全的，要借助 RTTI 进行检测，所有只有一部分能成功。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++风格调用</span><br>xxx_cast&lt;new_type&gt;(data);<br><br><span class="hljs-comment">// 老式的C风格</span><br>(new_type)data;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++ 输入输出</title>
     <url>/2020/11/06/C-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<h1>C++输入输出</h1>
@@ -337,6 +337,71 @@
       <tags>
         <tag>Java</tag>
         <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python math库常用函数</title>
+    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>Python-math库 常用函数</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
+<h2 id="常量">常量</h2>
+<ol>
+<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
+<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
+<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
+<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
+<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
+</ol>
+<h2 id="数论与表示函数">数论与表示函数</h2>
+<ol>
+<li><code>ceil(x)</code>：上取整</li>
+<li><code>floor(x)</code>：下取整</li>
+<li><code>factorial(x)</code>：阶乘</li>
+<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>gcd(a, b)</code>：最大公约数</li>
+<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
+<li><code>fabs(x)</code>：绝对值</li>
+<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
+<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
+<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
+<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
+<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
+</ol>
+<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
+<ol>
+<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
+<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
+<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
+<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
+<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
+<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
+</ol>
+<h2 id="三角函数">三角函数</h2>
+<ol>
+<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
+<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
+<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
+<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
+<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
+<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
+<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
+<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
+<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
+</ol>
+<h2 id="角度转换">角度转换</h2>
+<ol>
+<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
+<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -591,71 +656,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>Python math库常用函数</title>
-    <url>/2020/04/06/Python-math%E5%BA%93%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1>Python-math库 常用函数</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> *<br></code></pre></td></tr></table></figure>
-<h2 id="常量">常量</h2>
-<ol>
-<li><code>e</code>：数学常数 <em>e</em> = 2.718281…，精确到可用精度</li>
-<li><code>pi</code>：数学常数 <em>π</em> = 3.141592…，精确到可用精度</li>
-<li><code>inf</code>：浮点正无穷大，相当于 <code>float('inf')</code></li>
-<li><code>nan</code>：浮点“非数字”（NaN）值，相当于 <code>float('nan')</code></li>
-<li><code>tau</code>：数学常数 <em>τ</em>，等于 2<em>π</em></li>
-</ol>
-<h2 id="数论与表示函数">数论与表示函数</h2>
-<ol>
-<li><code>ceil(x)</code>：上取整</li>
-<li><code>floor(x)</code>：下取整</li>
-<li><code>factorial(x)</code>：阶乘</li>
-<li><code>comb(n, k)</code> ：<img src="https://math.now.sh?inline=C_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>perm(n, k=None)</code>：<img src="https://math.now.sh?inline=A_%7Bn%7D%5E%7Bk%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>gcd(a, b)</code>：最大公约数</li>
-<li><code>fsum(iterable)</code>：精确浮点值，比 <strong>sum</strong> 更精确</li>
-<li><code>fabs(x)</code>：绝对值</li>
-<li><code>prod(iterable, *, start=1)</code>：计算输入的 <em>iterable</em> 中所有元素的积。 积的默认 <em>start</em> 值为 <code>1</code>。</li>
-<li><code>fmod(x, y)</code>：取余。 <a href="https://docs.python.org/zh-cn/3.8/library/math.html#math.fmod"><code>fmod()</code></a> 在使用浮点数时是首选， <code>x % y</code> 在使用整数时是首选。</li>
-<li><code>copysign(x, y)</code>：基于 <strong><em>x</em> 的绝对值</strong>和 <strong><em>y</em> 的符号</strong>的浮点数</li>
-<li><code>frexp(x)</code>：以 <code>(m, e)</code> 对的形式返回 <em>x</em> 的尾数和指数。 <em>m</em> 是一个浮点数， <em>e</em> 是一个整数。正好是 <code>x == m * 2**e</code></li>
-<li><code>isclose(a, b, *, rel_tol=le-09, abs_tol=0.0)</code>：a, b是否接近。</li>
-</ol>
-<h2 id="幂函数与对数函数">幂函数与对数函数</h2>
-<ol>
-<li><code>exp(x)</code>：<img src="https://math.now.sh?inline=e%5E%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-<li><code>log(x, y=e)</code>：以 <img src="https://math.now.sh?inline=y" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数</li>
-<li><code>log1p(x)</code>： <img src="https://math.now.sh?inline=x%2B1" style="display:inline-block;margin: 0;"/> 的自然对数（<img src="https://math.now.sh?inline=e" style="display:inline-block;margin: 0;"/> 为底）</li>
-<li><code>log2(x)</code> ：以 <img src="https://math.now.sh?inline=2" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 2)</code> 更准确</li>
-<li><code>log10(x)</code> ：以 <img src="https://math.now.sh?inline=10" style="display:inline-block;margin: 0;"/> 为底 <img src="https://math.now.sh?inline=x" style="display:inline-block;margin: 0;"/> 的对数，通常比 <code>log(x, 10)</code> 更准确</li>
-<li><code>pow(x, y)</code>：<img src="https://math.now.sh?inline=x%5E%7By%7D" style="display:inline-block;margin: 0;"/> ，与内置的 <code>**</code> 运算符不同， <a href="https://docs.python.org/zh-cn/3/library/math.html#math.pow"><code>math.pow()</code></a> 将其参数转换为 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a> 类型。使用 <code>**</code> 或内置的 <a href="https://docs.python.org/zh-cn/3/library/functions.html#pow"><code>pow()</code></a> 函数来计算精确的整数幂。</li>
-<li><code>sqrt(x)</code>：<img src="https://math.now.sh?inline=%5Csqrt%7Bx%7D" style="display:inline-block;margin: 0;"/></li>
-</ol>
-<h2 id="三角函数">三角函数</h2>
-<ol>
-<li><code>acos(x)</code>：以弧度为单位返回 <em>x</em> 的反余弦值</li>
-<li><code>asin(x)</code>：以弧度为单位返回 <em>x</em> 的反正弦值</li>
-<li><code>atan(x)</code>：以弧度为单位返回 <em>x</em> 的反正切值</li>
-<li><code>atan2(y, x)</code>：以弧度为单位返回 <code>atan(y / x)</code></li>
-<li><code>sin(x)</code>：返回 <em>x</em> 弧度的正弦值</li>
-<li><code>cos(x)</code>：返回 <em>x</em> 弧度的余弦值</li>
-<li><code>tan(x)</code>：返回 <em>x</em> 弧度的正切值</li>
-<li><code>dist(p, q)</code>：返回 <em>p</em> 与 <em>q</em> 两点之间的欧几里得距离。<code>sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))</code></li>
-<li><code>hypot(*coordinates)</code>：欧几里得范数。<code>sqrt(sum(x**2 for x in coordinates))</code></li>
-</ol>
-<h2 id="角度转换">角度转换</h2>
-<ol>
-<li><code>degrees(x)</code>：将角度 <em>x</em> 从弧度转换为度数</li>
-<li><code>radians(x)</code>：将角度 <em>x</em> 从度数转换为弧度</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python之禅</title>
     <url>/2019/11/06/Python%E4%B9%8B%E7%A6%85/</url>
     <content><![CDATA[<p>begin :</p>
@@ -705,37 +705,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>biset 二分查找</title>
-    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
-<h2 id="查找">查找</h2>
-<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
-<p>数组名，值，区间 [lo, hi)</p>
-<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
-<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
-<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
-<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
-<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
-<h2 id="插入">插入</h2>
-<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
-<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
-<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -791,6 +760,37 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
+    <title>biset 二分查找</title>
+    <url>/2020/04/10/biset-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1>Python： <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#module-bisect"><code>bisect</code></a> — 数组二分查找算法</h1>
+<h2 id="查找">查找</h2>
+<p><code>bisect_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始都是 大于等于 target 的（左侧都小于）</p>
+<p>数组名，值，区间 [lo, hi)</p>
+<p>在 <em>a</em> 中找到 <em>x</em> 合适的插入点以维持有序。参数 <em>lo</em> 和 <em>hi</em> 可以被用于确定需要考虑的子集；默认情况下整个列表都会被使用。如果 <em>x</em> 已经在 <em>a</em> 里存在，那么插入点会在已存在元素之前（也就是左边）。如果 <em>a</em> 是列表（list）的话，返回值是可以被放在 <code>list.insert()</code> 的第一个参数的。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt; x for val in a[lo:i])</code> ，右侧是 <code>all(val &gt;= x for val in a[i:hi])</code> 。</p>
+<p><code>bisect_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>从idx开始往右都是 大于 target 的（左侧都小于等于）</p>
+<p><code>bisect</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.bisect_left"><code>bisect_left()</code></a>，但是返回的插入点是 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+<p>返回的插入点 <em>i</em> 可以将数组 <em>a</em> 分成两部分。左侧是 <code>all(val &lt;= x for val in a[lo:i])</code>，右侧是 <code>all(val &gt; x for val in a[i:hi])</code> for the right side。</p>
+<h2 id="插入">插入</h2>
+<p><code>insort_left</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>将 <em>x</em> 插入到一个有序序列 <em>a</em> 里，并维持其有序。如果 <em>a</em> 有序的话，这相当于 <code>a.insert(bisect.bisect_left(a, x, lo, hi), x)</code>。要注意搜索是 O(log n) 的，插入却是 O(n) 的。</p>
+<p><code>insort_right</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p><code>insort</code>(<em>a</em>, <em>x</em>, <em>lo=0</em>, <em>hi=len(a)</em>)</p>
+<p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>heapq 堆队列</title>
     <url>/2020/04/14/heapq-%E5%A0%86%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h1>Python 堆队列 – heapq</h1>
@@ -836,33 +836,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>Python</tag>
         <tag>堆</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2021/11/06/test/</url>
-    <content><![CDATA[<h1></h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
-<p>das1</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>cate1</category>
-        <category>cate2</category>
-      </categories>
-      <tags>
-        <tag>Default</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo配置latex支持</title>
-    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
-]]></content>
-      <categories>
-        <category>hexo配置</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -946,6 +919,33 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/11/06/test/</url>
+    <content><![CDATA[<h1></h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):<br>    <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>das1</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># _config.yml</span><br><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;  &#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>cate1</category>
+        <category>cate2</category>
+      </categories>
+      <tags>
+        <tag>Default</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo配置latex支持</title>
+    <url>/2021/11/06/hexo%E9%85%8D%E7%BD%AElatex%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>很怪，使用debug模式开启了次服务器，然后代码高亮就正常了…</p>
+]]></content>
+      <categories>
+        <category>hexo配置</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
