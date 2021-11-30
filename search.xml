@@ -928,19 +928,6 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>我们是冠军！</title>
-    <url>/2021/11/07/%E6%88%91%E4%BB%AC%E6%98%AF%E5%86%A0%E5%86%9B/</url>
-    <content><![CDATA[<h1>我们又是冠军</h1>
-]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
-      <tags>
-        <tag>日常</tag>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>找回.py文件右键的Edit with IDLE选项</title>
     <url>/2020/03/26/%E6%89%BE%E5%9B%9E-py%E6%96%87%E4%BB%B6%E5%8F%B3%E9%94%AE%E7%9A%84Edit-with-IDLE%E9%80%89%E9%A1%B9/</url>
     <content><![CDATA[<h1>找回.py文件右键的Edit with IDLE选项</h1>
@@ -1014,15 +1001,495 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       </tags>
   </entry>
   <entry>
-    <title>解决github图床的图片的加载问题</title>
-    <url>/2021/11/08/%E8%A7%A3%E5%86%B3github%E5%9B%BE%E5%BA%8A%E7%9A%84%E5%9B%BE%E7%89%87%E7%9A%84%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1></h1>
+    <title>C++ Primer Plus(第六版)笔记</title>
+    <url>/2020/11/30/C-Primer-Plus-%E7%AC%AC%E5%85%AD%E7%89%88-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1>C++ primer Plus 第六版</h1>
+<h2 id="3-处理数据">3 处理数据</h2>
+<h3 id="3-3-浮点数">3.3 浮点数</h3>
+<h4 id="float">float</h4>
+<p>1、c++的<strong>float</strong>：</p>
+<ul>
+<li>可以表示整数之间的值</li>
+<li>有缩放因子，表示的范围大</li>
+<li>运算慢、精度降低</li>
+<li>只保证6位有效位</li>
+</ul>
+<h3 id="3-4-运算符">3.4 运算符</h3>
+<h4 id="类型转换">类型转换</h4>
+<p>1、c++<strong>类型转换</strong>：</p>
+<ul>
+<li>赋值给另一种类型的变量时</li>
+<li>表达式包含不同类型时</li>
+<li>传参给函数时</li>
+</ul>
+<p>2、数值转换<strong>潜在的问题</strong>：高精度类型转低精度类型可能会损失<strong>精度</strong></p>
+<p>3、列表初始化不允许<strong>窄缩</strong>(narrowing)</p>
+<h2 id="4-复合类型">4 复合类型</h2>
+<h3 id="4-1-数组">4.1 数组</h3>
+<p><strong>数组初始化</strong></p>
+<p>1、只有在<strong>定义数组</strong>时可以使用初始化</p>
+<p>2、只对数组的<strong>部分初始化</strong>时，其他元素将被设置位0</p>
+<p>3、列表初始化：</p>
+<ul>
+<li>可省略等号</li>
+<li>大括号内可为空（全为0）</li>
+<li>禁止缩窄转换</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">double</span> earning[<span class="hljs-number">4</span>] &#123;&#125;;<br><span class="hljs-keyword">long</span> plifs[] &#123;<span class="hljs-number">25</span>, <span class="hljs-number">92</span>, <span class="hljs-number">3.0</span>&#125;;  <span class="hljs-comment">// not allowed</span><br></code></pre></td></tr></table></figure>
+<h3 id="4-2-字符串">4.2 字符串</h3>
+<p><strong>C-风格字符串</strong></p>
+<p>1、以空字符（null character, 写作‘\0’, ASCLL码为0）结尾，空字符需要占一位。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">char</span> xianyue[<span class="hljs-number">5</span>] = &#123;<span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;n&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;\0&#x27;</span>&#125;;  <span class="hljs-comment">// a string!</span><br><span class="hljs-keyword">char</span> xianyue[<span class="hljs-number">5</span>] = <span class="hljs-string">&quot;xianyue&quot;</span>  <span class="hljs-comment">// 隐式空字符</span><br></code></pre></td></tr></table></figure>
+<p>2、“S”不是字符常量，表示字符‘S’和‘\0’组成的字符串。实际上，“S”表示的是字符串所在的内存地址。</p>
+<p><strong>字符串相关函数</strong></p>
+<p>1、<strong>strlen()</strong>：返回存储在数组中的<strong>字符串</strong>（不包括空字符）的长度</p>
+<p>2、<strong>sizeof()</strong>：返回<strong>整个数组</strong>的长度</p>
+<p><strong>字符串输入</strong></p>
+<p>1、<strong>cin</strong>使用空白（<strong>空格</strong>、<strong>制表符</strong>、<strong>换行符</strong>）来确定字符串的结束位置。这意味着<strong>cin</strong>在获取<strong>字符数组</strong>时只读取一个单词，剩余字符仍留在输入队列中</p>
+<p>2、<strong>getchar()</strong>，从缓冲区拿取一个字符。</p>
+<p>3、面向行的输入：</p>
+<ul>
+<li><strong>cin.getline(数组名, 读取字符数)</strong>，以换行符确定结尾（不保存换行符，存储时以空字符替代换行符）</li>
+<li><strong>cin.get(数组名, 读取字符数)</strong>，不再丢弃换行符</li>
+</ul>
+<p>4、空行</p>
+<h3 id="4-3-string">4.3 string</h3>
+<p>string 可以自动调整长度</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br>std::string str;<br></code></pre></td></tr></table></figure>
+<p>不能将一个数组赋值给另一个数组，但是可以将一个<strong>string</strong>对象赋值给另一个<strong>string</strong>对象</p>
+<p>6、原始字符串：字符表示的就是自己，用“(  )”来定界，“ 和 ( 间可以添加其他字符，作为强定界符</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-string">R&quot;(&quot;str&quot;\n)&quot;</span><br></code></pre></td></tr></table></figure>
+<h3 id="4-4-结构体">4.4 结构体</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 定义</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">inflatable</span>&#123;</span><br>    <span class="hljs-keyword">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-keyword">float</span> volume;<br>    <span class="hljs-keyword">double</span> price;<br>&#125;<br><br><span class="hljs-comment">// 声明,可以省略 struct</span><br>inflatable hat;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">inflatable</span> <span class="hljs-title">hat</span>;</span><br><br><span class="hljs-comment">// 初始化，用逗号分隔值列表</span><br>inflatable a = &#123;<span class="hljs-string">&quot;xianyue&quot;</span>, <span class="hljs-number">1.88</span>, <span class="hljs-number">29.99</span>&#125;;<br><span class="hljs-comment">// C++11</span><br>inflatable a &#123;<span class="hljs-string">&quot;xianyue&quot;</span>, <span class="hljs-number">1.88</span>, <span class="hljs-number">29.99</span>&#125;;<br><span class="hljs-comment">// &#123;&#125;为空将导致每个字节都被设为0</span><br>inflatable a = &#123;&#125;;<br></code></pre></td></tr></table></figure>
+<p>不允许<strong>缩窄</strong>转换。</p>
 ]]></content>
       <categories>
-        <category>未分类</category>
+        <category>C++</category>
+        <category>阅读</category>
       </categories>
       <tags>
-        <tag>Default</tag>
+        <tag>C++</tag>
+        <tag>技术书籍阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 刷题注意事项</title>
+    <url>/2021/04/02/C-%E5%88%B7%E9%A2%98%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
+    <content><![CDATA[<ol>
+<li>
+<p>大数组定义位置</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321201227.png" alt="image-20210321201227726"></p>
+</li>
+<li>
+<p>以数组作为参数时，数组的第一维不需要填写长度。如果是二维，<strong>第二维需要填写长度</strong></p>
+</li>
+<li>
+<p>函数</p>
+<ol>
+<li>
+<p>memset</p>
+<p>对数组中的每一个函数赋相同值</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span> or #<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-built_in">memset</span>(数组名, 值, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(数组名));<br><span class="hljs-comment">// 只建议赋值为 0, 1（因为 memset 是按字节赋值）</span><br><span class="hljs-comment">// 如果要赋其他值，使用 fill（速度略慢）</span><br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+</li>
+<li>
+<p>在<strong>定义指针变量</strong>时，应该赋初值进行<strong>初始化</strong>，防止指针地址随机到系统工作区间</p>
+</li>
+<li>
+<p>由于浮点数在计算机中的存储并不总是精确的，所以在比较时需要引入一个极小数 <strong>eps</strong> 来对这种误差进行修正（通常取 <img src="https://math.now.sh?inline=eps%3D10%5E%7B-8%7D%3D1e%5E%7B-8%7D" style="display:inline-block;margin: 0;"/>）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> eps = <span class="hljs-number">1e-8</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> Pi = <span class="hljs-built_in">acos</span>(<span class="hljs-number">-1.0</span>);<br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Equ(a, b) ((fabs((a)-(b))) &lt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> More(a, b) (((a)-(b)) &gt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Less(a, b) (((a)-(b)) &lt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MoreEqu(a, b) (((a)-(b)) &gt; (-eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LessEqu(a, b) (((a)-(b)) &lt; (eps))</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>codeup</strong>1000题代码格式</p>
+<ol>
+<li>
+<p>while-EOF 型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b) != EOF) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>while-break型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-comment">// 以 a, b 都为0为例</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b) != EOF) &#123;<br>        <span class="hljs-keyword">if</span> (a == <span class="hljs-number">0</span> &amp;&amp; b ==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">or</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b), a || b) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>while(T - - )型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> T, a, b;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T);<br>    <span class="hljs-keyword">while</span> (T--) &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>刷题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 容器</title>
+    <url>/2021/03/22/C-%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<p>C++容器</p>
+<p>1、字符串</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>2、常用函数</p>
+<ol>
+<li>
+<p><strong>strlen()</strong>：返回存储在数组中的<strong>字符串</strong>（不包括空字符）的长度</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strlen</span>(字符数组)<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>sizeof()</strong>：返回<strong>整个数组</strong>的长度</p>
+</li>
+<li>
+<p><strong>strcmp()</strong>：比较两个字符串的大小</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcmp</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>strcpy()</strong>：把一个字符串复制给另一个字符串</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcpy</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+<p>这里的复制包括 ‘\0’</p>
+</li>
+<li>
+<p><strong>strcat()</strong>：字符串拼接</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcat</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br><span class="hljs-comment">// 将 2 拼接到 1 后面</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>sscanf()</strong> 格式输出（左 -&gt; 右）和 <strong>sprintf()</strong> 格式输出（右 -&gt; 左）：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">sscanf</span>(str, <span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br><span class="hljs-built_in">sprintf</span>(str, <span class="hljs-string">&quot;%d&quot;</span>, n);<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 格式化输出</title>
+    <url>/2020/11/30/C-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<h1>c++格式化输出</h1>
+<p><a href="http://c.biancheng.net/view/275.html">http://c.biancheng.net/view/275.html</a></p>
+<p>1、在头文件 <strong>iomanip</strong> 中定义</p>
+<p>保留<strong>ans</strong>位小数</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br>cout &lt;&lt; <span class="hljs-built_in">setiosflags</span>(ios::fixed) &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">2</span>) &lt;&lt; ans &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>流操纵算子</th>
+<th>作  用</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*dec</td>
+<td>以十进制形式输出整数</td>
+<td>常用</td>
+</tr>
+<tr>
+<td>hex</td>
+<td>以十六进制形式输出整数</td>
+<td></td>
+</tr>
+<tr>
+<td>oct</td>
+<td>以八进制形式输出整数</td>
+<td></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>以普通小数形式输出浮点数</td>
+<td></td>
+</tr>
+<tr>
+<td>scientific</td>
+<td>以科学计数法形式输出浮点数</td>
+<td></td>
+</tr>
+<tr>
+<td>left</td>
+<td>左对齐，即在宽度不足时将填充字符添加到右边</td>
+<td></td>
+</tr>
+<tr>
+<td>*right</td>
+<td>右对齐，即在宽度不足时将填充字符添加到左边</td>
+<td></td>
+</tr>
+<tr>
+<td>setbase(b)</td>
+<td>设置输出整数时的进制，b=8、10 或 16</td>
+<td></td>
+</tr>
+<tr>
+<td>setw(w)</td>
+<td>指定输出宽度为 w 个字符，或输人字符串时读入 w 个字符</td>
+<td></td>
+</tr>
+<tr>
+<td>setfill©</td>
+<td>在指定输出宽度的情况下，输出的宽度不足时用字符 c 填充（默认情况是用空格填充）</td>
+<td></td>
+</tr>
+<tr>
+<td>setprecision(n)</td>
+<td>设置输出浮点数的精度为 n。  在使用非 fixed 且非 scientific 方式输出的情况下，n 即为有效数字最多的位数，如果有效数字位数超过 n，则小数部分四舍五人，或自动变为科学计 数法输出并保留一共 n 位有效数字。  在使用 fixed 方式和 scientific 方式输出的情况下，n 是小数点后面应保留的位数。</td>
+<td></td>
+</tr>
+<tr>
+<td>setiosflags(flag)</td>
+<td>将某个输出格式标志置为 1</td>
+<td></td>
+</tr>
+<tr>
+<td>resetiosflags(flag)</td>
+<td>将某个输出格式标志置为 0</td>
+<td></td>
+</tr>
+<tr>
+<td>boolapha</td>
+<td>把 true 和 false 输出为字符串</td>
+<td>不常用</td>
+</tr>
+<tr>
+<td>*noboolalpha</td>
+<td>把 true 和 false 输出为 0、1</td>
+<td></td>
+</tr>
+<tr>
+<td>showbase</td>
+<td>输出表示数值的进制的前缀</td>
+<td></td>
+</tr>
+<tr>
+<td>*noshowbase</td>
+<td>不输出表示数值的进制.的前缀</td>
+<td></td>
+</tr>
+<tr>
+<td>showpoint</td>
+<td>总是输出小数点</td>
+<td></td>
+</tr>
+<tr>
+<td>*noshowpoint</td>
+<td>只有当小数部分存在时才显示小数点</td>
+<td></td>
+</tr>
+<tr>
+<td>showpos</td>
+<td>在非负数值中显示 +</td>
+<td></td>
+</tr>
+<tr>
+<td>*noshowpos</td>
+<td>在非负数值中不显示 +</td>
+<td></td>
+</tr>
+<tr>
+<td>*skipws</td>
+<td>输入时跳过空白字符</td>
+<td></td>
+</tr>
+<tr>
+<td>noskipws</td>
+<td>输入时不跳过空白字符</td>
+<td></td>
+</tr>
+<tr>
+<td>uppercase</td>
+<td>十六进制数中使用 A~E。若输出前缀，则前缀输出 0X，科学计数法中输出 E</td>
+<td></td>
+</tr>
+<tr>
+<td>*nouppercase</td>
+<td>十六进制数中使用 a~e。若输出前缀，则前缀输出 0x，科学计数法中输出 e。</td>
+<td></td>
+</tr>
+<tr>
+<td>internal</td>
+<td>数值的符号（正负号）在指定宽度内左对齐，数值右对 齐，中间由填充字符填充。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>输入输出</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 复习</title>
+    <url>/2020/10/13/Java-%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<h1>java笔记</h1>
+<h2 id="1-java的特性">1 java的特性</h2>
+<p>简单性、面向对象、可移植性、高性能、分布式、多态性、多线程、安全性、健壮性</p>
+<h2 id="2-java结构">2 java结构</h2>
+<p><strong>JDK</strong> ：Java development kit</p>
+<p><strong>JRE</strong> ：Java runtime environment</p>
+<p><strong>JVM</strong> ：java virtual machine</p>
+<h2 id="3-java数据类型">3 java数据类型</h2>
+<h3 id="3-1-int">3.1 int</h3>
+<p>二进制：0b</p>
+<p>八进制：0</p>
+<p>十进制</p>
+<p>十六进制：0x</p>
+<h3 id="3-2-float-和-double">3.2 float 和 double</h3>
+<p><strong>float</strong>和<strong>double</strong>并不准确，如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">float</span> f = <span class="hljs-number">0.1f</span>;<br><span class="hljs-keyword">double</span> d = <span class="hljs-number">10</span>/<span class="hljs-number">1.0</span>;<br><br>System.out.println(f == d);<br><span class="hljs-comment">// 结果为 false</span><br><br><span class="hljs-comment">// float具有舍入误差，接近真实数但是不等于，最好完全避免使用float进行数值比较</span><br><span class="hljs-comment">// 可以使用数学工具类：BigDecimal进行比较</span><br></code></pre></td></tr></table></figure>
+<p><strong>float</strong>具有舍入误差，接近真实数但是不等于，最好<strong>完全避免</strong>使用float进行数值比较</p>
+<p>可以使用数学工具类：<strong>BigDecimal</strong> 进行比较。</p>
+<hr>
+<hr>
+<h3 id="3-3-char-和-String">3.3 char 和 String</h3>
+<p><em><strong>char</strong></em></p>
+<p><strong>转义字符：‘\’</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">\n <span class="hljs-comment">// 换行</span><br>\t <span class="hljs-comment">// 制表符</span><br><span class="hljs-string">&#x27;\u&#x27;</span>+<span class="hljs-string">&#x27;编码&#x27;</span> <span class="hljs-comment">// Unicode编码转换成对应字符</span><br></code></pre></td></tr></table></figure>
+<p><em><strong>String</strong></em></p>
+<p><strong>String</strong>是java为我们提供的处理字符串的一个强大的类，<strong>String</strong> 底层使用 <strong>final</strong> 修饰，是<strong>不可修改</strong>的。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String a = <span class="hljs-keyword">new</span> String(csdn); <span class="hljs-comment">// 使用匿名对象创建字符串</span><br>String b = <span class="hljs-string">&#x27;csdn&#x27;</span>; <span class="hljs-comment">// </span><br>String c = <span class="hljs-keyword">new</span> String(csdn);<br>String d = <span class="hljs-string">&#x27;csdn&#x27;</span>;<br><br><span class="hljs-comment">// 这四种方法创建的字符串对象并不一样，可以尝试以下代码</span><br>System.out.println(a == b);<br><span class="hljs-comment">// 输出为false</span><br><br>System.out.println(a == c);<br><span class="hljs-comment">// 输出为false</span><br><br>System.out.println(b == c);<br><span class="hljs-comment">// 输出为true</span><br><br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="3-3-类型转换">3.3 类型转换</h3>
+<p><em><strong>自动转换：</strong></em></p>
+<p><strong>类型强弱（低到高）：</strong></p>
+<p><em><strong>byte, char, short -&gt; int -&gt; long -&gt; float -&gt; double</strong></em></p>
+<p><strong>小数类型强于整数</strong></p>
+<p><strong>boolean</strong>类型不参与类型转换</p>
+<p><em><strong>强制转换：</strong></em></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">(要转换成的类型) 原数值;<br></code></pre></td></tr></table></figure>
+<p>总结：</p>
+<ol>
+<li><strong>boolean</strong> 类型不参与类型转换；</li>
+<li>不能把对象转换成<strong>不相干</strong>的类型；</li>
+<li>在将<strong>高容量</strong>转换成<strong>低容量</strong>时，使用强制转换；</li>
+<li>转换时可能存在<strong>内存溢出</strong>，或者是<strong>精度问题</strong>。</li>
+</ol>
+<h2 id="4-输入">4 输入</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Scanner s = <span class="hljs-keyword">new</span> Scanner(System.in);<br><br>        s.close();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 命令</title>
+    <url>/2021/01/30/Linux-%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>@TOP[Linux学习]</p>
+<h1>新手必须掌握的命令</h1>
+<h2 id="常用系统工作命令">常用系统工作命令</h2>
+<p>1、echo #提取值并且输出字符</p>
+<p>2、date #查看系统当前时间</p>
+<p>4、poweroff #关机</p>
+<p>5、wget #下载文件</p>
+<p>6、ps #查看进程</p>
+<p>7、top #监视进程活动与系统负载</p>
+<p>8、pidof #查询进程的PID</p>
+<p>9、killall #终止服务的所有进程</p>
+<h2 id="系统状态检测命令">系统状态检测命令</h2>
+<p>1、ifconfig #获取网卡配置</p>
+<p>2、uname #查看内核和系统版本</p>
+<p>3、uptime #查看系统负载</p>
+<p>4、free #查看内存使用信息</p>
+<p>5、who #查看登陆的用户信息</p>
+<p>6、last #查看所有系统登陆记录</p>
+<p>7、history #查看历史命令</p>
+<h2 id="工作目录切换命令">工作目录切换命令</h2>
+<p>1、pwd #显示当前工作目录</p>
+<p>2、cd #切换工作路径</p>
+<p>3、ls #显示目录中的文件信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ls -a #查看包括隐藏文件的全部文件<br>ls-l #查看文件的详细信息<br></code></pre></td></tr></table></figure>
+<h2 id="文本编辑命令">文本编辑命令</h2>
+<p>1、cat #查看纯文本文件（内容较少的）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br></code></pre></td></tr></table></figure>
+<p>2、more #查看纯文本文件（内容较多的）</p>
+<p>3、head #查看文本的前n行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">head -n 数字 文件名<br></code></pre></td></tr></table></figure>
+<p>4、tail #查看文本的后n行（可以持续刷新）</p>
+<p>5、tr #替换文本文件中的字符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cat 文件名 | tr [原始字符] [新字符]<br></code></pre></td></tr></table></figure>
+<p>6、wc #统计指定文本的行数、字数、字节数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">wc[参数] 文件名<br>可选参数：<br>4-l 只显示行数<br>4-w只显示单词数<br>4-c只显示字节数<br></code></pre></td></tr></table></figure>
+<p>7、stat #查看文件的具体存储信息和时间信息等</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">stat 文件名<br></code></pre></td></tr></table></figure>
+<p>8、cut #按列提取文本字符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cut[参数] 文本<br>可选参数：<br>4-d 分隔符<br>4-f 查看的列数<br></code></pre></td></tr></table></figure>
+<p>9、diff 比较文本的差异</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">diff[参数] 文件名1 文件名2<br>可选参数：<br>4-brief 判断文件是否相同<br>4-c 描述文件内容具体的不同<br></code></pre></td></tr></table></figure>
+<h2 id="文件目录管理命令">文件目录管理命令</h2>
+<p>1、touch #创建空白文件；设置文件的时间</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">touch[参数][文件]<br>可选参数：<br>4-a 仅修改“读取时间”（atime）<br>4-m 仅修改“修改时间”（mtime）<br>4-d 同时修改atime和mtime<br></code></pre></td></tr></table></figure>
+<p>2、mkdir #新建目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">mkdir 目录名<br>mkdir -p a/b/c/d/e 创建具有嵌套关系的目录<br></code></pre></td></tr></table></figure>
+<p>3、cp #拷贝文件或目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cp [参数] 源文件 目的文件<br>可选参数：<br>4-p 保留源文件属性<br>4-d 如果源文件为链接文件，则保留链接文件的属性<br>4-r 递归持续拷贝（目录）<br>4-i 如果目标文件以存在，则询问<br>4-a 相当于-pdf<br></code></pre></td></tr></table></figure>
+<p>4、mv #剪切文件或重命名文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">mv[参数] 源文件 [目标路径 | 文件名]<br></code></pre></td></tr></table></figure>
+<p>5、rm #删除文件或目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">rm[参数] 文件 （默认只能删除文件）<br>可选参数：<br>4-f 强制删除<br>4-m 用于删除目录<br></code></pre></td></tr></table></figure>
+<p>6、dd #按照指定大小和个数的数据块来复制或者转换文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dd[参数]<br>可选参数：<br>4if 输入的文件名称<br>4of 输出的文件名称<br>4bs 设置每个块的大小<br>4count 设置要复制的块的个数<br>4<br>dd if=xianyue.txt of=xy.txt bs=520M count=1 <br></code></pre></td></tr></table></figure>
+<p>7、file 查看文件的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">file 文件名<br></code></pre></td></tr></table></figure>
+<h2 id="打包压缩与搜索命令">打包压缩与搜索命令</h2>
+<p>1、tar</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 字符串常用函数</title>
+    <url>/2020/11/30/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>Python字符操作</h1>
+<h2 id="ASCII">ASCII</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-comment"># 97</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;z&#x27;</span>) <span class="hljs-comment"># 122</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>) <span class="hljs-comment"># 65</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;Z&#x27;</span>) <span class="hljs-comment"># 90</span><br></code></pre></td></tr></table></figure>
+<h2 id="判断字符串">判断字符串</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">s.isalnum() #所有字符都是数字或者字母<br>s.isalpha() #所有字符都是字母<br>s.isdigit() #所有字符都是数字<br>s.islower() #所有字符都是小写<br>s.isupper() #所有字符都是大写<br>s.istitle() #所有单词都是首字母大写，像标题<br>s.isspace() #所有字符都是空白字符、\t、\n<br></code></pre></td></tr></table></figure>
+<h2 id="大小写转换">大小写转换</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">s.upper() #把所有字符中的小写字母转换成大写字母<br>s.lower() #把所有字符中的大写字母转换成小写字母<br>s.capitalize() #把第一个字母转化为大写字母，其余小写<br>s.title() #把每个单词的第一个字母转化为大写，其余小写<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>异或性质</title>
+    <url>/2020/01/30/%E5%BC%82%E6%88%96%E6%80%A7%E8%B4%A8/</url>
+    <content><![CDATA[<h1>异或</h1>
+<p>异或运算的性质：</p>
+<p><strong>1.</strong> 交换律：A ^ B = B ^ A;</p>
+<p><strong>2.</strong> 结合律：A ^ (B ^ C) = (A ^ B) ^ C;</p>
+<p><strong>3.</strong> 恒等律：X ^ 0 = X;</p>
+<p><strong>4.</strong> 归零律：X ^ X = 0;</p>
+<p><strong>5.</strong> 自反：A ^ B ^ B = A ^ 0 = A;</p>
+<p><strong>6.</strong> 对于任意的 X： X ^ (-1) = ~X；</p>
+<p><strong>7.</strong> 如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</p>
+<p><strong>8.</strong><img src="https://math.now.sh?inline=%5Cforall%20i%20%5Cin%20Z" style="display:inline-block;margin: 0;"/>，有 <img src="https://math.now.sh?inline=4i%20%5Coplus%20%284i%2B1%29%20%5Coplus%20(4i%2B2)%20%5Coplus%20(4i%2B3)%20%3D%200" style="display:inline-block;margin: 0;"/>。</p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>异或</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
 </search>
