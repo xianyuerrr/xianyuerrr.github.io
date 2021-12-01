@@ -22,7 +22,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -55,7 +55,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++风格调用</span><br>xxx_cast&lt;new_type&gt;(data);<br><br><span class="hljs-comment">// 老式的C风格</span><br>(new_type)data;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -260,7 +260,7 @@
 <p>当调用insert时，是将对象传递给insert，对象被拷贝到容器中，而当我们使用emplace时，是将参数传递给构造函，emplace使用这些参数在容器管理的内存空间中直接构造元素。</p>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -309,7 +309,7 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br>cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>cout &lt;&lt; a &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -583,7 +583,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">*斜体文本*<br>_斜体文本_<br>**粗体文本**<br>__粗体文本__<br>***粗斜体文本***<br>___粗斜体文本___<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Java</tag>
@@ -635,7 +635,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 </ol>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -699,7 +699,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 </ol>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>math</tag>
@@ -729,8 +729,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p>类似于 <a href="https://docs.python.org/zh-cn/3.7/library/bisect.html#bisect.insort_left"><code>insort_left()</code></a>，但是把 <em>x</em> 插入到 <em>a</em> 中已存在元素 <em>x</em> 的右侧。</p>
 ]]></content>
       <categories>
-        <category>Python</category>
-        <category>算法</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -782,11 +781,12 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p>在日常生活中，安装100M的宽带，100M指的是100Mbit/s，而我们手机上通常最高只能达到约 11.9MByte/s​ 的下载速度，四舍五入也就是12MByte/s。我们手机上显示的下载速度也是使用<strong>MB</strong>作为单位的。所以，不是运营商虚假描述，限制了带宽。是人们容易把这两个单位弄混。</p>
 ]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>计算机</category>
       </categories>
       <tags>
         <tag>bit</tag>
         <tag>Byte</tag>
+        <tag>计网</tag>
       </tags>
   </entry>
   <entry>
@@ -841,8 +841,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 </ul>
 ]]></content>
       <categories>
-        <category>Python</category>
-        <category>算法</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -899,7 +898,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.chdir(os.path.dirname(__file__))<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -919,8 +918,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">1</span>;<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;:&quot;</span> + (a == b));<br>        System.out.println(<span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(a));<br>        System.out.println(<span class="hljs-string">&#x27;b&#x27;</span> + <span class="hljs-string">&quot;的地址：&quot;</span> + System.identityHashCode(b));<br><br>        String str1 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        String str2 = <span class="hljs-string">&quot;csdn&quot;</span>;<br>        <span class="hljs-comment">// str1 和 str2 在常量池中，只有一份，是同一个对象</span><br>        String str3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;csdn&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str2&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str2));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot;和&quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&quot;是同一个对象：&quot;</span> + (str1 == str3));<br>        System.out.println(<span class="hljs-string">&quot;str1&quot;</span> + <span class="hljs-string">&quot; = &quot;</span> + <span class="hljs-string">&quot;str3&quot;</span> + <span class="hljs-string">&#x27;:&#x27;</span> + str1.equals(str3));<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 输出结果如下：</span><br><span class="hljs-comment">// a = b:true</span><br><span class="hljs-comment">// a的地址：664223387</span><br><span class="hljs-comment">// b的地址：664223387</span><br><span class="hljs-comment">// str1和str2是同一个对象：true</span><br><span class="hljs-comment">// str1 = str2:true</span><br><span class="hljs-comment">// str1和str3是同一个对象：false</span><br><span class="hljs-comment">// str1 = str3:true</span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Python</category>
-        <category>Java</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Java</tag>
@@ -940,7 +938,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p>其中<strong>MUIVerb</strong>的值是用来控制显示内容的，可以按照自己的想法去改。</p>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -963,7 +961,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Java</tag>
@@ -993,11 +991,29 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p>完成！</p>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
         <tag>pip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 字符串常用函数</title>
+    <url>/2020/11/30/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1>Python字符操作</h1>
+<h2 id="ASCII">ASCII</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-comment"># 97</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;z&#x27;</span>) <span class="hljs-comment"># 122</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>) <span class="hljs-comment"># 65</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;Z&#x27;</span>) <span class="hljs-comment"># 90</span><br></code></pre></td></tr></table></figure>
+<h2 id="判断字符串">判断字符串</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">s.isalnum() #所有字符都是数字或者字母<br>s.isalpha() #所有字符都是字母<br>s.isdigit() #所有字符都是数字<br>s.islower() #所有字符都是小写<br>s.isupper() #所有字符都是大写<br>s.istitle() #所有单词都是首字母大写，像标题<br>s.isspace() #所有字符都是空白字符、\t、\n<br></code></pre></td></tr></table></figure>
+<h2 id="大小写转换">大小写转换</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">s.upper() #把所有字符中的小写字母转换成大写字母<br>s.lower() #把所有字符中的大写字母转换成小写字母<br>s.capitalize() #把第一个字母转化为大写字母，其余小写<br>s.title() #把每个单词的第一个字母转化为大写，其余小写<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1064,109 +1080,11 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p>不允许<strong>缩窄</strong>转换。</p>
 ]]></content>
       <categories>
-        <category>C++</category>
         <category>阅读</category>
       </categories>
       <tags>
         <tag>C++</tag>
         <tag>技术书籍阅读</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ 刷题注意事项</title>
-    <url>/2021/04/02/C-%E5%88%B7%E9%A2%98%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
-    <content><![CDATA[<ol>
-<li>
-<p>大数组定义位置</p>
-<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321201227.png" alt="image-20210321201227726"></p>
-</li>
-<li>
-<p>以数组作为参数时，数组的第一维不需要填写长度。如果是二维，<strong>第二维需要填写长度</strong></p>
-</li>
-<li>
-<p>函数</p>
-<ol>
-<li>
-<p>memset</p>
-<p>对数组中的每一个函数赋相同值</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span> or #<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-built_in">memset</span>(数组名, 值, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(数组名));<br><span class="hljs-comment">// 只建议赋值为 0, 1（因为 memset 是按字节赋值）</span><br><span class="hljs-comment">// 如果要赋其他值，使用 fill（速度略慢）</span><br></code></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ol>
-</li>
-<li>
-<p>在<strong>定义指针变量</strong>时，应该赋初值进行<strong>初始化</strong>，防止指针地址随机到系统工作区间</p>
-</li>
-<li>
-<p>由于浮点数在计算机中的存储并不总是精确的，所以在比较时需要引入一个极小数 <strong>eps</strong> 来对这种误差进行修正（通常取 <img src="https://math.now.sh?inline=eps%3D10%5E%7B-8%7D%3D1e%5E%7B-8%7D" style="display:inline-block;margin: 0;"/>）</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> eps = <span class="hljs-number">1e-8</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> Pi = <span class="hljs-built_in">acos</span>(<span class="hljs-number">-1.0</span>);<br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Equ(a, b) ((fabs((a)-(b))) &lt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> More(a, b) (((a)-(b)) &gt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Less(a, b) (((a)-(b)) &lt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MoreEqu(a, b) (((a)-(b)) &gt; (-eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LessEqu(a, b) (((a)-(b)) &lt; (eps))</span><br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>codeup</strong>1000题代码格式</p>
-<ol>
-<li>
-<p>while-EOF 型</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b) != EOF) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>while-break型</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-comment">// 以 a, b 都为0为例</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b) != EOF) &#123;<br>        <span class="hljs-keyword">if</span> (a == <span class="hljs-number">0</span> &amp;&amp; b ==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">or</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b), a || b) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>while(T - - )型</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> T, a, b;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T);<br>    <span class="hljs-keyword">while</span> (T--) &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>刷题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ 容器</title>
-    <url>/2021/03/22/C-%E5%AE%B9%E5%99%A8/</url>
-    <content><![CDATA[<p>C++容器</p>
-<p>1、字符串</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br></code></pre></td></tr></table></figure>
-<p>2、常用函数</p>
-<ol>
-<li>
-<p><strong>strlen()</strong>：返回存储在数组中的<strong>字符串</strong>（不包括空字符）的长度</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strlen</span>(字符数组)<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>sizeof()</strong>：返回<strong>整个数组</strong>的长度</p>
-</li>
-<li>
-<p><strong>strcmp()</strong>：比较两个字符串的大小</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcmp</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>strcpy()</strong>：把一个字符串复制给另一个字符串</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcpy</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
-<p>这里的复制包括 ‘\0’</p>
-</li>
-<li>
-<p><strong>strcat()</strong>：字符串拼接</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcat</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br><span class="hljs-comment">// 将 2 拼接到 1 后面</span><br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>sscanf()</strong> 格式输出（左 -&gt; 右）和 <strong>sprintf()</strong> 格式输出（右 -&gt; 左）：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">sscanf</span>(str, <span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br><span class="hljs-built_in">sprintf</span>(str, <span class="hljs-string">&quot;%d&quot;</span>, n);<br></code></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1320,11 +1238,108 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 </table>
 ]]></content>
       <categories>
-        <category>C++</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>C++</tag>
         <tag>输入输出</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 容器</title>
+    <url>/2021/03/22/C-%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<p>C++容器</p>
+<p>1、字符串</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>2、常用函数</p>
+<ol>
+<li>
+<p><strong>strlen()</strong>：返回存储在数组中的<strong>字符串</strong>（不包括空字符）的长度</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strlen</span>(字符数组)<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>sizeof()</strong>：返回<strong>整个数组</strong>的长度</p>
+</li>
+<li>
+<p><strong>strcmp()</strong>：比较两个字符串的大小</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcmp</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>strcpy()</strong>：把一个字符串复制给另一个字符串</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcpy</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+<p>这里的复制包括 ‘\0’</p>
+</li>
+<li>
+<p><strong>strcat()</strong>：字符串拼接</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">strcat</span>(字符数组<span class="hljs-number">1</span>, 字符数组<span class="hljs-number">2</span>);<br><span class="hljs-comment">// 将 2 拼接到 1 后面</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>sscanf()</strong> 格式输出（左 -&gt; 右）和 <strong>sprintf()</strong> 格式输出（右 -&gt; 左）：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">sscanf</span>(str, <span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br><span class="hljs-built_in">sprintf</span>(str, <span class="hljs-string">&quot;%d&quot;</span>, n);<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 刷题注意事项</title>
+    <url>/2021/04/02/C-%E5%88%B7%E9%A2%98%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
+    <content><![CDATA[<ol>
+<li>
+<p>大数组定义位置</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210321201227.png" alt="image-20210321201227726"></p>
+</li>
+<li>
+<p>以数组作为参数时，数组的第一维不需要填写长度。如果是二维，<strong>第二维需要填写长度</strong></p>
+</li>
+<li>
+<p>函数</p>
+<ol>
+<li>
+<p>memset</p>
+<p>对数组中的每一个函数赋相同值</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span> or #<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-built_in">memset</span>(数组名, 值, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(数组名));<br><span class="hljs-comment">// 只建议赋值为 0, 1（因为 memset 是按字节赋值）</span><br><span class="hljs-comment">// 如果要赋其他值，使用 fill（速度略慢）</span><br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+</li>
+<li>
+<p>在<strong>定义指针变量</strong>时，应该赋初值进行<strong>初始化</strong>，防止指针地址随机到系统工作区间</p>
+</li>
+<li>
+<p>由于浮点数在计算机中的存储并不总是精确的，所以在比较时需要引入一个极小数 <strong>eps</strong> 来对这种误差进行修正（通常取 <img src="https://math.now.sh?inline=eps%3D10%5E%7B-8%7D%3D1e%5E%7B-8%7D" style="display:inline-block;margin: 0;"/>）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> eps = <span class="hljs-number">1e-8</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> Pi = <span class="hljs-built_in">acos</span>(<span class="hljs-number">-1.0</span>);<br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Equ(a, b) ((fabs((a)-(b))) &lt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> More(a, b) (((a)-(b)) &gt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Less(a, b) (((a)-(b)) &lt; (eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MoreEqu(a, b) (((a)-(b)) &gt; (-eps))</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LessEqu(a, b) (((a)-(b)) &lt; (eps))</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>codeup</strong>1000题代码格式</p>
+<ol>
+<li>
+<p>while-EOF 型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b) != EOF) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>while-break型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-comment">// 以 a, b 都为0为例</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b) != EOF) &#123;<br>        <span class="hljs-keyword">if</span> (a == <span class="hljs-number">0</span> &amp;&amp; b ==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">or</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> a, b;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b), a || b) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>while(T - - )型</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> T, a, b;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T);<br>    <span class="hljs-keyword">while</span> (T--) &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>刷题</tag>
       </tags>
   </entry>
   <entry>
@@ -1377,7 +1392,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Scanner s = <span class="hljs-keyword">new</span> Scanner(System.in);<br><br>        s.close();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Java</tag>
@@ -1446,28 +1461,27 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p>1、tar</p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
-    <title>Python 字符串常用函数</title>
-    <url>/2020/11/30/Python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1>Python字符操作</h1>
-<h2 id="ASCII">ASCII</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-comment"># 97</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;z&#x27;</span>) <span class="hljs-comment"># 122</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>) <span class="hljs-comment"># 65</span><br><span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;Z&#x27;</span>) <span class="hljs-comment"># 90</span><br></code></pre></td></tr></table></figure>
-<h2 id="判断字符串">判断字符串</h2>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">s.isalnum() #所有字符都是数字或者字母<br>s.isalpha() #所有字符都是字母<br>s.isdigit() #所有字符都是数字<br>s.islower() #所有字符都是小写<br>s.isupper() #所有字符都是大写<br>s.istitle() #所有单词都是首字母大写，像标题<br>s.isspace() #所有字符都是空白字符、\t、\n<br></code></pre></td></tr></table></figure>
-<h2 id="大小写转换">大小写转换</h2>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">s.upper() #把所有字符中的小写字母转换成大写字母<br>s.lower() #把所有字符中的大写字母转换成小写字母<br>s.capitalize() #把第一个字母转化为大写字母，其余小写<br>s.title() #把每个单词的第一个字母转化为大写，其余小写<br></code></pre></td></tr></table></figure>
+    <title>Jupyter 设置中英文</title>
+    <url>/2021/01/29/Jupyter-%E8%AE%BE%E7%BD%AE%E4%B8%AD%E8%8B%B1%E6%96%87/</url>
+    <content><![CDATA[<p>jupyter设置中/英文语言</p>
+<p>设置成英文：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">set LC_ALL=en_US.UTF-8<br></code></pre></td></tr></table></figure>
+<p>设置成中文：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">set LC_ALL=zh_CN.UTF-8<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>Code</category>
       </categories>
       <tags>
         <tag>Python</tag>
+        <tag>Jupyter</tag>
       </tags>
   </entry>
   <entry>
@@ -1490,6 +1504,354 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>异或</tag>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java-Object类的方法</title>
+    <url>/2019/10/05/Java-Object%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="Java-Object类的方法">Java-Object类的方法</h2>
+<p>Object有以下方法：</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110051049327.png" alt="Object类的方法"></p>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL 笔记</title>
+    <url>/2020/12/01/MySQL-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1>MySql 笔记</h1>
+<h2 id="基础">基础</h2>
+<h3 id="DB、DBMS、SQL">DB、DBMS、SQL</h3>
+<p><strong>数据库</strong>：<br>
+DataBase，简称 DB。顾名思义，存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据。</p>
+<p><strong>数据库管理系统</strong>：<br>
+DataBase Management System，简称 DBMS。专门用来管理数据库中数据的，数据库管理系统可以对数据库当中的数据进行增删改查。</p>
+<p>常见的数据库管理系统：<br>
+MySQL、Oracle、SQL Server、DB2等…</p>
+<p><strong>SQL</strong>：结构化查询语言<br>
+SQL 是一套标准，程序员通过编写 SQL 语句，使 DBMS 负责执行 SQL 语句，最终来完成数据库中数据的增删改查操作。</p>
+<p>三者之间的关系？<br>
+DBMS – 执行 --&gt; SQL – 操作 --&gt; DB</p>
+<h3 id="常用命令">常用命令</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"># Win 开启服务<br>net stop 服务名称;<br><br># Win 关闭服务<br>net start 服务名称;<br><br># MySQL 登录<br>mysql -uroot -p<br></code></pre></td></tr></table></figure>
+<h3 id="SQL-语句的分类">SQL 语句的分类</h3>
+<pre><code>DQL：
+	数据查询语言（凡是带有select关键字的都是查询语句）
+	select...
+
+DML：
+	数据操作语言（凡是对表当中的数据进行增删改的都是DML）
+	insert delete update
+	insert 增
+	delete 删
+	update 改
+
+	这个主要是操作表中的数据data。
+
+DDL：
+	数据定义语言
+	凡是带有create、drop、alter的都是DDL。
+	DDL主要操作的是表的结构。不是表中的数据。
+	create：新建，等同于增
+	drop：删除
+	alter：修改
+	这个增删改和DML不同，这个主要是对表结构进行操作。
+
+TCL：
+	是事务控制语言
+	包括：
+		事务提交：commit;
+		事务回滚：rollback;
+
+DCL：
+	是数据控制语言。
+	例如：授权grant、撤销权限revoke....
+</code></pre>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>内存泄露与内存溢出</title>
+    <url>/2021/09/01/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/</url>
+    <content><![CDATA[<h3 id="内存泄露与内存溢出">内存泄露与内存溢出</h3>
+<p><strong>内存泄漏</strong>（Memory Leak）是指内存用完没有被释放，即不再被引用的对象没有被 jvm 回收。大量的内存泄漏就会导致OOM，也就是内存溢出。</p>
+<p><strong>内存溢出</strong>（OOM），指需要的内存空间<strong>大于</strong>系统分配的内存空间。</p>
+<p>内存泄露分类：</p>
+<ol>
+<li>常发性泄露：每次执行都导致一块内存泄漏</li>
+<li>偶发性泄露：特定环境或操作过程下才会发生</li>
+<li>一次性泄露：只会被执行一次</li>
+<li>隐式泄露：运行时不停分配内存，但是直到结束时才释放。严格来说并不能算是泄露，但由于<strong>服务器程序</strong>运行较久，不及时释放内存也可能导致耗尽内存。</li>
+</ol>
+<p><strong>内存泄漏最终会导致内存溢出！！！</strong></p>
+<p>内存泄漏本身不会产生什么危害，一般的用户根本感觉不到内存泄漏的存在。真正有危害的是<strong>内存泄漏的堆积</strong>，这会最终消耗尽系统所有的内存。</p>
+<p>从这个角度来说，一次性内存泄漏并没有什么危害，因为它不会堆积，而隐式内存泄漏危害性则非常大，因为较之于常发性和偶发性内存泄漏它<strong>更难被检测到</strong>。</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正向代理与反向代理</title>
+    <url>/2021/09/01/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<h2 id="正向代理与反向代理">正向代理与反向代理</h2>
+<h3 id="正向代理">正向代理</h3>
+<p>正向代理：代理客户端。位于客户端和目标服务器之间的服务器(代理服务器)，为了从目标服务器取得内容，客户端向代理服务器发送一个请求并指定目标，然后代理服务器向目标服务器转交请求并将获得的内容返回给客户端。</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110041533305.png" alt="image-20211004153346161"></p>
+<p>正向代理的作用：</p>
+<ol>
+<li>突破访问限制</li>
+<li>提高访问速度</li>
+<li>隐藏客户端真实IP</li>
+</ol>
+<h3 id="反向代理">反向代理</h3>
+<p>反向代理：代理服务端的。代理服务器接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110041535449.png" alt="image-20211004153557367"></p>
+<p>反向代理的作用：</p>
+<ol>
+<li>隐藏服务器IP</li>
+<li>负载均衡</li>
+<li>提高访问速度</li>
+<li>提供安全保障</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小米安卓开发</title>
+    <url>/2021/09/30/%E5%B0%8F%E7%B1%B3%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1>小米 Android开发工程师（可接受java方向）</h1>
+<h2 id="一面">一面</h2>
+<p>9月15日</p>
+<p>自我介绍</p>
+<p>1、考研吗（公司喜欢不考的）</p>
+<p>2、Java 是跨平台的吗，为什么</p>
+<p>3、Java 的访问修饰符有哪些，有什么区别</p>
+<p>4、this 与 super</p>
+<p>5、两个对象相等如何判断，String 的 equals() 方法是判断值的吗</p>
+<p>6、JVM 的内存结构（说的不好），堆是线程公有的吗？那栈呢</p>
+<p>7、String、StringBuffer、StringBuilder 区别</p>
+<p>8、说一下 final 关键字，修饰 基本类型与引用类型 时有什么区别</p>
+<p>9、synchronized 和 volatile</p>
+<p>10、对原子性和有序性的理解。n = n+1 是原子的吗？</p>
+<p>11、说一下对线程池的理解</p>
+<p>12、看过 HashMap 源码吗，讲一下 HashMap。（很多关于这个的帖子，主要就是扩容，看一看就理解了）</p>
+<p>13、算法题，简单的递归</p>
+<p>14、反问</p>
+<h2 id="二面">二面</h2>
+<p>9月29日</p>
+<p>自我介绍</p>
+<p>1、Java中有哪些IO模型</p>
+<p>2、Java运行时数据区域有哪些，PC计数器是线程独有的吗（Java里是的，每个线程都有一个），元数据区</p>
+<p>3、Java 双亲委派机制</p>
+<p>这部分答的不是很好，换内容问了</p>
+<p>4、进线程有什么区别</p>
+<p>5、上下文切换都切换了什么东西</p>
+<p>6、进程的调度算法，现代操作系统1s轮转多少次，磁盘调度算法</p>
+<p>7、七层网络</p>
+<p>8、操作系统一般使用哪些层</p>
+<p>9、算法题，层序遍历的小变种</p>
+<p>10、能接受开发安卓框架吗，是在底层和应用之间</p>
+<p>11、反问</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>小米</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字节后端开发</title>
+    <url>/2021/08/21/%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h2 id="一面">一面</h2>
+<p>算法题</p>
+<p>1、某游戏中，某套装需要5个不同的配件，某个副本每次通关会随机奖励其中的一件，凑齐此套装需要通关此副本的平均次数是多少？</p>
+<p>2、1的个数</p>
+<p>一、输入一个正整数int n，求其转为2进制数后，其中1的个数。如：</p>
+<p>0:  0000 -&gt; 0</p>
+<p>1:  0001 -&gt; 1</p>
+<p>2:  0010 -&gt; 1</p>
+<p>3:  0011 -&gt; 2</p>
+<p>4:  0100 -&gt; 1</p>
+<p>5:  0101 -&gt; 2</p>
+<p>6:  0110 -&gt; 2</p>
+<p>7:  0111 -&gt; 3</p>
+<p>8:  1000 -&gt; 1</p>
+<p>9:  1001 -&gt; 2</p>
+<p>10: 1010 -&gt; 2</p>
+<p>二、输入一个正整数int n，求 区间[1, n]中，所有整数转为2进制数后，1的个数之和。</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>字节</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字节大数据开发</title>
+    <url>/2021/08/06/%E5%AD%97%E8%8A%82%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1>字节跳动大数据开发</h1>
+<h2 id="一面">一面</h2>
+<p>面试用的牛客网，一个胖胖的很可爱的大哥</p>
+<p><strong>自我介绍</strong></p>
+<p>介绍的很烂，逻辑不够清晰，不流畅，不让介绍我优秀的室友</p>
+<p>学习能力强</p>
+<p>简单说了两句</p>
+<p>问了专业（信息与计算科学）是不是普通计算机专业。</p>
+<p>是不是明年6月份毕业</p>
+<p>1、学过数据库吗？</p>
+<p><strong>数据库系统</strong>与<strong>文件系统</strong>的区别，在使用上有什么区别，</p>
+<p>没想过 ，答的很差</p>
+<p>2、数据库事务是什么，什么是数据库索引。假如我们设计一个表，有20个字段，哪些字段需要加索引，讲一下加索引的方法。</p>
+<p>3、学过计算机网络吗？讲一下<strong>TCP</strong>与<strong>UDP</strong>的区别。</p>
+<p>TCP在建立连接后，它在传输的时候有什么特点，比如可靠什么的。</p>
+<p>三次握手、四次挥手、拥塞控制、流量控制这些主要是为了实现什么目标。</p>
+<p>哪些场景需要用UDP协议。</p>
+<p>像直播，如果它的数据包的顺序错了之后对直播的画面有什么影响。</p>
+<p>4、数据结构学过吗？</p>
+<p>说一下二叉树与平衡二叉树的区别。</p>
+<p><strong>B+树</strong>是什么？与平衡二叉树有什么区别。<strong>下去再看一下这块儿</strong></p>
+<p><strong>时刻：12分钟</strong></p>
+<p>5、做两道题目</p>
+<p>题目1：给一个递增数组，实现一个<strong>二分查找</strong>。查不到就返回-1。如果数组内容可重复，返回区间，查不到返回 [-1, -1]</p>
+<p>题目2：给定一个字符串，判断是否是<strong>合法的IPv4地址</strong>，使用了Python的库，后来经过提示，加上了对于<strong>前导0</strong>的考虑</p>
+<p><strong>时刻：37分钟</strong></p>
+<p>题目三：sql查询，查询每个部门工资最高的员工的ID。sql一年没用过了，我太难了，在面试官的提醒下磕磕绊绊写完了。<strong>下去再练练</strong></p>
+<p><strong>时刻：49分钟</strong></p>
+<p>6、总结</p>
+<p>专业基础知识没有太认真看，下去再看一下，代码写的还可以。</p>
+<p>7、反问</p>
+<p>如何加深认识</p>
+<p>把相关专业概念、理论知识记熟</p>
+<p>在实践过程中，多实践，积累之后再去回顾这些概念，实践之后理解会更深一些</p>
+<p>需要把思考和实践做一个迭代</p>
+<p>技术的理论、目的，为什么使用这种方法，这种方法的利弊</p>
+<p>概念是为各种实践服务的，而不是凭空出现的。</p>
+<p>可以找一些项目做</p>
+<p>8、问我下半年还有课吗，可以实习的时间</p>
+<p>10月到3月会闲一些</p>
+<p><strong>时刻：55分钟</strong></p>
+<h2 id="二面">二面</h2>
+<p><strong>一个半小时</strong></p>
+<p>面试用的牛客网，还是上次的房间，一个戴着戒指的大哥。</p>
+<p><strong>自我介绍</strong></p>
+<p>平平无奇的自我介绍。可能还是面试经验少，紧张，语速控制不住，不过好像不是很关键</p>
+<p><strong>时刻：2分钟</strong></p>
+<p>也问了专业（信息与计算科学）是不是普通计算机专业。</p>
+<p>问了平常用什么语言，会写SQL吗，一开始我听错了，听成了C扣…</p>
+<p><strong>时刻：5分钟</strong></p>
+<p>直接开始写算法题</p>
+<p>1、题目1：给一个非空数组，返回数目最多的元素，如果有多个数目最多的元素，返回最短的子串长度（第一次出现到最后一次出现）。</p>
+<p>还贴心的对题目进行了解释</p>
+<p>思路：1） 遍历一次，进行计数，并且记录出现最多的次数； 2）把出现次数为最多次数的元素存进列表；3）寻找这些元素第一次出现的位置以及最后一次出现的位置；4）找到子串最短的元素；5）输出</p>
+<p>第一次理解还是有些偏差，把那个元素输出了，<strong>题目只是要长度</strong></p>
+<p>写完让讲解代码思路，分析复杂度，然后问有没有更优的写法</p>
+<p>第一次写的是 O（N*k），k 是出现次数为最多次的元素的数目。写的时候就发现可以把找首次出现与末次出现的寻找放到计数步骤，由于字典的查找为O（1）的，所以复杂度就降到了O（N）</p>
+<p>面试的时候口齿不清，表达不明白，还好面试官厉害，理解了我说的意思【流汗黄豆】</p>
+<p><strong>时刻：26分钟</strong></p>
+<p>2、题目2：给定一个非空数组，求下标 i，j 之间的区间和，需要进行 m 次查找</p>
+<p>看到题目我第一想法是遍历累加，也就 O（N）的复杂度</p>
+<p>可是如果进行 m 次的话，每次加一次太浪费时间了，后来在纸上演算，发现可以先计算部分和，然后再相减，进一步想到了前缀和。</p>
+<p>只用计算一次前缀和，在此基础上的 m 次操作每次都是 O（1）的了，总体复杂度是 O（N+1）</p>
+<p><strong>时刻：35分钟</strong></p>
+<p>3、题目3：给定一个数组，求所有两个数字和等于 target 的所有的数字对。</p>
+<p>首先是O（N2）的暴力</p>
+<p>O（NLogN）的排序查找，有序也为O（NLogN）</p>
+<p>排序+双指针，O（NLogN），有序为 O（N）</p>
+<p>哈希表，O（N）</p>
+<p><strong>时刻：41分钟</strong></p>
+<p>4、题目4：假设有一个很大的日志文件，每行存一个IP地址，每次访问都存一个IP地址，找出访问量最多的10个IP。</p>
+<p>分批</p>
+<p>找出每批最多的10个IP，刚开始没想起来堆，只想使用快排，后来经过面试官的多次提醒，想到了使用最小堆存最大的10个数，</p>
+<p>但可能是局部最大</p>
+<p><strong>没想到</strong>可以<strong>把哈希表存在外存里</strong>，这样就能求出来了。面试官看我实在不知道数据库、大数据之类的处理方式，把他存到外存，就告诉我了</p>
+<p><strong>时刻：55分钟</strong></p>
+<p>5、数据库引擎了解吗？（我完全不了解…）</p>
+<p>6、想问索引，但是我了解不多。</p>
+<p>7、索引优化、SQL优化（也不太了解）</p>
+<p>8、HTTP状态码</p>
+<p>​	200、301、302、404、502、503</p>
+<p>由于提到了301、302的重定向，问有什么方式能够配置代理（不会配置，说了自己的理解）他问我用过<strong>nginx</strong>吗，我听成了Linux，然鹅Linux我也用的不多。</p>
+<p>9、喜闻乐见的前端要访问后端，然后前端的页面一直刷不出来，是哪里出了问题，如何排查，有什么思路和方法。</p>
+<p>虽然我不知道，但是按照自己的想法说了，然鹅我并不知道如何进行排查。</p>
+<p>面试官提醒说结合刚刚问的HTTP内容，然后我就立马说（重定向，他马上就说了不一定， 哈哈），然后就想到可能是代理服务器的问题。</p>
+<p>之后面试官看看我说不出来了，就给我进行了讲解。</p>
+<p>开发过程中，后端的问题可能会多一点，但在一个线上的项目，大部分的问题基本上都是网络环境出现了问题，还有DNS有问题 。</p>
+<p>要把它当作一个线上的应用来看待，页面刷不出来，大部分是网络有问题，或者是我们整个机房挂了，或者是后端扛不住了。</p>
+<p><strong>时刻：67分钟</strong></p>
+<p>10、有学过操作系统是吧？学的是什么操作系统？Linux还是别的什么</p>
+<p>我：……没有根据具体系统讲解</p>
+<p>你们的原理肯定也会落实到某些系统上，你们不会上机或者去做一些其他的？</p>
+<p>我：真没有…，尬住了。我说我结合课本、博客在Windows系统上进行过理解</p>
+<p>为什么没有用Linux系统去进行尝试呢？</p>
+<p>后来就给我讲了一些他的经验，你是做这个行业的，还是应该去用的</p>
+<p><strong>时刻：71分钟</strong></p>
+<p>舍友回来了…</p>
+<p>11、在学校或者说平常，做过什么偏应用类的东西，分析也好、数学也好什么的都行。</p>
+<p>说了写过爬虫，所以还能记得与网页有关的一些都行。之后详细说了之前对疫情期间的一次建模分析。</p>
+<p>现在去回顾这件事情，你觉得有哪些地方是可以做的更好的？</p>
+<p>我：基本上每部分我都觉得能做的更好、更合理</p>
+<p>有没有看到行业上是怎么做这件事的？</p>
+<p>我看过但不记得了，只能说没看过很具体的分析，更多是参照了以往，特别是非典时期的文章成果</p>
+<p><strong>时刻：81分钟</strong></p>
+<p>12、目前的计划打算</p>
+<p><strong>时刻：84分钟</strong></p>
+<p>13、反问</p>
+<p>咱们这边的话做的最多的业务是关于什么的</p>
+<p>如果拿到offer了，想要提前去实习以便提前掌握正式工作需要的知识与技术，那么应该主要去学习哪些内容，实习之后最大的收获可能是哪些方面的</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>字节</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字节后端开发</title>
+    <url>/2021/10/09/%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91-1/</url>
+    <content><![CDATA[<h1>字节电商后端</h1>
+<p>流程介绍</p>
+<p>自我介绍</p>
+<h3 id="Java">Java</h3>
+<p>HashMap 和 HashTable</p>
+<p>Java concurrentmap 的size如何获取</p>
+<p>Java除了 synch 还有什么锁</p>
+<h3 id="数据库">数据库</h3>
+<p>幻读怎么解决的</p>
+<h3 id="代码">代码</h3>
+<p>数据库两题</p>
+<p>算法一题</p>
+<p>判断二叉搜索树，挺简单，不过测试时建树建出问题了</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>字节</tag>
       </tags>
   </entry>
 </search>
