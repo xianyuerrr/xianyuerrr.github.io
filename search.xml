@@ -265,6 +265,7 @@
       <tags>
         <tag>C++</tag>
         <tag>STL</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -734,6 +735,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>Python</tag>
         <tag>二分</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -846,6 +848,7 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
       <tags>
         <tag>Python</tag>
         <tag>堆</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1499,11 +1502,11 @@ cond(no)->sub1(right)->op</textarea><textarea id="flowchart-1-options" style="di
 <p><strong>8.</strong><img src="https://math.now.sh?inline=%5Cforall%20i%20%5Cin%20Z" style="display:inline-block;margin: 0;"/>，有 <img src="https://math.now.sh?inline=4i%20%5Coplus%20%284i%2B1%29%20%5Coplus%20(4i%2B2)%20%5Coplus%20(4i%2B3)%20%3D%200" style="display:inline-block;margin: 0;"/>。</p>
 ]]></content>
       <categories>
-        <category>数学</category>
+        <category>算法</category>
       </categories>
       <tags>
         <tag>异或</tag>
-        <tag>数学</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1631,7 +1634,7 @@ DCL：
         <category>面试</category>
       </categories>
       <tags>
-        <tag>面试</tag>
+        <tag>计网 - 面试</tag>
       </tags>
   </entry>
   <entry>
@@ -1852,6 +1855,494 @@ DCL：
       <tags>
         <tag>面试</tag>
         <tag>字节</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java垃圾回收</title>
+    <url>/2021/09/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</url>
+    <content><![CDATA[<h1>Java 垃圾回收</h1>
+<p>垃圾回收，顾名思义就是释放垃圾占用的空间，从而提升程序性能，防止内存泄露。当一个对象不再被需要时，该对象就需要被回收并释放空间。</p>
+<p>Java 内存运行时数据区域包括程序计数器、虚拟机栈、本地方法栈、堆等区域。其中，程序计数器、虚拟机栈和本地方法栈都是线程私有的，当线程结束时，这些区域的生命周期也结束了，因此不需要过多考虑回收的问题。而堆是虚拟机管理的内存中最大的一块，堆中的内存的分配和回收是动态的，垃圾回收主要关注的是堆空间。</p>
+<h2 id="调用垃圾回收器的方法">调用垃圾回收器的方法</h2>
+<p>调用垃圾回收器的方法是 gc，该方法在 System 类和 Runtime 类中都存在。</p>
+<p>在 Runtime 类中，方法 gc 是实例方法，方法 System.gc 是调用该方法的一种传统而便捷的方法。</p>
+<p>在 System 类中，方法 gc 是静态方法，该方法会调用 Runtime 类中的 gc 方法。</p>
+<p>其实，java.lang.System.gc 等价于 java.lang.Runtime.getRuntime.gc 的简写，都是调用垃圾回收器。</p>
+<p>方法 gc 的作用是提示 Java 虚拟机进行垃圾回收，该方法由系统自动调用，不需要人为调用。该方法被调用之后，由 Java 虚拟机决定是立即回收还是延迟回收。</p>
+<h2 id="finalize-方法">finalize 方法</h2>
+<p>与垃圾回收有关的另一个方法是 finalize 方法。该方法在 Object 类中被定义，在释放对象占用的内存之前会调用该方法。该方法的默认实现不做任何事，如果必要，子类应该重写该方法，一般建议在该方法中释放对象持有的资源。</p>
+<h2 id="判断对象是否可回收">判断对象是否可回收</h2>
+<p>垃圾回收器在对堆进行回收之前，首先需要确定哪些对象是可回收的。常用的算法有两种，引用计数算法和根搜索算法。</p>
+<h3 id="引用计数算法">引用计数算法</h3>
+<p>引用计数算法给每个对象添加引用计数器，用于记录对象被引用的计数，引用计数为 0 的对象即为可回收的对象。</p>
+<p>虽然引用计数算法的实现简单，判定效率也很高，但是引用计数算法无法解决对象之间循环引用的情况。如果多个对象之间存在循环引用，则这些对象的引用计数永远不为 0，无法被回收。因此 Java 语言没有使用引用计数算法。</p>
+<h3 id="根搜索算法">根搜索算法</h3>
+<p>主流的商用程序语言都是使用根搜索算法判断对象是否可回收。根搜索算法的思路是，从若干被称为 GC Roots 的对象开始进行搜索，不能到达的对象即为可回收的对象。</p>
+<p>在 Java 中，GC Roots 一般包含下面几种对象：</p>
+<p>虚拟机栈中引用的对象；</p>
+<p>本地方法栈中的本地方法引用的对象；</p>
+<p>方法区中的类静态属性引用的对象；</p>
+<p>方法区中的常量引用的对象。</p>
+<h3 id="引用的分类">引用的分类</h3>
+<p>引用计数算法和根搜索算法都需要通过判断引用的方式判断对象是否可回收。</p>
+<p>在 JDK 1.2 之后，Java 将引用分成四种，按照引用强度从高到低的顺序依次是：强引用、软引用、弱引用、虚引用。</p>
+<p><strong>强引用</strong>是指在程序代码中普遍存在的引用。垃圾回收器永远不会回收被强引用关联的对象。</p>
+<p><strong>软引用</strong>描述还有用但并非必需的对象。只有在系统将要发生内存溢出异常时，被软引用关联的对象才会被回收。在 JDK 1.2 之后，提供了 SoftReference 类实现软引用。</p>
+<p><strong>弱引用</strong>描述非必需的对象，其强度低于软引用。被弱引用关联的对象只能存活到下一次垃圾回收发生之前，当垃圾回收器工作时，被弱引用关联的对象一定会被回收。在 JDK 1.2 之后，提供了 WeakReference 类实现弱引用。</p>
+<p><strong>虚引用</strong>是最弱的引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用取得一个对象实例。为一个对象设置虚引用关联的唯一目的就是能在这个对象被回收时收到一个系统通知。在 JDK 1.2 之后，提供了 PhantomReference 类实现虚引用。</p>
+<h2 id="垃圾回收算法">垃圾回收算法</h2>
+<h3 id="标记—清除算法">标记—清除算法</h3>
+<p>标记—清除算法是最基础的垃圾回收算法，后续的垃圾收集算法都是基于标记—清除算法进行改进而得到的。标记—清除算法分为“标记”和“清除”两个阶段，首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。</p>
+<p>标记—清除算法有两个主要缺点。一是效率问题，标记和清除的效率都不高，二是空间问题，标记清除之后会产生大量不连续的内存碎片，导致程序在之后的运行过程中无法为较大对象找到足够的连续内存。</p>
+<h3 id="复制算法">复制算法</h3>
+<p>复制算法是将可用内存分成大小相等的两块，每次只使用其中的一块，当用完一块内存时，将还存活着的对象复制到另外一块内存，然后把已使用过的内存空间一次清理掉。</p>
+<p>复制算法解决了效率问题。由于每次都是对整个半区进行内存回收，因此在内存分配时不需要考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配内存即可。复制算法的优点是实现简单，运行高效，缺点是将内存缩小为了原来的一半，以及在对象存活率较高时复制操作的次数较多，导致效率降低。</p>
+<h3 id="标记—整理算法">标记—整理算法</h3>
+<p>标记—整理算法是根据老年代的特点提出的。标记过程与标记—清除算法一样，但后续步骤不是直接回收被标记的对象，而是让所有存活的对象都向一端移动，然后清除边界以外的内存。</p>
+<h3 id="分代收集算法">分代收集算法</h3>
+<p>分代收集算法根据对象的存活周期不同将内存划分为多个区域，对每个区域选用不同的垃圾回收算法。</p>
+<p>一般把 Java 堆分为新生代和老年代。在新生代中，大多数对象的生命周期都很短，因此选用<strong>复制</strong>算法。在老年代中，对象存活率高，因此选用标记—清除算法或<strong>标记—整理</strong>算法。</p>
+<h2 id="分配内存与回收策略">分配内存与回收策略</h2>
+<p>Java 堆可以分成新生代和老年代，新生代又可以细分成 Eden 区、From Survivor 区、To Survivor 区等。对于不同的对象，有相应的内存分配规则。</p>
+<h3 id="Minor-GC-和-Full-GC">Minor GC 和 Full GC</h3>
+<p>Minor GC 指发生在新生代的垃圾回收操作。因为大多数对象的生命周期都很短，因此 Minor GC 会频繁执行，一般回收速度也比较快。</p>
+<p>Full GC 也称 Major GC，指发生在老年代的垃圾回收操作。出现了 Full GC，经常会伴随至少一次的 Minor GC。老年代对象的存活时间长，因此 Full GC 很少执行，而且执行速度会比 Minor GC 慢很多。</p>
+<h3 id="对象优先在-Eden-区分配">对象优先在 Eden 区分配</h3>
+<p>大多数情况下，对象在新生代 Eden 区分配，当 Eden 区空间不够时，发起 Minor GC。</p>
+<h3 id="大对象直接进入老年代">大对象直接进入老年代</h3>
+<p>大对象是指需要连续内存空间的对象，最典型的大对象是那种很长的字符串以及数组。大对象对于虚拟机的内存分配而言是坏消息，经常出现大对象会导致内存还有不少空间时就提前触发垃圾回收以获取足够的连续空间分配给大对象。</p>
+<p>将大对象直接在老年代中分配的目的是避免在 Eden 区和 Survivor 区之间出现大量内存复制。</p>
+<h3 id="长期存活的对象进入老年代">长期存活的对象进入老年代</h3>
+<p>虚拟机采用分代收集的思想管理内存，因此需要识别每个对象应该放在新生代还是老年代。虚拟机给每个对象定义了年龄计数器，对象在 Eden 区出生之后，如果经过第一次 Minor GC 之后仍然存活，将进入 Survivor 区，同时对象年龄变为 1，对象在 Survivor 区每经过一次 Minor GC 且存活，年龄就增加 1，增加到一定阈值时则进入老年代（阈值默认为 15）。</p>
+<h3 id="动态对象年龄判定">动态对象年龄判定</h3>
+<p>为了能更好地适应不同程序的内存状况，虚拟机并不总是要求对象的年龄必须达到阈值才能进入老年代。如果在 Survivor 区中相同年龄的所有对象的空间总和大于 Survivor 区空间的一半，则年龄大于或等于该年龄的对象直接进入老年代。</p>
+<h3 id="空间分配担保">空间分配担保</h3>
+<p>在发生 Minor GC 之前，虚拟机会先检查老年代最大可用的连续空间是否大于新生代所有对象的空间总和，如果这个条件成立，那么 Minor GC 可以确保是安全的。</p>
+<p>只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小，就会进行 Minor GC，否则将进行 Full GC。</p>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+        <tag>垃圾回收</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>synchronized 和 volatile</title>
+    <url>/2021/08/22/synchronized-%E5%92%8C-volatile/</url>
+    <content><![CDATA[<h1>synchronized 和 volatile</h1>
+<p>关键字 synchronized 和 volatile 是多线程中经常用到的两个关键字。</p>
+<h2 id="关键字-synchronized">关键字 synchronized</h2>
+<p>关键字 synchronized 解决的是多个线程之间访问资源的同步性，该关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。</p>
+<p>关键字 synchronized 最主要的三种使用方式是：修饰实例方法、修饰静态方法、修饰代码块。</p>
+<p>修饰实例方法：给当前对象实例加锁，进入同步代码之前需要获得当前对象实例的锁。</p>
+<p>修饰静态方法：给当前类加锁，进入同步代码之前需要获得当前类的锁。</p>
+<p>修饰代码块：指定加锁对象，给指定对象加锁，进入同步代码块之前需要获得指定对象的锁。</p>
+<h2 id="关键字-volatile">关键字 volatile</h2>
+<p>关键字 volatile 解决的是变量在多个线程之间的可见性，该关键字修饰的变量会直接在主内存中进行读写操作，保证了变量的可见性。</p>
+<p>除了保证变量的可见性以外，关键字 volatile 还有一个作用是确保代码的执行顺序不变。为了提高执行程序时的性能，编译器和处理器会对指令进行重排序优化，因此代码的执行顺序和编写代码的顺序可能不一致。添加关键字 volatile 可以禁止指令进行重排序优化。</p>
+<p>只有当一个变量满足以下两个条件时，才能使用关键字 volatile。</p>
+<p>对变量的写入操作不依赖变量的当前值，或者能确保只有单个线程更新变量的值。</p>
+<p>该变量没有包含在具有其他变量的不变式中。</p>
+<h2 id="关键字-synchronized-和-volatile-的区别">关键字 synchronized 和 volatile 的区别</h2>
+<ol>
+<li>
+<p>关键字 volatile 是线程同步的轻量级实现，不需要加锁，因此性能优于关键字 synchronized。</p>
+</li>
+<li>
+<p>关键字 synchronized 可以修饰方法和代码块，关键字 volatile 只能修饰变量。</p>
+</li>
+<li>
+<p>关键字 synchronized 可能发生阻塞，关键字 volatile 不会发生阻塞。</p>
+</li>
+<li>
+<p>关键字 synchronized 可以保证数据的可见性和原子性，关键字 volatile 只能保证数据的可见性，不能保证数据的原子性。</p>
+</li>
+<li>
+<p>关键字 synchronized 解决的是多个线程之间访问资源的同步性，关键字 volatile 解决的是变量在多个线程之间的可见性。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sleep 和 wait</title>
+    <url>/2020/10/02/sleep-%E5%92%8C-wait/</url>
+    <content><![CDATA[<h1>sleep 和 wait 的区别</h1>
+<p><strong>sleep()是Thread的静态本地方法</strong>，<strong>wait()是Object的成员方法</strong>，二者是有本质区别。</p>
+<p><strong>相同点</strong>： 一旦执行，都可以使得<strong>当前的线程进入等待状态</strong>。</p>
+<p><strong>不同点</strong>：</p>
+<ol>
+<li>声明的位置不同，sleep()声明在Thread 类，wait()声明在Object 类；</li>
+<li>sleep函数必须指定睡眠时间，wait可以指定也可以不指定；</li>
+<li>sleep() 会让当前正在运行的、占用CPU时间片的线程<strong>挂起指定时间</strong>，休眠时间到自动苏醒进入可运行状态；wait() 方法用来<strong>线程间通信</strong>，如果设置了时间，就等待指定时间；如果不设置，则该对象在其它线程被调用 notify() / notifyAll() 方法后进入可运行状态，才有机会竞争获取对象锁。</li>
+<li>适用场景不同，sleep()可以在任何需要的场景下调用，wait()必须在<strong>同步代码块</strong>中或者<strong>同步方法中的监视器</strong>中。</li>
+<li>如果两方法都是使用在同步代码块或同步方法中，<strong>sleep()不会释放锁</strong>，wait()会释放锁，并进入线程等待池。</li>
+</ol>
+<p>sleep()线程<strong>控制自身流程</strong>，让当前线程休眠，不涉及对象类，也不需要获取对象锁，所以是 <strong>Thread</strong> 的方法。wait()用来<strong>线程间通信</strong>，使拥有该对象锁的线程等待直到指定时间或notify()，需要获得对象锁，所以是 <strong>Object</strong> 的方法。</p>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Array、ArrayList、LinkedList、Vector</title>
+    <url>/2020/11/02/Array%E3%80%81ArrayList%E3%80%81LinkedList%E3%80%81Vector/</url>
+    <content><![CDATA[<h2 id="Array、ArrayList、LinkedList、Vector">Array、ArrayList、LinkedList、Vector</h2>
+<h3 id="Array-与-ArrayList">Array 与 ArrayList</h3>
+<ol>
+<li>Array 可以存储基本数据类型和对象，ArrayList 只能存储对象</li>
+<li>Array 是固定大小的，而 ArrayList 大小是自动扩展的</li>
+<li>ArrayList 内置方法多，比如 addAll、removeAll、iteration 等方法只有 ArrayList 有</li>
+</ol>
+<h3 id="Arraylist-与-LinkedList">Arraylist 与 LinkedList</h3>
+<ol>
+<li>都不是线程安全的</li>
+<li>ArrayList 为<strong>动态数组</strong>，而 LinkedList 为<strong>双向链表</strong></li>
+<li>ArrayList 会存在一定的空间浪费，因为每次扩容都是之前的 1.5 倍；LinkedList 中的每个元素都要存放 前驱、后继、数据 三部分，所以每个元素的存储都比 ArrayList 花费更多的空间</li>
+<li>ArrayList 比 LinkedList 在<strong>随机访问</strong>的时候效率要高</li>
+<li>增加和删除操作，LinkedList 要比 ArrayList 效率要高</li>
+<li>ArrayList 适合多读少增删的场景；LinkedList 适合多增删少读写的场景</li>
+</ol>
+<h3 id="ArrayList-与-Vector">ArrayList 与 Vector</h3>
+<ol>
+<li>Vector 使用 Synchronized 来实现线程同步，<strong>线程安全</strong>；但正因此，ArrayList 在<strong>性能</strong>方面要优于 Vector</li>
+<li>都需要动态的调整容量，Vector 扩容每次会增加 1 倍，而 ArrayList 只会增加 50%。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>map和set</title>
+    <url>/2020/10/02/map%E5%92%8Cset/</url>
+    <content><![CDATA[<h1>映射和集合</h1>
+<p>Map 接口定义映射，存储一组键值对的映射关系。</p>
+<p>Set 接口定义集合，存储一组互不相同的元素，该接口继承了 Collection 接口。</p>
+<h2 id="Map-接口的概念和常用方法">Map 接口的概念和常用方法</h2>
+<p>Map 接口存储一组键值对的映射关系，映射中的每个键对应一个值。映射中<strong>不能有重复的键</strong>，否则会出现一个键对应多个值的情况，这违背了映射的定义。</p>
+<h2 id="Map-接口的实现类">Map 接口的实现类</h2>
+<h3 id="HashMap">HashMap</h3>
+<p>HashMap 类是散列映射，通过散列函数计算键对应的存储位置，因此可以快速地完成放置键值对、删除键值对、根据键获得值的操作。</p>
+<p>JDK 1.8 之前的 HashMap 的底层通过<strong>数组和链表</strong>实现，如果出现冲突则通过<strong>拉链法</strong>解决冲突。JDK 1.8 在解决冲突时的实现有较大变化，当链表长度大于阈值（默认为 8）时，将链表转化为<strong>红黑树</strong>，以减少搜索时间。</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210915110838.png" alt="image-20210915110838014"></p>
+<p><strong>默认加载因子为什么选择 0.75：</strong></p>
+<p>空间利用率与查询成本的一个折中。加载因子过高，空间利用率提高，但哈希冲突的概率增加；加载因子过低，哈希冲突概率降低，但会频繁扩容，空间利用率降低。</p>
+<p>0.75 是居于数学分析（泊松分布）和行业规定一起得到的一个结论。</p>
+<p><strong>为什么链表转红黑树的阈值设为 8：</strong></p>
+<p>为什么不一开始直接使用红黑树</p>
+<ol>
+<li>红黑树结点所占空间是普通节点的两倍，但查找复杂度低，只有当节点特别多时，红黑树的优点才能够凸显出来。</li>
+<li>阈值为 8，是数据分析统计得到的结果。链表长度到达 8 的概率是非常低的。</li>
+<li>链表转为红黑树，除了要求链表长度大于 8，还要 HashMap 的<strong>数组长度大于 64</strong>。当红黑树的节点小于或等于 6 个以后，又会恢复为链表形态</li>
+</ol>
+<p><strong>扩容：</strong></p>
+<ol>
+<li>初始值 16，负载因子 0.75，阈值 = 负载因子 <code>*</code> 容量；</li>
+<li>键值对数目大于阈值 或 初始化时，调用 <code>resize()</code> 进行扩容；</li>
+<li>每次扩容都是之前的两倍；</li>
+<li>由于hash值范围太大，不能直接在内存建立这么大的数组，所以需要取余。</li>
+<li>扩容时判断 <code>e.hash &amp; oldCap</code> 是否为 0。若为 0，则位置不变，若为 1，则位置变为 原位置 + 旧容量。因为当前位置是 hash值对 oldCap 取余得到的，而 oldCap 是 2 的幂次，<code>e.hash % oldCap</code> 相当于 <code>e.hash &amp; (oldCap - 1)</code>，此时容量变为原来的两倍，则运算变为 <code>e.hash &amp; (2*oldCap - 1)</code> 。其实与之前的 <code>&amp;</code> 运算只多了一个二进制位的运算，这个多出来的位，正是 oldCap 的二进制中 1 的位置。所以只需要判断 <code>e.hash &amp; oldCap</code> 即可得到新的位置。</li>
+</ol>
+<p><strong>能否使用任意类作为 key</strong></p>
+<p>可以，但需要注意：</p>
+<ol>
+<li>重写 <code>equals()</code> 方法时，也应该重写 <code>hashCode()</code> 方法</li>
+<li>key 最好使用不可变类型，不会出现<strong>放入和获取时哈希值不同</strong>的情况。对应的哈希值可以被缓存起来，性能好</li>
+</ol>
+<h3 id="HashTable">HashTable</h3>
+<p>Hashtable 类是<strong>散列表</strong>，其功能和 HashMap 相似。以下是 HashMap 和 Hashtable 的部分区别。</p>
+<h3 id="HashMap-与-HashTable-的区别">HashMap 与 HashTable 的区别</h3>
+<p><strong>HashMap 不是线程安全的</strong>，Hashtable 的大多数方法用关键字 synchronized 修饰，因此 <strong>Hashtable 是线程安全</strong>的。</p>
+<p>在不需要保证线程安全的情况下，HashMap 的效率高于 Hashtable。</p>
+<p><strong>HashMap 允许键或值为 null</strong>，只能有一个键为 null，可以有一个或多个键对应的值为 null，Hashtable 不允许键或值为 null。</p>
+<p>从 JDK 1.8 开始，HashMap 在链表长度大于阈值（默认为 8）时，将链表转化为红黑树以减少搜索时间，Hashtable 没有这样的机制。</p>
+<h3 id="ConcurrentHashMap">ConcurrentHashMap</h3>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210915125504.png" alt="image-20210915125504735"></p>
+<h3 id="TreeMap">TreeMap</h3>
+<p>TreeMap 是有序映射，键可以使用 Comparable 接口或 Comparator 接口排序。</p>
+<p>TreeMap 的底层实现是红黑树，通过红黑树维护映射的有序性。由于要维护映射的有序性，因此 TreeMap 的各项操作的平均效率低于 HashMap，但是 TreeMap 可以按照顺序获得键值对。</p>
+<p>Set 接口的定义和常用方法<br>
+Set 接口存储一组互不相同的元素，一个集合中不存在两个相等的元素。</p>
+<p>Set 接口继承了 Collection 接口，没有引入新的方法或常量，只是规定其实例不能包含相等的元素。</p>
+<h2 id="Set-接口的实现类">Set 接口的实现类</h2>
+<h3 id="HashSet">HashSet</h3>
+<p>HashSet 类是散列集合，其<strong>底层实现基于 HashMap</strong>，就是 HashMap 套了个外壳，构造方法里创建的就是 HashMap 对象。</p>
+<p>它把你要存的值当做 <code>HashMap</code>的 key，而 value 值是一个 <code>final</code>的<code>Object</code>对象，只起一个占位作用。而<code>HashMap</code>本身就不允许重复键，正好被<code>HashSet</code>拿来即用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (p.hash == hash &amp;&amp;<br>        ((k = p.key) == key || (key != <span class="hljs-keyword">null</span> &amp;&amp; key.equals(k))))<br></code></pre></td></tr></table></figure>
+<p>首先通过 hash 算法算出的值必须相等，算出的结果是 int，所以可以用 == 符号判断。并且待插入的 key == 当前索引已存在的 key，或者 待插入的 key.equals(当前索引已存在的key)，注意<code>==</code> 和 equals 是<strong>或</strong>的关系。== 符号意味着这是同一个对象， equals 用来确定两个对象内容相同。</p>
+<p>根据<strong>散列约定，如果两个对象相同，它们的散列码一定相同</strong>，因此如果在子类中重写了 <strong>equals</strong> 方法，必须在该子类中重写 <strong>hashCode</strong> 方法，以保证两个相等的对象对应的散列码是相同的。</p>
+<h3 id="TreeSet">TreeSet</h3>
+<p>TreeSet 类是有序集合，其<strong>底层实现基于 TreeMap</strong>。和 TreeMap 相似，TreeSet 可以使用 Comparable 接口或 Comparator 接口对元素排序。</p>
+<h3 id="LinkedHashSet">LinkedHashSet</h3>
+<p>LinkedHashSet 就是套壳儿 LinkedHashMap</p>
+]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>布隆过滤器</title>
+    <url>/2021/09/14/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</url>
+    <content><![CDATA[<h1>布隆过滤器</h1>
+<img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210914175752.jpeg" alt="kf0ylib9os" style="zoom:67%;" />
+<ol>
+<li>首先需要k个hash函数，每个函数可以把key散列成为1个整数；</li>
+<li>初始化时，需要一个长度为n比特的数组，每个比特位初始化为0；</li>
+<li>某个key加入集合时，用<strong>k个hash函数</strong>计算出k个散列值，并把数组中对应的比特位置为1；</li>
+<li>判断某个key是否在集合时，用k个hash函数计算出k个散列值，并查询数组中对应的比特位，如果所有的比特位都是1，认为在集合中；</li>
+</ol>
+<p><strong>优点：</strong></p>
+<ol>
+<li>空间效率和查询时间都远超一般的算法，布隆过滤器存储空间和插入 / 查询时间都是常数O(k)。</li>
+<li>散列函数相互之间没有关系，方便由硬件并行实现</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>随着存入的元素数量增加，误算率随之增加。但是如果元素数量太少，则使用散列表足矣。</li>
+<li>一般情况下不能从布隆过滤器中删除元素。我们很容易想到把位数组变成整数数组，每插入一个元素相应的计数器加 1, 这样删除元素时将计数器减掉就可以了。然而要保证安全地删除元素并非如此简单。首先我们<strong>必须保证删除的元素的确在布隆过滤器里面</strong>。这一点单凭这个过滤器是无法保证的。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库面试常问知识点</title>
+    <url>/2021/09/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E5%B8%B8%E9%97%AE%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<h1>数据库</h1>
+<h2 id="引擎">引擎</h2>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110010936468.png" alt="mysql引擎区别"></p>
+<h2 id="三范式">三范式</h2>
+<ul>
+<li>1NF：原子性</li>
+<li>2NF：不存在部分依赖（e.g. A, B, C, D；B依赖A，D依赖C）</li>
+<li>3NF：不存在传递依赖（e.g. A, B, C；B依赖A，C依赖B）</li>
+</ul>
+<h2 id="文件系统与数据库">文件系统与数据库</h2>
+<p><strong>区别</strong>在于：</p>
+<p>(1)文件系统用文件将数据长期保存在外存上，数据库系统用数据库统一存储数据。</p>
+<p>(2)文件系统中的程序和数据有一定的联系，数据库系统中的程序和数据分离。</p>
+<p>(3)文件系统用操作系统中的存取方法对数据进行管理，数据库系统用DBMS统一管理和控制数据。</p>
+<p>(4)文件系统实现以文件为单位的数据共享，数据库系统实现以记录和字段为单位的数据共享。</p>
+<p>其<strong>联系</strong>在于：</p>
+<p>(1)均为数据组织的管理技术。</p>
+<p>(2)均由数据管理软件管理数据，程序与数据之间用存取方法进行转换。</p>
+<p>(3)数据库系统是在文件系统的基础上发展而来的。</p>
+<h2 id="语句执行顺序">语句执行顺序</h2>
+<p>1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(8) SELECT (9)DISTINCT&lt;Select_list&gt;<br></code></pre></td></tr></table></figure>
+<p>2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(1) FROM &lt;left_table&gt; (3) &lt;join_type&gt;JOIN&lt;right_table&gt;<br></code></pre></td></tr></table></figure>
+<p>3</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(2) ON&lt;join_condition&gt;<br></code></pre></td></tr></table></figure>
+<p>4</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(4) WHERE&lt;where_condition&gt;<br></code></pre></td></tr></table></figure>
+<p>5</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(5) GROUP BY&lt;group_by_list&gt;<br></code></pre></td></tr></table></figure>
+<p>6</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(6) WITH &#123;CUBE|ROLLUP&#125;<br></code></pre></td></tr></table></figure>
+<p>7</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(7) HAVING&lt;having_condtion&gt;<br></code></pre></td></tr></table></figure>
+<p>8</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(10) ORDER BY&lt;order_by_list&gt;<br></code></pre></td></tr></table></figure>
+<p>9</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">(11) LIMIT&lt;limit_number&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="索引">索引</h2>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110010935533.png" alt="mysql索引"></p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110010934316.png" alt="mysql索引失效"></p>
+<p>索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而<strong>不必扫描整个数据库</strong>。</p>
+<p><strong>唯一性索引和复合索引</strong></p>
+<ol>
+<li>唯一性索引：保证在索引列中的全部数据是唯一的，不会包含冗余数据。</li>
+<li>复合索引：一个索引创建在两个列或者多个列上。</li>
+</ol>
+<p><strong>聚簇索引与非聚簇索引</strong></p>
+<ol>
+<li>聚簇索引：数据表的物理顺序与索引顺序相同</li>
+<li>非聚簇索引：数据表的物理顺序与索引顺序不相同</li>
+</ol>
+<p><strong>优点</strong></p>
+<p>① 创建唯一性索引可以保证行的<strong>唯一性</strong></p>
+<p>② <strong>大大加快数据的检索速度</strong></p>
+<p>③ 建立索引可以<strong>加快表与表之间的连接</strong>，在实现数据的参考完整性方面特别有意义</p>
+<p>④ <strong>加快分组和排序</strong></p>
+<p><strong>缺点</strong></p>
+<p>① 创建索引和维护索引需要<strong>时间成本</strong>，这个成本随着数据量的增加而加大</p>
+<p>② 创建索引和维护索引需要<strong>空间成本</strong>，每一条索引都要占据数据库的物理存储空间，数据量越大，占用空间也越大（数据表占据的是数据库的数据空间）</p>
+<p>③ 每次增删改索引需要进行<strong>动态维护</strong>，会<strong>降低表的增删改的效率</strong></p>
+<p><strong>应该在这些列上创建索引</strong></p>
+<ol>
+<li>经常需要搜索、排序、使用Where的列上，加快搜索速度</li>
+<li>作为主键的列上，强制该列的唯一性</li>
+<li>经常用在连接的列上（主要是一些外键），可以加快连接的速度</li>
+</ol>
+<p><strong>什么情况下需要建立索引</strong></p>
+<ol>
+<li>数据量大的，更新频率较低，经常进行查询操作的表要建立索引。</li>
+<li>用于排序的字段可以添加索引，用于分组的字段应当视情况看是否需要添加索引。</li>
+<li>表与表连接用于多表联合查询的约束条件的字段应当建立索引。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110031520036.png" alt="mysql优化WHERE子句"><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/202110031520036.png" alt="mysql优化WHERE子句"></p>
+<h2 id="为什么索引使用B-树而不是B树">为什么索引使用B+树而不是B树</h2>
+<p>B树：是特殊的平衡N叉树。</p>
+<p>（1）每个节点最多有m个分支，如果是根节点且不是叶子结点，分枝数最少为2个；非根非叶子结点分枝数最少为m/2个。</p>
+<p>（2）有n个分支的节点，就有n-1个关键字，关键字互不相等。</p>
+<p>（3）关键字把子节点划分成一个个区间</p>
+<p>（4）所有的叶子结点处于同一层</p>
+<p>（5）新加节点和删除节点可能会进行树节点的合并和分裂。</p>
+<p>B树的每一个节点都包含key和value，如果经常访问的元素离根节点很近，访问会很迅速。</p>
+<p>B+树</p>
+<p>（1）有k个子节点的节点必然有k个关键码。</p>
+<p>（2）非叶子结点只有索引作用，跟数据有关的信息均存放在叶子结点上</p>
+<p>（3）树的所有叶子结点构成一个双向有序链表，可以按照关键码的排序次序遍历所有记录。</p>
+<p>B+树的内部节点没有指向关键字具体信息的指针，所以内部节点更小；如果把所有同一内部节点的关键字存在同一个盘块中，那么盘块所能容纳的关键字数量也就更多，一次性读入内存中需要查找的关键字也就更多，减少了IO读写次数。</p>
+<p>B+树的叶子结点是相连的，因此对整棵树的遍历只需要一次线性遍历叶子结点就可以了。便于区间搜索和查找。</p>
+<h2 id="窗口函数">窗口函数</h2>
+<p>原则上只能写在select子句中</p>
+<p><strong>group by分组汇总后改变了表的行数，一行只有一个类别。而partiition by和rank函数不会减少原表中的行数</strong></p>
+<p>聚合函数sum在窗口函数中，是<strong>对自身记录、及位于自身记录以上</strong>的数据进行求和的结果</p>
+<p>1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;窗口函数&gt; over (partition by &lt;用于分组的列名&gt;<br></code></pre></td></tr></table></figure>
+<p>2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">order by &lt;用于排序的列名&gt;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210816171827.png" alt="img"></p>
+<p><strong>经典TOPN问题</strong>：找出每个部门工资排名前N的员工</p>
+<p>1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">select*<br></code></pre></td></tr></table></figure>
+<p>2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">from（select*，row_number() over (partition by 部门 order by salary desc) as ranking<br></code></pre></td></tr></table></figure>
+<p>3</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">from 表名) as a<br></code></pre></td></tr></table></figure>
+<p>4</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">where ranking&lt;=N;<br></code></pre></td></tr></table></figure>
+<h2 id="事务">事务</h2>
+<p>是用户定义的一系列数据库操作，这些操作可以视为一个完成的逻辑处理工作单元，要么全部执行，要么全部不执行，是不可分割的工作单元。</p>
+<p><strong>ACID</strong></p>
+<p>原子性（要么都成功，要么都失败）、一致性（一致性状态变到另一个一致性状态）、隔离性（事务不能互相干扰）、持久性（改变是永久性的，写入磁盘）</p>
+<p><strong>常见问题</strong></p>
+<p>脏读：（读未提交）B读到了A<strong>修改但未提交</strong>的数据，但之后A因为回滚或者只是作为一个中间过程未提交</p>
+<p>不可重复读：B多次读取同一个数据，但由于A对于此数据进行了修改，导致B的连续两次读取结果不一样</p>
+<p>幻读：B多次查询数据库，A在B查询的间隔进行了数据的插入或删除，导致B的查询结果发生了变化，像幻觉一样</p>
+<p><strong>隔离级别</strong></p>
+<p>读未提交：事务修改的数据还未提交时，<strong>变化</strong>就能被其他事务读到</p>
+<p>读提交：事务修改的数据提交之后，<strong>变化</strong>才能被其他事务读到</p>
+<p>可重复读：事务执行过程中看到的数据，<strong>与事务启动时看到的结果一致</strong>，不会改变。当然自身未提交的变化其他事务也是读不到的</p>
+<p>串行化：读写会加锁，出现冲突时，<strong>只能等前一个事务执行完毕</strong>才能执行</p>
+<p><strong>MVCC</strong></p>
+<p>多版本并发控制，是数据库控制并发访问的一种手段</p>
+<p>只在 <strong>读已提交(RC)</strong> 和 <strong>可重复度（RR）</strong> 这两种事务隔离级别下才有效</p>
+<h2 id="视图">视图</h2>
+<p>是虚拟的表，本身不包含数据，也就不能对其进行索引操作。</p>
+<p>对视图的操作和对普通表的操作一样。</p>
+<p>视图具有如下好处：</p>
+<ul>
+<li>简化复杂的 SQL 操作，比如复杂的连接；</li>
+<li>只使用实际表的一部分数据；</li>
+<li>通过只给用户访问视图的权限，保证数据的安全性；</li>
+<li>更改数据格式和表示。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TopK问题</title>
+    <url>/2021/12/02/TopK%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1>TOPK</h1>
+<p>整体排序</p>
+<p>1、冒泡，O（N2）</p>
+<p>2、堆排序，O（NLogN）</p>
+<p>3、快排，O（NLogN）</p>
+<p>4、计数排序（数据范围不能太大，空间换时间），O（N）</p>
+<p>局部排序</p>
+<p>1、局部冒泡（找完最大K个就停止），O（KN）</p>
+<p>2、小根堆，依次遍历，把最大的K个数放进去，O（NLogK）</p>
+<p>3、局部快排（可随机选取pivot）只排序包含第K大的那一侧，平均 O（N）</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP和HTTPS</title>
+    <url>/2021/08/14/HTTP%E5%92%8CHTTPS/</url>
+    <content><![CDATA[<h1>HTTP 和 HTTPS</h1>
+<h2 id="HTTP">HTTP</h2>
+<p>使用<strong>TCP</strong></p>
+<p>HTTP 最重要也是最突出的优点是 <strong>简单、灵活、易于扩展</strong>。</p>
+<p>因为 HTTP 协议本身不属于一种语言，它并不限定某种编程语言或者操作系统，所以天然具有<strong>跨语言、跨平台</strong>的优越性。</p>
+<p><strong>无状态</strong>，每个请求都是完全独立的，简单，不需要使用状态机</p>
+<p>无状态其实既是优点又是缺点。因为服务器没有记忆能力，所以就不需要额外的资源来记录状态信息，不仅实现上会简单一些，而且还能减轻服务器的负担，能够把更多的 CPU 和内存用来对外提供服务。</p>
+<p>既然服务器没有记忆能力，它就无法支持需要连续多个步骤的<code>事务</code>操作。每次都得问一遍身份信息，不仅麻烦，而且还增加了不必要的数据传输量。由此出现了 <code>Cookie</code> 技术。</p>
+<p><strong>明文传输</strong>，不安全</p>
+<p><strong>no-cache</strong>：必须先与服务器确认返回的响应是否被更改，然后才能使用该响应来满足后续对同一个网址的请求。</p>
+<p>**no-store：**所有内容都不会被缓存或 Internet 临时文件中</p>
+<h3 id="Cookie与Session">Cookie与Session</h3>
+<p>Cookie带来的问题：</p>
+<p>1.每次页面请求都会把cookies往服务器上送一次，<strong>浪费了带宽</strong>；</p>
+<p>2.状态数据<strong>存放在浏览器上太危险</strong>了，而且Cookies在HTTP请求中是以明文传输的。</p>
+<p>3.Cookie的<strong>大小</strong>限制在4KB, 对于复杂的状态数据显然不够用。</p>
+<p>主流的做法是：</p>
+<p>1、浏览器向HTTP服务器发出第一个请求时，服务器分配一个SessionID, 存入浏览器的Cookies中。这个SessionID一般是一个类似于GUID的字符串，几十个字节，也不多。</p>
+<p>2、<strong>服务器上维持一个会话状态数据库</strong>（也可能是个内存表），用SessionID作为标识存放每一个会话的状态信息。</p>
+<p>3、每一次浏览器发出请求时，都将这个SessionID向服务器提交一次，便于服务器根据它获得之前的会话数据，写入新的会话数据。</p>
+<h2 id="HTTPS">HTTPS</h2>
+<h3 id="对称加密与非对称加密">对称加密与非对称加密</h3>
+<p>对称加密：加密与解密使用同一个密钥</p>
+<p>优缺点：算法公开，计算量小，加密速度快、效率高；但由于加密解密都使用同一个密钥，而由于信道是不安全的，导致其不安全。</p>
+<p>非对称加密：双方各有自己的公钥与私钥，使用公钥加密将发送的信息，使用私钥解密接收到的信息。只在信道上沟通用于加密的公钥，由于解密的私钥未曾在信道上传输，所以私钥是安全的，也即非对称加密是安全的。</p>
+<p>优缺点：算法复杂，安全性高；但同时也由于其算法复杂，导致效率低下</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210914161130.png" alt="image-20210914161127660"></p>
+<h3 id="HTTPS采用的加密方式">HTTPS采用的加密方式</h3>
+<p>由于对称加密不安全，非对称加密</p>
+<p>HTTPS采用对称与非对称结合的加密方式，这种方式看似安全实则不然。在没有引入证书之前，这种对称与非对称结合的加密方式也并非是传输安全的。</p>
+<p>他无法防范这种中间人攻击，中间人可以轻而易举的获取其沟通所得的对称密钥。</p>
+<p>而其之所以不安全，是因为<strong>客户端不知道，这把公钥是不是服务器的</strong>。解决这个问题的方式就是使用数字证书。</p>
+<p><img src="https://raw.githubusercontent.com/xianyuerrr/PicGo/main/img/20210914160828.png" alt="image-20210914160825223"></p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>计网</tag>
       </tags>
   </entry>
 </search>
