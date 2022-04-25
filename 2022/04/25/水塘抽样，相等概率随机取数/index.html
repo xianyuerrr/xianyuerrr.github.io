@@ -22,7 +22,7 @@
 
   
 
-  <title>异或性质 | xianyue の blog</title>
+  <title>水塘抽样，相等概率随机取数 | xianyue の blog</title>
 
   
 
@@ -45,7 +45,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/81320250_p0.jpg)"></div>
+    <div class="post-image" style="background-image: url(https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/水塘抽样，相等概率随机取数-{fileName}.png)"></div>
   
 
   <!-- navbar -->
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">异或性质</h1>
+          <h1 class="title-wrap">水塘抽样，相等概率随机取数</h1>
           <h2 class="title-sub-wrap">
             <strong>xianyue</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2020-01-30T14:25:46.000Z" itemprop="datePublished">2020-01-30</time>
+            <time  class="article-date" datetime="2022-04-25T04:26:06.000Z" itemprop="datePublished">2022-04-25</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -109,9 +109,9 @@
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/%E5%BC%82%E6%88%96/">🏷️ 异或</a></li>
-  
     <li><a href="/tags/%E7%AE%97%E6%B3%95/">🏷️ 算法</a></li>
+  
+    <li><a href="/tags/%E9%9A%8F%E6%9C%BA/">🏷️ 随机</a></li>
   
 </ul>
         </div>
@@ -135,16 +135,11 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1>异或</h1>
-<p>异或运算的性质：</p>
-<p><strong>1.</strong> 交换律：A ^ B = B ^ A;</p>
-<p><strong>2.</strong> 结合律：A ^ (B ^ C) = (A ^ B) ^ C;</p>
-<p><strong>3.</strong> 恒等律：X ^ 0 = X;</p>
-<p><strong>4.</strong> 归零律：X ^ X = 0;</p>
-<p><strong>5.</strong> 自反：A ^ B ^ B = A ^ 0 = A;</p>
-<p><strong>6.</strong> 对于任意的 X： X ^ (-1) = ~X；</p>
-<p><strong>7.</strong> 如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</p>
-<p><strong>8.</strong><img src="https://math.now.sh?inline=%5Cforall%20i%20%5Cin%20Z" style="display:inline-block;margin: 0;"/>，有 <img src="https://math.now.sh?inline=4i%20%5Coplus%20%284i%2B1%29%20%5Coplus%20(4i%2B2)%20%5Coplus%20(4i%2B3)%20%3D%200" style="display:inline-block;margin: 0;"/>。</p>
+        <h1>水塘抽样，相等概率随机取数（不定长数据流）</h1>
+<p>问题描述：设 $ nums $ 中有 $ k $ 个值为 $ target $ 的元素，保证这 $ k $ 个值成为返回值的概率均为 $ \frac{1}{k} $</p>
+<p>操作：遍历 $ nums $，当我们第 $ i $ 次遇到值为 $ target $ 的元素时，随机选取 $ [0,i) $ 内的一个整数，如果其等于 $ 0 $ (范围内任何值都可)，那么就将返回值置为该元素下标，否则不变。</p>
+<p>证明：</p>
+<p style=""><img src="https://math.now.sh?from=%5Cbegin%7Baligned%7D%0A%26P%28%E7%AC%AC%20i%20%E6%AC%A1%E9%81%87%E5%88%B0%E5%80%BC%E4%B8%BA%20target%20%E7%9A%84%E5%85%83%E7%B4%A0%E7%9A%84%E4%B8%8B%E6%A0%87%E6%88%90%E4%B8%BA%E6%9C%80%E7%BB%88%E8%BF%94%E5%9B%9E%E5%80%BC%29%20%5C%5C%0A%26%3D%20P(%E7%AC%AC%20i%20%E6%AC%A1%E9%9A%8F%E6%9C%BA%20%3D%200)%20%5Ctimes%20P(%E7%AC%AC%20i%2B1%20%E6%AC%A1%E9%9A%8F%E6%9C%BA%20!%3D%200)%20%5Ctimes%20%5Cldots%20%5Ctimes%20P(%E7%AC%AC%20k%20%E6%AC%A1%E9%9A%8F%E6%9C%BA%20!%3D%200)%20%5C%5C%0A%26%20%3D%20%5Cfrac%7B1%7D%7Bi%7D%20%5Ctimes%20(1%20-%20%5Cfrac%7B1%7D%7Bi%2B1%7D)%20%5Ctimes%20%5Cldots%20(1%20-%20%5Cfrac%7B1%7D%7Bk%7D)%20%5C%5C%0A%26%20%3D%20%5Cfrac%7B1%7D%7Bi%7D%20%5Ctimes%20%5Cfrac%7Bi%7D%7Bi%2B1%7D%20%5Ctimes%20%5Cldots%20%5Ctimes%20%5Cfrac%7Bk-1%7D%7Bk%7D%20%5C%5C%0A%26%20%3D%20%5Cfrac%7B1%7D%7Bk%7D%0A%5Cend%7Baligned%7D%0A" /></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode]</span>):</span><br>        self.root = head<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getRandom</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">int</span>:</span><br>        node, ans, i = self.root, <span class="hljs-literal">None</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> node:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> randint(<span class="hljs-number">0</span>, i):<br>                ans = node.val<br>            node, i = node.<span class="hljs-built_in">next</span>, i + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
       </section>
 
@@ -155,12 +150,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/80143041_p0.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/20220425162209.png"></div>
     
     <div class="card-text">
       
-        <a href="/2020/03/06/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Markdown基本语法</h2>
+        <a href="/2022/04/25/%E4%B8%80%E7%BB%B4%E5%8C%BA%E9%97%B4%E5%91%BD%E4%B8%AD%E8%AE%A1%E6%95%B0/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">一维区间命中计数</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -172,12 +167,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/能天使.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/96416003_p0.jpg"></div>
     
     <div class="card-text">
       
-        <a href="/2019/11/06/Python%E4%B9%8B%E7%A6%85/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Python之禅</h2>
+        <a href="/2022/03/17/git%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%93%8D/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">git基础与实操</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -498,5 +493,35 @@
 
   
   <!-- 尾部用户自定义相关内容 --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>

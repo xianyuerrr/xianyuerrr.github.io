@@ -22,7 +22,7 @@
 
   
 
-  <title>异或性质 | xianyue の blog</title>
+  <title>一维区间命中计数 | xianyue の blog</title>
 
   
 
@@ -45,7 +45,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/81320250_p0.jpg)"></div>
+    <div class="post-image" style="background-image: url(https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/20220425162209.png)"></div>
   
 
   <!-- navbar -->
@@ -96,11 +96,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">异或性质</h1>
+          <h1 class="title-wrap">一维区间命中计数</h1>
           <h2 class="title-sub-wrap">
             <strong>xianyue</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2020-01-30T14:25:46.000Z" itemprop="datePublished">2020-01-30</time>
+            <time  class="article-date" datetime="2022-04-25T04:31:05.000Z" itemprop="datePublished">2022-04-25</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -109,7 +109,7 @@
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/%E5%BC%82%E6%88%96/">🏷️ 异或</a></li>
+    <li><a href="/tags/%E5%A0%86/">🏷️ 堆</a></li>
   
     <li><a href="/tags/%E7%AE%97%E6%B3%95/">🏷️ 算法</a></li>
   
@@ -135,49 +135,33 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1>异或</h1>
-<p>异或运算的性质：</p>
-<p><strong>1.</strong> 交换律：A ^ B = B ^ A;</p>
-<p><strong>2.</strong> 结合律：A ^ (B ^ C) = (A ^ B) ^ C;</p>
-<p><strong>3.</strong> 恒等律：X ^ 0 = X;</p>
-<p><strong>4.</strong> 归零律：X ^ X = 0;</p>
-<p><strong>5.</strong> 自反：A ^ B ^ B = A ^ 0 = A;</p>
-<p><strong>6.</strong> 对于任意的 X： X ^ (-1) = ~X；</p>
-<p><strong>7.</strong> 如果 A ^ B = C 成立，那么 A ^ B = C，B ^ C = A；</p>
-<p><strong>8.</strong><img src="https://math.now.sh?inline=%5Cforall%20i%20%5Cin%20Z" style="display:inline-block;margin: 0;"/>，有 <img src="https://math.now.sh?inline=4i%20%5Coplus%20%284i%2B1%29%20%5Coplus%20(4i%2B2)%20%5Coplus%20(4i%2B3)%20%3D%200" style="display:inline-block;margin: 0;"/>。</p>
-
+        <h1>一维区间命中计数</h1>
+<p>问题描述为：多个区间，统计 target 在多少区间内。</p>
+<p>e.g. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/number-of-flowers-in-full-bloom/">力扣 6044. 花期内花的数目</a></p>
+<p>给你一个下标从 <img src="https://math.now.sh?inline=0" style="display:inline-block;margin: 0;"/> 开始的二维整数数组 <img src="https://math.now.sh?inline=flowers" style="display:inline-block;margin: 0;"/> ，其中 <img src="https://math.now.sh?inline=flowers%5Bi%5D%20%3D%20%5Bstarti%2C%20endi%5D" style="display:inline-block;margin: 0;"/> 表示第 i 朵花的 花期 从 <img src="https://math.now.sh?inline=starti" style="display:inline-block;margin: 0;"/> 到 <img src="https://math.now.sh?inline=endi" style="display:inline-block;margin: 0;"/> （都包含）。同时给你一个下标从 <img src="https://math.now.sh?inline=0" style="display:inline-block;margin: 0;"/> 开始大小为 $ n <img src="https://math.now.sh?inline=%C2%A0%E7%9A%84%E6%95%B4%E6%95%B0%E6%95%B0%E7%BB%84%C2%A0" style="display:inline-block;margin: 0;"/> persons <img src="https://math.now.sh?inline=%EF%BC%8C" style="display:inline-block;margin: 0;"/> persons[i] <img src="https://math.now.sh?inline=%C2%A0%E6%98%AF%E7%AC%AC%C2%A0" style="display:inline-block;margin: 0;"/> i $ 个人来看花的时间。</p>
+<p>请你返回一个大小为 n 的整数数组 answer ，其中 answer[i]是第 i 个人到达时在花期内花的数目 。</p>
+<h2 id="方法一">方法一</h2>
+<p>按时间遍历 + 小根堆 + 延迟删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> heapq <span class="hljs-keyword">import</span> *<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fullBloomFlowers</span>(<span class="hljs-params">self, flowers: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], persons: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:</span><br>        m = <span class="hljs-built_in">len</span>(flowers)<br>        n = <span class="hljs-built_in">len</span>(persons)<br>        res = [<span class="hljs-number">0</span>] * n<br><br>        <span class="hljs-comment"># 把花期表按照花期开始时间排序</span><br>        flowers.sort()<br>        flower_idx = <span class="hljs-number">0</span><br>        q = []<br>        size = <span class="hljs-number">0</span><br><br>        <span class="hljs-keyword">for</span> cur, idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">zip</span>(persons, <span class="hljs-built_in">range</span>(n)), key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">0</span>]):<br>            <span class="hljs-comment"># 把花期已经结束的弹出堆</span><br>            <span class="hljs-keyword">while</span> size &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> q[<span class="hljs-number">0</span>] &lt; cur:<br>                heappop(q)<br>                size -= <span class="hljs-number">1</span><br>            <span class="hljs-comment"># 将花期应该在 cur 前（包括 cur）已经开始，否则 cur 时刻此花不可能处于花期</span><br>            <span class="hljs-keyword">while</span> flower_idx &lt; m <span class="hljs-keyword">and</span> flowers[flower_idx][<span class="hljs-number">0</span>] &lt;= cur:<br>                <span class="hljs-comment"># 花期在 cur 还未结束，若花期在 cur 已经结束，那么就不可能在 cur 以及之后的时刻处于花期</span><br>                <span class="hljs-keyword">if</span> flowers[flower_idx][<span class="hljs-number">1</span>] &gt;= cur:<br>                    heappush(q, flowers[flower_idx][<span class="hljs-number">1</span>])<br>                    size += <span class="hljs-number">1</span><br>                flower_idx += <span class="hljs-number">1</span><br>            <span class="hljs-comment"># print(cur, q)</span><br>            res[idx] = size<br>        <span class="hljs-keyword">return</span> res<br><br></code></pre></td></tr></table></figure>
+<h2 id="方法二">方法二</h2>
+<p>问题转换：正在开的花的个数 = 已开放的花的个数 - 已凋谢的花的个数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> heapq <span class="hljs-keyword">import</span> *<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fullBloomFlowers</span>(<span class="hljs-params">self, flowers: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], persons: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:</span><br>        m = <span class="hljs-built_in">len</span>(flowers)<br>        n = <span class="hljs-built_in">len</span>(persons)<br>        res = [<span class="hljs-number">0</span>] * n<br><br>        <span class="hljs-comment"># 分别统计 cur 时刻已经开放的花的数目 open_cnt、已经凋谢的花 close_cnt</span><br>        <span class="hljs-built_in">open</span> = [x <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> flowers]<br>        close = [y <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> flowers]<br>        <span class="hljs-built_in">open</span>.sort(), close.sort()<br>        open_cnt = close_cnt = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> cur, idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">zip</span>(persons, <span class="hljs-built_in">range</span>(n)), key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">0</span>]):<br>            <span class="hljs-keyword">while</span> open_cnt &lt; n <span class="hljs-keyword">and</span> <span class="hljs-built_in">open</span>[open_cnt] &lt;= cur:<br>                open_cnt += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">while</span> close_cnt &lt; n <span class="hljs-keyword">and</span> close[close_cnt] &lt; cur:<br>                close_cnt += <span class="hljs-number">1</span><br>            res[idx] = open_cnt - close_cnt<br>        <span class="hljs-keyword">return</span> res<br><br></code></pre></td></tr></table></figure>
       </section>
 
       
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/80143041_p0.jpg"></div>
-    
-    <div class="card-text">
-      
-        <a href="/2020/03/06/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Markdown基本语法</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/能天使.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/水塘抽样，相等概率随机取数-{fileName}.png"></div>
     
     <div class="card-text">
       
-        <a href="/2019/11/06/Python%E4%B9%8B%E7%A6%85/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">Python之禅</h2>
+        <a href="/2022/04/25/%E6%B0%B4%E5%A1%98%E6%8A%BD%E6%A0%B7%EF%BC%8C%E7%9B%B8%E7%AD%89%E6%A6%82%E7%8E%87%E9%9A%8F%E6%9C%BA%E5%8F%96%E6%95%B0/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">水塘抽样，相等概率随机取数</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -264,7 +248,7 @@
     <span>TOC</span>
   </div>
   <div class="widget-body">
-    
+    <ol class="大纲"><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="大纲-number">1.</span> <span class="大纲-text">方法一</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="大纲-number">2.</span> <span class="大纲-text">方法二</span></a></li></ol>
   </div>
 </section>
 
@@ -498,5 +482,35 @@
 
   
   <!-- 尾部用户自定义相关内容 --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
