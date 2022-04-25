@@ -22,7 +22,7 @@
 
   
 
-  <title>C++ 输入输出 | xianyue の blog</title>
+  <title>git基础与实操 | xianyue の blog</title>
 
   
 
@@ -45,7 +45,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/Pictures/pixiv/1/61351818.jpg)"></div>
+    <div class="post-image" style="background-image: url(https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/96416003_p0.jpg)"></div>
   
 
   <!-- navbar -->
@@ -96,22 +96,20 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">C++ 输入输出</h1>
+          <h1 class="title-wrap">git基础与实操</h1>
           <h2 class="title-sub-wrap">
             <strong>xianyue</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2020-11-06T15:33:51.000Z" itemprop="datePublished">2020-11-06</time>
+            <time  class="article-date" datetime="2022-03-17T08:18:02.000Z" itemprop="datePublished">2022-03-17</time>
           </h2>
           <ul class="wrap-list dark">
   
-    <li><a href="/categories/Code/">📒 Code</a></li>
+    <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">📒 未分类</a></li>
   
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/C/">🏷️ C++</a></li>
-  
-    <li><a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">🏷️ 输入输出</a></li>
+    <li><a href="/tags/Default/">🏷️ Default</a></li>
   
 </ul>
         </div>
@@ -135,43 +133,19 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1>C++输入输出</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-comment">// 或者是</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure>
-<h2 id="scanf">scanf</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量地址);<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182136.png" alt="image-20210321182129026"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182359.png" alt="image-20210321182359421"></p>
-<h2 id="printf">printf</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;格式控制&quot;</span>, 变量名称);<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182608.png" alt="image-20210321182608018"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/20210321182624.png" alt="image-20210321182624557"></p>
-<ol>
-<li>
-<p><strong>%md</strong></p>
-<p>可以使不足 <strong>m</strong> 位的 <strong>int</strong> 型变量以 <strong>m</strong> 位进行右对齐输出，高位用空格不起补齐。长度超过 <strong>m</strong> 位则不起作用</p>
-</li>
-<li>
-<p><strong>%0md</strong></p>
-<p>与 <strong>%md</strong> 类似，只不过补空格变成了补 <strong>0</strong></p>
-</li>
-<li>
-<p>%.mf</p>
-<p>让浮点数保留 <strong>m</strong> 位小数输出（使用四舍五入成双规则）</p>
-</li>
-</ol>
-<h2 id="getchar">getchar</h2>
-<p>输入单个字符</p>
-<h2 id="putchar">putchar</h2>
-<p>输出单个字符</p>
-<h2 id="gets">gets</h2>
-<p>输入一行字符串（识别 ‘\n’作为输入结束）</p>
-<p><strong>注意</strong>：scanf 完一个整数后，如果要使用 gets，需要先用 <strong>getchar</strong> 接收换行符</p>
-<h2 id="puts">puts</h2>
-<p>输出一行字符串，并紧跟一个换行</p>
-<h2 id="cin">cin</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br><span class="hljs-keyword">char</span> b[<span class="hljs-number">10</span>];<br>cin &gt;&gt; a;<br>cin.<span class="hljs-built_in">getline</span>(b, <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
-<h2 id="cout">cout</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> spacename std;<br><span class="hljs-keyword">int</span> a;<br>cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>cout &lt;&lt; a &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+        <h1></h1>
+<h2 id="起步">起步</h2>
+<h3 id="历史">历史</h3>
+<p>diff 和 patch<br>
+-&gt; 本地 RCS<br>
+-&gt; 集中式 CVS(Concurrent Version System) &amp; SVN(Subversion)<br>
+-&gt; 分布式 git</p>
+<p>git 是分布式版本控制系统，记录快照而不是累积的差异。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/Roaming/Typora/typora-user-images/image-20220317164242113.png" alt="image-20220317164242113"></p>
+<h3 id="前置概念">前置概念</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/Roaming/Typora/typora-user-images/image-20220317183339003.png" alt="image-20220317183339003"></p>
+<h2 id="安装">安装</h2>
+<p>基本命令</p>
 
       </section>
 
@@ -179,32 +153,16 @@
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/%E5%9B%BE%E7%89%87/Game/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F/77875196.jpg"></div>
-    
-    <div class="card-text">
-      
-        <a href="/2020/11/20/%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E7%9A%84%E5%88%A4%E6%96%AD%EF%BC%8C-%E5%92%8C-equal/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">对象相等的判断，== 和 equal</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/%E5%9B%BE%E7%89%87/%E5%8A%A8%E6%BC%AB/%E7%BD%91%E6%98%93%E4%BA%9101.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="https://cdn.jsdelivr.net/gh/xianyuerrr/PicGo/img/OneDrive/图片/pixiv/85499466_p0.jpg"></div>
     
     <div class="card-text">
       
-        <a href="/2020/11/03/bit%E4%B8%8EByte/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">bit与Byte</h2>
+        <a href="/2022/03/16/for-%E5%BE%AA%E7%8E%AF%E4%B8%8E-stream-%E6%B5%81/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">for 循环与 stream 流</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -291,7 +249,7 @@
     <span>TOC</span>
   </div>
   <div class="widget-body">
-    <ol class="大纲"><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#scanf"><span class="大纲-number">1.</span> <span class="大纲-text">scanf</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#printf"><span class="大纲-number">2.</span> <span class="大纲-text">printf</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#getchar"><span class="大纲-number">3.</span> <span class="大纲-text">getchar</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#putchar"><span class="大纲-number">4.</span> <span class="大纲-text">putchar</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#gets"><span class="大纲-number">5.</span> <span class="大纲-text">gets</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#puts"><span class="大纲-number">6.</span> <span class="大纲-text">puts</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#cin"><span class="大纲-number">7.</span> <span class="大纲-text">cin</span></a></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#cout"><span class="大纲-number">8.</span> <span class="大纲-text">cout</span></a></li></ol>
+    <ol class="大纲"><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#%E8%B5%B7%E6%AD%A5"><span class="大纲-number">1.</span> <span class="大纲-text">起步</span></a><ol class="大纲-child"><li class="大纲-item 大纲-level-3"><a class="大纲-link" href="#%E5%8E%86%E5%8F%B2"><span class="大纲-number">1.1.</span> <span class="大纲-text">历史</span></a></li><li class="大纲-item 大纲-level-3"><a class="大纲-link" href="#%E5%89%8D%E7%BD%AE%E6%A6%82%E5%BF%B5"><span class="大纲-number">1.2.</span> <span class="大纲-text">前置概念</span></a></li></ol></li><li class="大纲-item 大纲-level-2"><a class="大纲-link" href="#%E5%AE%89%E8%A3%85"><span class="大纲-number">2.</span> <span class="大纲-text">安装</span></a></li></ol>
   </div>
 </section>
 
